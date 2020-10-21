@@ -7,8 +7,11 @@ apply plugin: 'kotlin-kapt'
 ```
 You have to enable dataBinding
 ```
-dataBinding {
-  enabled = true
+android {
+     ...	
+     dataBinding {
+  	enabled = true
+     }
 }
 
 ```
