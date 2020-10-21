@@ -1,5 +1,14 @@
 # eKycNetset
 
+You have add below lines in your ```build.gradle``` 
+```
+apply plugin: 'kotlin-kapt'
+
+dataBinding {
+  enabled = true
+}
+
+```
 
 Step 1. Add the JitPack repository to your build file
 
