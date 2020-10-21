@@ -16,6 +16,8 @@ android {
 
 ```
 
+#### Installation
+
 Step 1. Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
@@ -33,7 +35,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.Mprogrammer2020:eKyc:v1.0'
 	}
 
-### Usage
+#### Usage
 
  ```
  val intent = Intent(this,EKycActivity::class.java)
