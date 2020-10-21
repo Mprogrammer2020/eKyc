@@ -3,7 +3,11 @@
     package="com.library.ekycnetset">
 
     <application>
-        <activity android:name=".EKycActivity"></activity>
+
+        <activity
+            android:theme="@style/ThemeFullScreen"
+            android:name=".EKycActivity"/>
+
     </application>
 
 </manifest>

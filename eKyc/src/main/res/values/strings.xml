@@ -1,1 +1,15 @@
-<resources></resources>
+<resources>
+    <string name="ekyc_verification">eKYC Verification</string>
+
+    <string name="ekyc">eKYC</string>
+    <string name="let_your_ekyc">Let\'s get your eKYC set up</string>
+    <string name="this_will_only_take">This will only take a few minutes, You\'ll need to:</string>
+    <string name="tell_us">Tell us about yourself</string>
+    <string name="upload_a_few_docs">Upload a few documents</string>
+    <string name="mob_num_verify">Mobile number verification</string>
+    <string name="take_selfie">Take a selfie and a video</string>
+    <string name="do_it_later"><u>Do it later</u></string>
+    <string name="continue_txt">Continue</string>
+
+
+</resources>

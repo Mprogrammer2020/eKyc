@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorEfxYellow">#FFD268</color>
+    <color name="colorEfxBlue">#00A8E3</color>
+    <color name="colorButtonText">#795B27</color>
+    <color name="startColorToolbar">#00A3E1</color>
+    <color name="endColorToolbar">#00B3E6</color>
+
+</resources>

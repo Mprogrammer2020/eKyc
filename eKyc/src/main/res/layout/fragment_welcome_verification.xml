@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="@string/let_your_ekyc"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_13sdp"
+                android:fontFamily="@font/helvetica_bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                style="@style/TextViewKyc"
+                android:text="@string/this_will_only_take"
+                android:fontFamily="@font/helvetica_regular"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_16sdp"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pickDocument"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_6sdp"
+                android:elevation="@dimen/_16sdp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iconOne"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/ic_yourself"/>
+
+                        <TextView
+                            style="@style/TextViewKyc"
+                            android:text="@string/tell_us"
+                            android:layout_toEndOf="@id/iconOne"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/helvetica_regular"
+                            android:layout_marginStart="@dimen/_6sdp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iconTwo"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/ic_mob_verify"/>
+
+                        <TextView
+                            style="@style/TextViewKyc"
+                            android:text="@string/mob_num_verify"
+                            android:layout_toEndOf="@id/iconTwo"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/helvetica_regular"
+                            android:layout_marginStart="@dimen/_6sdp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iconThree"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/ic_upload"/>
+
+                        <TextView
+                            style="@style/TextViewKyc"
+                            android:text="@string/upload_a_few_docs"
+                            android:layout_toEndOf="@id/iconThree"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/helvetica_regular"
+                            android:layout_marginStart="@dimen/_6sdp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iconFour"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/ic_selfie"/>
+
+                        <TextView
+                            style="@style/TextViewKyc"
+                            android:text="@string/take_selfie"
+                            android:layout_toEndOf="@id/iconFour"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/helvetica_regular"
+                            android:layout_marginStart="@dimen/_6sdp" />
+
+                    </RelativeLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/doItLaterClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/helvetica_bold"
+                android:text="@string/do_it_later"
+                android:textColor="@color/colorEfxBlue"
+                android:textSize="@dimen/_12sdp" />
+
+            <Button
+                android:id="@+id/continueClick"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:fontFamily="@font/helvetica_bold"
+                android:layout_margin="@dimen/_16sdp"
+                android:textColor="@color/colorButtonText"
+                android:text="@string/continue_txt"
+                android:textSize="@dimen/_11sdp"
+                android:textAllCaps="false"
+                android:background="@drawable/rounded_button"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</layout>
