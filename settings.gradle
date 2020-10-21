@@ -1,0 +1,3 @@
+include ':eKyc'
+include ':app'
+rootProject.name = "eKycNetset"
