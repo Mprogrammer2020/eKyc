@@ -1,4 +1,5 @@
-# eKycNetset
+### eKyc Library - Netset Software
+##### Written by: DEEPAK KUMAR
 
 You have add below lines in your ```build.gradle``` 
 ```
