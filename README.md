@@ -18,7 +18,9 @@ Step 2. Add the dependency
 	        implementation 'com.github.Mprogrammer2020:eKyc:v1.0'
 	}
 
-Usage
+### Usage
 
+ ```
  val intent = Intent(this,EKycActivity::class.java)
  startActivity(intent)
+ ```
