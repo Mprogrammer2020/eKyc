@@ -5,24 +5,17 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
-import com.library.ekycnetset.databinding.FragmentWelcomeVerificationBinding
+import com.library.ekycnetset.databinding.FragmentMobileVerificationLayoutBinding
 
 //by : Deepak Kumar
 //at : Netset Software
 //in : Kotlin
 
-class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerificationBinding>() {
+class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLayoutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewDataBinding.doItLaterClick.setOnClickListener {
-            getContainerActivity().setResultCancelled()
-        }
-
-        viewDataBinding.continueClick.setOnClickListener {
-            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-        }
 
     }
 
@@ -31,11 +24,11 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
     }
 
     override fun setTitle(): String {
-        return getString(R.string.ekyc_verification)
+        return getString(R.string.mob_ver_two)
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_welcome_verification
+        return R.layout.fragment_mobile_verification_layout
     }
 
 

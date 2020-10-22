@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="ekyc_verification">eKYC Verification</string>
 
     <string name="ekyc">eKYC</string>
@@ -11,5 +11,33 @@
     <string name="do_it_later"><u>Do it later</u></string>
     <string name="continue_txt">Continue</string>
 
+    <string name="tell_us_one">Tell us about yourself (Step 1 of 4)</string>
+    <string name="just_follow">Just follow three steps below to tell us about yourself</string>
+    <string name="step_1">1</string>
+    <string name="step_2">2</string>
+    <string name="step_3">3</string>
+    <string name="req_fields">Required fields</string>
+    <string name="ast">*</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="next_txt">Next</string>
+    <string name="prev_txt">Previous</string>
+
+    <string name="mob_ver_two">Mobile number verification (Step 2 of 4)</string>
+    <string name="e_g_first_name">E.g. Kim</string>
+    <string name="e_g_middle_name">E.g. Elizabeth</string>
+    <string name="e_g_last_name">E.g. Smith</string>
+
+    <string name="email_address">Email Address</string>
+    <string name="e_g_email">E.g. kim_smith007@gmail.com</string>
+
+    <string name="mob_number">Mobile Number</string>
+    <string name="e_g_mob" tools:ignore="TypographyDashes">E.g. 987-6543-210</string>
+
+    <string name="dob">Date Of Birth</string>
+    <string name="dob_format">DD/MM/YYYY</string>
+
+    <string name="gender">Gender</string>
 
 </resources>

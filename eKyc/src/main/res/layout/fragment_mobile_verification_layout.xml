@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/progress"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDarkTrans"
+            android:layout_height="@dimen/_2sdp">
+
+<!--            Step One-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Two-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Three-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Four-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_2sdp"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:text="mob verification"/>
+
+
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+</layout>

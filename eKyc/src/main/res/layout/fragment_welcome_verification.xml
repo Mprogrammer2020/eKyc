@@ -28,7 +28,7 @@
                 style="@style/TextViewKyc"
                 android:text="@string/this_will_only_take"
                 android:fontFamily="@font/helvetica_regular"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginStart="@dimen/_16sdp"/>
 
             <androidx.cardview.widget.CardView
@@ -54,8 +54,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iconOne"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:src="@drawable/ic_yourself"/>
 
                         <TextView
@@ -64,7 +64,7 @@
                             android:layout_toEndOf="@id/iconOne"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_6sdp" />
+                            android:layout_marginStart="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -76,8 +76,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iconTwo"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:src="@drawable/ic_mob_verify"/>
 
                         <TextView
@@ -86,7 +86,7 @@
                             android:layout_toEndOf="@id/iconTwo"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_6sdp" />
+                            android:layout_marginStart="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -98,8 +98,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iconThree"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:src="@drawable/ic_upload"/>
 
                         <TextView
@@ -108,7 +108,7 @@
                             android:layout_toEndOf="@id/iconThree"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_6sdp" />
+                            android:layout_marginStart="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -121,8 +121,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iconFour"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:src="@drawable/ic_selfie"/>
 
                         <TextView
@@ -131,13 +131,9 @@
                             android:layout_toEndOf="@id/iconFour"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_6sdp" />
+                            android:layout_marginStart="@dimen/_10sdp" />
 
                     </RelativeLayout>
-
-
-
-
 
 
                 </LinearLayout>
