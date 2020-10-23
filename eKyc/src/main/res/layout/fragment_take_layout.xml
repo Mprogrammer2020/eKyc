@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/progress"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDarkTrans"
+            android:layout_height="@dimen/_2sdp">
+
+<!--            Step One-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Two-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Three-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:background="@color/colorWhite"/>
+
+<!--            Step Four-->
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_height="@dimen/_2sdp"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_16sdp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/one_last"
+                        android:textColor="@color/colorEfxBlue"
+                        android:fontFamily="@font/helvetica_regular"
+                        android:gravity="center"/>
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/one_last_two"
+                        android:fontFamily="@font/helvetica_regular"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:textSize="@dimen/_9sdp"
+                        android:text="@string/req_fields"/>
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@android:color/holo_red_dark"/>
+
+                </LinearLayout>
+
+              <include
+                  android:id="@+id/takeSelfieClick"
+                  layout="@layout/card_layout"/>
+
+                <include
+                    android:id="@+id/takeVideoClick"
+                    layout="@layout/card_layout"/>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:id="@+id/prevClick"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:visibility="gone"
+                    android:layout_height="@dimen/_32sdp"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:layout_margin="@dimen/_16sdp"
+                    android:textColor="@color/colorButtonText"
+                    android:text="@string/prev_txt"
+                    android:textSize="@dimen/_11sdp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_button"/>
+
+                <Button
+                    android:id="@+id/nextClick"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:fontFamily="@font/helvetica_bold"
+                    android:layout_margin="@dimen/_16sdp"
+                    android:textColor="@color/colorButtonText"
+                    android:text="@string/next_txt"
+                    android:textSize="@dimen/_11sdp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_button"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+
+</layout>

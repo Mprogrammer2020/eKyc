@@ -64,6 +64,7 @@
 
 
             <TextView
+                android:id="@+id/click"
                 android:layout_width="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_height="wrap_content"

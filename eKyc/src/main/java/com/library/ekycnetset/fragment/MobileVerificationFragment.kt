@@ -17,6 +17,10 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
         super.onViewCreated(view, savedInstanceState)
 
 
+        viewDataBinding.click.setOnClickListener {
+            displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
+        }
+
     }
 
     override fun getCurrentFragment(): Fragment {
