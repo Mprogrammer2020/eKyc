@@ -38,6 +38,26 @@ Step 2. Add the dependency
 #### Usage
 
  ```
- val intent = Intent(this,EKycActivity::class.java)
- startActivity(intent)
+val intent = Intent(this,EKycActivity::class.java)
+startActivityForResult(intent,1000)
  ```
+
+#### Handle result
+```
+ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1000) {
+
+            if (resultCode == Activity.RESULT_OK) {
+                Log.e("RESULT","OK")
+            }
+
+            if (resultCode == RESULT_CANCELED){
+                Log.e("RESULT","CANCELED")
+            }
+
+        }
+
+    }
+```
