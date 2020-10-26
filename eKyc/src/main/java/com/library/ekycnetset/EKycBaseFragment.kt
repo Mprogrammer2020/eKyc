@@ -1,12 +1,17 @@
 package com.library.ekycnetset
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.databinding.ViewDataBinding
 import com.library.ekycnetset.base.BaseFragment
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 // by :- Deepak Kumar
 // at :- Netset Software
@@ -189,71 +194,79 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         return input.replace(" ", "")
     }
 
-//    fun commonDOBSelection(tv: EditText, userDOB: OnSelectedDOB, isMaxReq: Boolean) {
-//
+    fun commonDOBSelection(tv: EditText, userDOB: OnSelectedDOB, isMaxReq: Boolean) {
+
+        val c = Calendar.getInstance()
+
+        val mYear: Int
+        val mMonth: Int
+        val mDay: Int
+
+        if (tv.text.toString().isNotEmpty()) {
+            Log.e("Filled DOB", tv.text.toString())
+
+            c.timeInMillis = getDateInMillies(tv.text.toString())
+
+            mYear = c.get(Calendar.YEAR)
+            mMonth = c.get(Calendar.MONTH)
+            mDay = c.get(Calendar.DAY_OF_MONTH)
+
+        } else {
+
+            if (isMaxReq)
+                mYear = c.get(Calendar.YEAR) - 16
+            else
+                mYear = c.get(Calendar.YEAR)
+
+            mMonth = c.get(Calendar.MONTH)
+            mDay = c.get(Calendar.DAY_OF_MONTH)
+
+        }
+
 //        val c = Calendar.getInstance()
 //
-//        val mYear: Int
-//        val mMonth: Int
-//        val mDay: Int
-//
-//        if (tv.text.toString().isNotEmpty()) {
-//            L.e("Filled DOB", tv.text.toString())
-//
-//            c.timeInMillis = BubbleCommon.getDateInMillies(tv.text.toString())
-//
-//            mYear = c.get(Calendar.YEAR)
-//            mMonth = c.get(Calendar.MONTH)
-//            mDay = c.get(Calendar.DAY_OF_MONTH)
-//
-//        } else {
-//
-//            if (isMaxReq)
-//                mYear = c.get(Calendar.YEAR) - 16
-//            else
-//                mYear = c.get(Calendar.YEAR)
-//
-//            mMonth = c.get(Calendar.MONTH)
-//            mDay = c.get(Calendar.DAY_OF_MONTH)
-//
-//        }
-//
-////        val c = Calendar.getInstance()
-////
-////        val mYear = c.get(Calendar.YEAR) - 16
-////        val mMonth = c.get(Calendar.MONTH)
-////        val mDay = c.get(Calendar.DAY_OF_MONTH)
-//
-//
-//        val datePickerDialog = DatePickerDialog(getContainerActivity(), R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
-//
-//                val calendar = Calendar.getInstance()
-//                calendar.set(year, monthOfYear, dayOfMonth)
-//
-//                val formatMain = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)
-//                tv.setText(formatMain.format(calendar.time))
-//
-//                val apiFormat = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
-//                userDOB.selectedDate(apiFormat.format(calendar.time))
-//
-//
-//            },
-//            mYear,
-//            mMonth,
-//            mDay
-//        )
-//
-//        if (isMaxReq)
-//            datePickerDialog.datePicker.maxDate =
-//                (System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 365.25 * 16)).toLong()
-//        else
-//            datePickerDialog.datePicker.maxDate = (System.currentTimeMillis() - 1000)
-//
-//        datePickerDialog.show()
-//    }
+//        val mYear = c.get(Calendar.YEAR) - 16
+//        val mMonth = c.get(Calendar.MONTH)
+//        val mDay = c.get(Calendar.DAY_OF_MONTH)
+
+
+        val datePickerDialog = DatePickerDialog(getContainerActivity(), R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
+
+                val calendar = Calendar.getInstance()
+                calendar.set(year, monthOfYear, dayOfMonth)
+
+                val formatMain = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)
+                tv.setText(formatMain.format(calendar.time))
+
+                val apiFormat = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+                userDOB.selectedDate(apiFormat.format(calendar.time))
+
+
+            },
+            mYear,
+            mMonth,
+            mDay
+        )
+
+        if (isMaxReq)
+            datePickerDialog.datePicker.maxDate =
+                (System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 365.25 * 16)).toLong()
+        else
+            datePickerDialog.datePicker.maxDate = (System.currentTimeMillis() - 1000)
+
+        datePickerDialog.show()
+    }
 
     interface OnSelectedDOB {
         fun selectedDate(date: String)
+    }
+
+    @Throws(ParseException::class)
+    private fun getDateInMillies(dateInString: String): Long {
+        val format = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)
+//            format.timeZone = TimeZone.getTimeZone("UTC")
+        val result = format.parse(dateInString)
+        return result!!.time
     }
 
 //    fun validateUneditableET(et: EditText, msg: String): Boolean {

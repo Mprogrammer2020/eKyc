@@ -25,4 +25,11 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorEfxBlue</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:textColorSecondary">@color/colorEfxYellow</item>
+    </style>
+
 </resources>

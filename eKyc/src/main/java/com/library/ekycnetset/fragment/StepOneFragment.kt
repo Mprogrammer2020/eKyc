@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.application.bubble.view.SpinnerAction
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
-import java.util.*
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -82,6 +82,49 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                 }
 
             }
+        }
+
+
+        viewDataBinding.twoStep.dob.setOnClickListener {
+
+            commonDOBSelection(viewDataBinding.twoStep.dob, object : OnSelectedDOB{
+
+                override fun selectedDate(date: String) {
+
+//                    L.e("DOB",date)
+
+                }
+
+            }, true)
+
+        }
+
+        val genders: ArrayList<String> = ArrayList()
+        genders.add("Male")
+        genders.add("Female")
+        genders.add("Other")
+
+        SpinnerAction(getContainerActivity(),viewDataBinding.twoStep.genderPicker,viewDataBinding.twoStep.genderTxt,genders)
+
+        viewDataBinding.twoStep.genderClick.setOnClickListener {
+            viewDataBinding.twoStep.genderPicker.performClick()
+        }
+
+
+        val countries: ArrayList<String> = ArrayList()
+        countries.add("Select Country")
+        countries.add("Singapore")
+        countries.add("Malaysia")
+        countries.add("Thailand")
+        countries.add("Hong Kong")
+        countries.add("Taiwan")
+        countries.add("USA")
+        countries.add("India")
+
+        SpinnerAction(getContainerActivity(),viewDataBinding.threeStep.countryPicker,viewDataBinding.threeStep.countryTxt,countries)
+
+        viewDataBinding.threeStep.countryClick.setOnClickListener {
+            viewDataBinding.threeStep.countryPicker.performClick()
         }
 
     }

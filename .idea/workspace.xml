@@ -10,21 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BubbleDialog.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/blue_button.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_check.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_down_arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_success_layout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/item_inst_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/SimpleSpinnerAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/SpinnerAction.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/simple_spinner_item_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycBaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycBaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/StepOneFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/StepOneFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,10 +74,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/font" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/values" />
-      <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset" />
     </key>
   </component>
   <component name="RunManager">
@@ -193,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603433471070</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="UI finalizing - Deepak Kumar">
+      <created>1603695555025</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603695555025</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -202,7 +202,8 @@
     <MESSAGE value="Add Maven - Deepak Kumar" />
     <MESSAGE value="Added Step One Screen - Deepak Kumar" />
     <MESSAGE value="step 4 screen completed - Deepak Kumar" />
-    <option name="LAST_COMMIT_MESSAGE" value="step 4 screen completed - Deepak Kumar" />
+    <MESSAGE value="UI finalizing - Deepak Kumar" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI finalizing - Deepak Kumar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="767" y="271" width="442" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1603274702305">
@@ -229,10 +230,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="842" y="367" width="292" height="370" key="AndroidCreateXmlResourceDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603693231294" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1603433470921">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1603695554400">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1603433470921" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1603695554400" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1603367649518">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -257,10 +258,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="520" y="245" width="936" height="615" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603358848360" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1603433478997">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1603695561449">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1603433478997" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1603695561449" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1603687374053">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
