@@ -63,5 +63,20 @@
     <string name="one_last_two">&#160;Take a selfie and a video.</string>
     <string name="take_a_selfie">Take a selfie</string>
     <string name="take_a_video">Take a video</string>
+    <string name="we_will_send_you_an">We will send you an&#160;</string>
+    <string name="on_this_mobile_number">on this mobile number.</string>
+    <string name="one_time_password_otp">One Time Password (OTP)</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="please_type_the_verification_code">Please type the verification code</string>
+    <string name="x_x_x_x_x_x">X-X-X-X-X-X</string>
+
+    <string name="skip"><u>Skip this step</u></string>
+    <string name="go_to_home">Go To Home</string>
+    <string name="your_ekyc_information_has_been_nsubmitted_successfully">Your eKYC information has been\nsubmitted successfully.</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="please_ensure_that_your_whole_face_is_in_the_image">Please ensure that your whole face is in the image.</string>
+    <string name="selfie_instructions">Selfie Instructions</string>
+    <string name="agree">Agree</string>
+    <string name="not_agree">Not Agree</string>
 
 </resources>

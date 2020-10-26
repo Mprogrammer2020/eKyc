@@ -17,7 +17,7 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewDataBinding.click.setOnClickListener {
+        viewDataBinding.nextClick.setOnClickListener {
             displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
         }
 

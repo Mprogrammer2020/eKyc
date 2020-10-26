@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                app:cardCornerRadius="@dimen/_3sdp"
+                android:elevation="@dimen/_6sdp"
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/_35sdp"
+                android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_6sdp"
+                    android:layout_height="wrap_content">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/thik"
+                        android:src="@drawable/ic_check"/>
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/TextViewKyc"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/congratulations"
+                    android:fontFamily="@font/helvetica_bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/thik"
+                    android:gravity="center"/>
+
+                <TextView
+                    style="@style/TextViewKyc"
+                          android:gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                          android:text="@string/your_ekyc_information_has_been_nsubmitted_successfully"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintTop_toBottomOf="@id/title"
+                          android:id="@+id/msgTxt"/>
+
+
+                <Button
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/msgTxt"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/goToHomeClick"
+                    android:layout_width="match_parent"
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_height="@dimen/_28sdp"
+                        android:background="@drawable/rounded_button"
+                        android:layout_margin="@dimen/_12sdp"
+                    android:textAllCaps="false"
+                        android:text="@string/go_to_home"
+                        />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</layout>

@@ -10,26 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/green_stroke_rect.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_bank_st.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_id.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_income_st.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_take_selfie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_take_video.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/card_layout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_upload_doc_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BubbleDialog.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/blue_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_check.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/drawable/ic_down_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_success_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/item_inst_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_one_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_one_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/res/layout" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -79,12 +75,13 @@
       <recent name="com.library.ekycnetset" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.library.ekycnetset.base" />
       <recent name="com.library.ekycnetset.fragment" />
       <recent name="com.library.ekycnetset" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/font" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/values" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset" />
@@ -189,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603370130771</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="step 4 screen completed - Deepak Kumar">
+      <created>1603433471070</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603433471070</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -197,7 +201,8 @@
     <MESSAGE value="Added eKYC Home Screen - Deepak Kumar" />
     <MESSAGE value="Add Maven - Deepak Kumar" />
     <MESSAGE value="Added Step One Screen - Deepak Kumar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Step One Screen - Deepak Kumar" />
+    <MESSAGE value="step 4 screen completed - Deepak Kumar" />
+    <option name="LAST_COMMIT_MESSAGE" value="step 4 screen completed - Deepak Kumar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="767" y="271" width="442" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1603274702305">
@@ -220,46 +225,46 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="576" y="310" width="824" height="484" key="AndroidCreateResourceFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603431632409" />
-    <state x="842" y="367" width="292" height="370" key="AndroidCreateXmlResourceDialog" timestamp="1603364794126">
+    <state x="842" y="367" width="292" height="370" key="AndroidCreateXmlResourceDialog" timestamp="1603693231294">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="842" y="367" width="292" height="370" key="AndroidCreateXmlResourceDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603364794126" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1603370130333">
+    <state x="842" y="367" width="292" height="370" key="AndroidCreateXmlResourceDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603693231294" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1603433470921">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1603370130333" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1603433470921" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1603367649518">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1603367649518" />
-    <state width="1807" height="606" key="GridCell.Tab.0.bottom" timestamp="1603358373374">
+    <state width="1807" height="606" key="GridCell.Tab.0.bottom" timestamp="1603691150305">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="606" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1603358373374" />
-    <state width="1807" height="606" key="GridCell.Tab.0.center" timestamp="1603358373372">
+    <state width="1807" height="606" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1603691150305" />
+    <state width="1807" height="606" key="GridCell.Tab.0.center" timestamp="1603691150303">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="606" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1603358373372" />
-    <state width="1807" height="606" key="GridCell.Tab.0.left" timestamp="1603358373371">
+    <state width="1807" height="606" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1603691150303" />
+    <state width="1807" height="606" key="GridCell.Tab.0.left" timestamp="1603691150302">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="606" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1603358373371" />
-    <state width="1807" height="606" key="GridCell.Tab.0.right" timestamp="1603358373373">
+    <state width="1807" height="606" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1603691150302" />
+    <state width="1807" height="606" key="GridCell.Tab.0.right" timestamp="1603691150304">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="606" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1603358373372" />
+    <state width="1807" height="606" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1603691150304" />
     <state x="520" y="245" width="936" height="615" key="RollbackChangesDialog" timestamp="1603358848360">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="520" y="245" width="936" height="615" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603358848360" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1603370140207">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1603433478997">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1603370140207" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1603423539143">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1603433478997" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1603687374053">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603423539143" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603687374053" />
     <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603433417977">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
