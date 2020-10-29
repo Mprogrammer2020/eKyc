@@ -49,10 +49,7 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
             }
 
             viewDataBinding.getOtpClick.setOnClickListener {
-
-//                if (validateEditText(viewDataBinding.mobileET))
                     sendSMSApi()
-
             }
 
 

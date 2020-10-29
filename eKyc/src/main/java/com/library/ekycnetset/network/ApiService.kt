@@ -16,16 +16,6 @@ interface ApiService {
 
     @POST("auth/base-check")
     fun baseCheck(@Body body: RequestBody): Single<EKycModel.BaseCheck>
-//    RESPONSE :
-//    ----------
-//    {
-//        "api_access_token":"aat-70ee6cc3-1ed3-4541-8734-88c6f17f6197",
-//        "api_refresh_token":"art-1052c5ca-470e-40db-816c-81cd73ec0cd8",
-//        "blockchain_read_token":"",
-//        "status":"ok",
-//        "user_hash":"8d42a6fb-4e67-4a9a-a15f-b179996c1fcd",
-//        "user_id":1515080
-//    }
 
     @POST("auth/send-sms")
     fun sendSMS(@Body body: RequestBody): Single<Any>
