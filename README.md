@@ -39,6 +39,7 @@ Step 2. Add the dependency
 
  ```
 val intent = Intent(this,EKycActivity::class.java)
+intent.putExtra(Constants.API_KEY,"ADD_YOUR_BASIS_ID_API_KEY_HERE")
 startActivityForResult(intent,1000)
  ```
 
