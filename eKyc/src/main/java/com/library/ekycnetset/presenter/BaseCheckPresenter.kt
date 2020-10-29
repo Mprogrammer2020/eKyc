@@ -1,5 +1,6 @@
 package com.library.ekycnetset.presenter
 
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -11,6 +12,7 @@ import com.library.ekycnetset.base.AppPresenter
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
 import com.library.ekycnetset.fragment.MobileVerificationFragment
 import com.library.ekycnetset.fragment.StepOneFragment
+import com.library.ekycnetset.model.EKycModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -91,7 +93,6 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
                     if (validateCountry()) {
 
                         baseCheckApi()
-                        context.displayIt(MobileVerificationFragment(), MobileVerificationFragment::class.java.canonicalName, true)
 
                     }
 
@@ -131,24 +132,6 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
             viewDataBinding.twoStep.genderPicker.performClick()
         }
 
-
-//        val countries: ArrayList<String> = ArrayList()
-//        countries.add("Select Country")
-//        countries.add("Singapore")
-//        countries.add("Malaysia")
-//        countries.add("Thailand")
-//        countries.add("Hong Kong")
-//        countries.add("Taiwan")
-//        countries.add("USA")
-//        countries.add("India")
-//
-//        SpinnerAction(context,viewDataBinding.threeStep.countryPicker,viewDataBinding.threeStep.countryTxt,countries)
-//
-//        viewDataBinding.threeStep.countryClick.setOnClickListener {
-//            viewDataBinding.threeStep.countryPicker.performClick()
-//        }
-
-
         viewDataBinding.twoStep.codeClick.setOnClickListener {
             mAppPresenter!!.showCountryCodeDialog(true, object : AppPresenter.OnCountrySelectionListener{
 
@@ -174,7 +157,6 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
             })
         }
 
-//        Log.e("API Key", context.kycPref.getApiKey(context)!!)
     }
 
     private fun validateCountry() : Boolean{
@@ -197,26 +179,18 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
     }
 
+    private fun goToMobVerification(userHash: String, userId: Int) {
+        val bundle = Bundle()
+        bundle.putString("CODE",viewDataBinding.twoStep.codeTxt.text.toString())
+        bundle.putString("MOB",viewDataBinding.twoStep.mobileET.text.toString())
+        bundle.putString("HASH",userHash)
+        bundle.putInt("USER_ID",userId)
+        context.displayIt(context.setArguments(MobileVerificationFragment(),bundle), MobileVerificationFragment::class.java.canonicalName, true)
+    }
+
     private fun baseCheckApi() {
 
-//        frag.showLoading()
-
-//        {"key": "API_KEY",
-//            "first_name": "John",
-//            "last_name": "Doe",
-//            "middle_name": "",
-//            "email": "johndoe777@testdemo.com",
-//            "phone": "+79998885566",
-//            "phone2": "",
-//            "gender": 0,
-//            "birthday_day": "01",
-//            "birthday_month": "07",
-//            "birthday_year": "1983",
-//            "country_nationality": "SG",
-//            "country_residence": "SG",
-//            "city": "Singapore",
-//            "address": "Last Street, 19-99",
-//            "zip": "54321"}
+        frag.showLoading()
 
         var gender = "0"
         when(viewDataBinding.twoStep.genderTxt.text.toString()){
@@ -241,32 +215,32 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
         jsonObject.put("birthday_year", birthdayYear!!)
         jsonObject.put("country_nationality", countryNationality!!)
         jsonObject.put("country_residence", countryNationality!!)
-        jsonObject.put("city", "")
-        jsonObject.put("address", "")
-        jsonObject.put("zip", "")
+        jsonObject.put("city", viewDataBinding.threeStep.cityET.text.toString())
+        jsonObject.put("address", viewDataBinding.threeStep.addressET.text.toString())
+        jsonObject.put("zip", viewDataBinding.threeStep.zipET.text.toString())
 
         Log.e("Check Base", jsonObject.toString())
 
-//        val requestBody =
-//            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
-//
-//        frag.disposable.add(
-//            frag.apiService.baseCheck(requestBody)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(object : DisposableSingleObserver<Any>() {
-//
-//                    override fun onSuccess(linkodesModel: Any) {
-//                        frag.hideLoading()
-//
-//                    }
-//
-//                    override fun onError(e: Throwable) {
-//                        frag.hideLoading()
-//                        frag.showError(e, context)
-//                    }
-//                })
-//        )
+        val requestBody =
+            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+        frag.disposable.add(
+            frag.apiService.baseCheck(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EKycModel.BaseCheck>() {
+
+                    override fun onSuccess(model: EKycModel.BaseCheck) {
+                        frag.hideLoading()
+                        goToMobVerification(model.user_hash!!, model.user_id!!)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        frag.hideLoading()
+                        frag.showError(e, context)
+                    }
+                })
+        )
 
     }
 

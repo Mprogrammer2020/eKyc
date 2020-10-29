@@ -147,6 +147,7 @@
 
 
                                 <LinearLayout
+                                    android:id="@+id/codeClick"
                                     android:layout_weight="1"
                                     android:layout_width="0dp"
                                     android:layout_gravity="center_vertical"
@@ -154,6 +155,7 @@
 
 
                                     <TextView
+                                        android:id="@+id/codeTxt"
                                         style="@style/TextViewKyc"
                                         android:text="+1"
                                         android:fontFamily="@font/helvetica_regular" />
@@ -180,6 +182,9 @@
                             <EditText
                                 android:layout_weight="4"
                                 android:id="@+id/mobileET"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_25sdp"
                                 android:textColorHint="@color/hintColor"
@@ -202,6 +207,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <Button
+                    android:id="@+id/getOtpClick"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_25sdp"
                     android:text="@string/get_otp"
