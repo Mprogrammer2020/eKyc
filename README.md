@@ -1,4 +1,4 @@
-![Library](https://img.shields.io/badge/Build-In%20Progress-orange)
+![Library](https://img.shields.io/badge/Dependency-In%20Progress-orange)
 ### eKyc Library - Netset Software
 ##### Written by: DEEPAK KUMAR
 
