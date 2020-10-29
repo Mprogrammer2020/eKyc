@@ -1,5 +1,6 @@
 package com.library.ekycnetset.base;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +17,11 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.application.bubble.local.PrefUtils;
+import com.application.linkodes.network.ApiClient;
+import com.application.linkodes.network.ApiService;
 import java.util.Objects;
+import io.reactivex.disposables.CompositeDisposable;
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -27,39 +32,39 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     private FragmentTransaction fragmentTransaction;
     private Handler mHandler;
 
-//    private Dialog mDialog;
+    private Dialog mDialog;
     public Fragment currentFragment;
     private T mViewDataBinding;
 
-//    private PrefUtils mPref;
-//
-//    private ApiService service;
-//    private CompositeDisposable disposable = new CompositeDisposable();
+    private PrefUtils mPref;
+
+    private ApiService service;
+    private CompositeDisposable disposable = new CompositeDisposable();
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHandler = new Handler();
-//        service = new ApiClient().getClient(this).create(ApiService.class);
+        service = new ApiClient().getClient(this).create(ApiService.class);
         performDataBinding();
-//        mPref = new PrefUtils();
+        mPref = new PrefUtils();
     }
 
     private void performDataBinding() {
         mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
     }
 
-//    public void showLoading() {
-//        hideLoading();
-//        mDialog = BubbleCommon.Companion.setLoadingDialog(this);
-//    }
+    public void showLoading() {
+        hideLoading();
+        mDialog = Common.Companion.setLoadingDialog(this);
+    }
 
-//    public void hideLoading() {
-//        if (mDialog != null && mDialog.isShowing()) {
-//            mDialog.cancel();
-//        }
-//    }
+    public void hideLoading() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.cancel();
+        }
+    }
 
     public T getViewDataBinding() {
         return mViewDataBinding;
@@ -117,7 +122,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         onBackStackChanged();
     }
 
-
     public Fragment getCurrentFragment() {
         return currentFragment;
     }
@@ -137,22 +141,22 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         return super.dispatchTouchEvent(ev);
     }
 
-//    public CompositeDisposable getDisposable() {
-//        return disposable;
-//    }
-//
-//    public ApiService getApiService() {
-//        return service;
-//    }
-//
-//    public PrefUtils getBubblePref() {
-//        return mPref;
-//    }
+    public CompositeDisposable getDisposable() {
+        return disposable;
+    }
+
+    public ApiService getApiService() {
+        return service;
+    }
+
+    public PrefUtils getKycPref() {
+        return mPref;
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        disposable.dispose();
+        disposable.dispose();
     }
 
     public void showToast(String msg){

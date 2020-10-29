@@ -105,6 +105,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/codeClick"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_gravity="center_vertical"
@@ -112,6 +113,7 @@
 
 
                         <TextView
+                            android:id="@+id/codeTxt"
                             style="@style/TextViewKyc"
                             android:text="+1"
                             android:fontFamily="@font/helvetica_regular" />
@@ -214,12 +216,11 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
-                        android:padding="@dimen/_3sdp"
+                        android:padding="@dimen/_1sdp"
                         android:tint="@color/hintColor"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_down_arrow"/>
-
+                        android:src="@drawable/ic_calendar"/>
 
 
                 </RelativeLayout>

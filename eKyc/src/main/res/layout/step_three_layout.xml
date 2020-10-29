@@ -114,6 +114,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/cityET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
                     android:textColorHint="@color/hintColor"
@@ -166,6 +167,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/addressET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
                     android:textColorHint="@color/hintColor"
@@ -219,6 +221,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/zipET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
                     android:textColorHint="@color/hintColor"
@@ -229,7 +232,7 @@
                     android:singleLine="true"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_zip"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="number" />
 
             </LinearLayout>
 

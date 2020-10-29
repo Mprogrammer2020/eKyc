@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:background="@color/colorWhite"
+                  android:gravity="center_horizontal"
+                  android:layout_height="wrap_content">
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="@dimen/_40sdp"
+                  android:text="@string/ekyc"
+                  android:fontFamily="@font/helvetica_bold"
+                  android:textSize="@dimen/_14sdp"
+                  android:gravity="center"
+                 />
+
+        <View
+              android:background="@color/colorPrimary"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/_1sdp"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/colorBlack"
+                  android:textSize="@dimen/_14sdp"
+                  android:layout_margin="@dimen/_16sdp"
+                  android:gravity="center"
+                  android:fontFamily="@font/helvetica_regular"
+                  android:id="@+id/message"/>
+
+
+        <Button
+            android:id="@+id/okClick"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:fontFamily="@font/helvetica_bold"
+            android:layout_margin="@dimen/_16sdp"
+            android:textColor="@color/colorButtonText"
+            android:text="@string/ok"
+            android:textSize="@dimen/_11sdp"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_button"/>
+
+
+    </LinearLayout>
+
+
+</layout>

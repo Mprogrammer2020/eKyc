@@ -18,8 +18,13 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+
+import com.application.bubble.local.PrefUtils;
+import com.application.linkodes.network.ApiService;
 import com.bumptech.glide.Glide;
 import org.jetbrains.annotations.NotNull;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 // by :- Deepak Kumar
 // at :- Netset Software
@@ -67,25 +72,25 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         return mViewDataBinding;
     }
 
-//    public void showLoading() {
-//        mActivity.showLoading();
-//    }
-//
-//    public void hideLoading() {
-//        mActivity.hideLoading();
-//    }
-//
-//    public CompositeDisposable getDisposable() {
-//        return mActivity.getDisposable();
-//    }
-//
-//    public ApiService getApiService() {
-//        return mActivity.getApiService();
-//    }
-//
-//    public PrefUtils getBubblePref() {
-//        return mActivity.getBubblePref();
-//    }
+    public void showLoading() {
+        mActivity.showLoading();
+    }
+
+    public void hideLoading() {
+        mActivity.hideLoading();
+    }
+
+    public CompositeDisposable getDisposable() {
+        return mActivity.getDisposable();
+    }
+
+    public ApiService getApiService() {
+        return mActivity.getApiService();
+    }
+
+    public PrefUtils getKycPref() {
+        return mActivity.getKycPref();
+    }
 
     public void displayIt(final Fragment mFragment, final String tag, final boolean isBack) {
         mActivity.displayIt(mFragment, tag, isBack);

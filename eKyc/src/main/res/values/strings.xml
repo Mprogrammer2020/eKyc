@@ -78,5 +78,10 @@
     <string name="selfie_instructions">Selfie Instructions</string>
     <string name="agree">Agree</string>
     <string name="not_agree">Not Agree</string>
+    <string name="ok">OK</string>
+
+    <string name="internet_error">Internet not available, Cross check your internet connectivity and try again</string>
+    <string name="search">Search</string>
+    <string name="no_results_found">No Results Found.</string>
 
 </resources>

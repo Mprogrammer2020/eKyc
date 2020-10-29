@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.library.ekycnetset.EKycActivity
+import com.library.ekycnetset.base.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         eKyc.setOnClickListener {
 
             val intent = Intent(this,EKycActivity::class.java)
+
             startActivityForResult(intent,1000)
 
         }

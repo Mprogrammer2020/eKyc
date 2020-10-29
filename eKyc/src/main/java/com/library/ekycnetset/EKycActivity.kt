@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.library.ekycnetset.base.BaseActivity
+import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 
@@ -14,6 +15,28 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val bundle = intent.extras
+
+        if (bundle != null){
+
+            if (bundle.containsKey(Constants.API_KEY)){
+
+                if (bundle.getString(Constants.API_KEY).isNullOrEmpty()){
+                    showToast("BasisID Api key is missing.")
+                    setResultCancelled()
+                }else{
+                    kycPref.storeApiKey(this,bundle.getString(Constants.API_KEY)!!)
+                }
+            }else{
+                showToast("BasisID Api key is missing.")
+                setResultCancelled()
+            }
+
+        }else{
+            showToast("BasisID Api key is missing.")
+            setResultCancelled()
+        }
 
         displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
 
@@ -59,7 +82,5 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             super.onBackPressed()
 
     }
-
-
 
 }

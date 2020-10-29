@@ -5,10 +5,17 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.library.ekycnetset.base.BaseFragment
+import org.json.JSONObject
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -142,19 +149,19 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
             true
     }
 
-//    fun showError(e: Throwable, activity: AppCompatActivity) {
-//
-//        var isNetworkException: Boolean
-//
-//        try {
-//            val obj = JSONObject((e as HttpException).response().errorBody()!!.string())
-//            val error = obj.optString("message")
-//            val code = e.code()
-//
-//            isNetworkException = false
-//
-//            L.e("Error Message", "$error $code")
-//
+    fun showError(e: Throwable, activity: AppCompatActivity) {
+
+        var isNetworkException: Boolean
+
+        try {
+            val obj = JSONObject((e as HttpException).response().errorBody()!!.string())
+            val error = obj.optString("message")
+            val code = e.code()
+
+            isNetworkException = false
+
+            Log.e("Error Message", "$error $code")
+
 //            if (code == 401) {
 //
 //                bubblePref.clearPrefs(getContainerActivity())
@@ -166,28 +173,46 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 ////                )
 //
 //            } else {
-//                BubbleCommon.setResponseDialog(activity, error)
+                setResponseDialog(activity, error)
 //            }
-//
-//
-//        } catch (e: Exception) {
-//            isNetworkException = true
-//            e.printStackTrace()
-//        }
-//
-//        L.e("TAG", "onError: " + e.message)
-//        if (isNetworkException) {
-//
-//            if (e.message!!.contains("Failed to connect") || e.message!!.contains("Unable to resolve"))
-//                BubbleCommon.setResponseDialog(
-//                    activity,
-//                    activity.getString(R.string.internet_error)
-//                )
-//            else
-//                BubbleCommon.setResponseDialog(activity, e.message!!)
-//
-//        }
-//    }
+
+
+        } catch (e: Exception) {
+            isNetworkException = true
+            e.printStackTrace()
+        }
+
+        Log.e("TAG", "onError: " + e.message)
+        if (isNetworkException) {
+
+            if (e.message!!.contains("Failed to connect") || e.message!!.contains("Unable to resolve"))
+                setResponseDialog(
+                    activity,
+                    activity.getString(R.string.internet_error)
+                )
+            else
+                setResponseDialog(activity, e.message!!)
+
+        }
+    }
+
+    fun setResponseDialog(activity: AppCompatActivity, message: String) {
+        val dialog = BottomSheetDialog(activity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_bottom_response_layout)
+
+        val ok = dialog.findViewById<Button>(R.id.okClick)
+        val msg = dialog.findViewById<TextView>(R.id.message)
+
+        msg!!.text = message
+
+        ok!!.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
     fun getPhoneNumber(number: String): String {
         val input = number
@@ -238,8 +263,9 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
                 val formatMain = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)
                 tv.setText(formatMain.format(calendar.time))
 
-                val apiFormat = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
-                userDOB.selectedDate(apiFormat.format(calendar.time))
+                val apiFormatDate = SimpleDateFormat("dd", Locale.ENGLISH)
+                val apiFormatMonth = SimpleDateFormat("MM", Locale.ENGLISH)
+                userDOB.selectedDate(apiFormatDate.format(calendar.time), apiFormatMonth.format(calendar.time), year)
 
 
             },
@@ -258,7 +284,7 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
     }
 
     interface OnSelectedDOB {
-        fun selectedDate(date: String)
+        fun selectedDate(date: String, month : String, year : Int)
     }
 
     @Throws(ParseException::class)
