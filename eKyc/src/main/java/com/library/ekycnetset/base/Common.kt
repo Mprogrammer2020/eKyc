@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import com.library.ekycnetset.R
+import java.security.MessageDigest
 
 class Common {
 
@@ -29,6 +30,13 @@ class Common {
             dialog.setCancelable(false)
             dialog.setCanceledOnTouchOutside(false)
             return dialog
+        }
+
+        fun hashString256(input: String): String {
+            return MessageDigest
+                .getInstance("SHA-256")
+                .digest(input.toByteArray())
+                .fold("", { str, it -> str + "%02x".format(it) })
         }
 
     }

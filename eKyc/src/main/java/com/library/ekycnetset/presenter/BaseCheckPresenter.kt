@@ -92,7 +92,8 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
                     if (validateCountry()) {
 
-                        baseCheckApi()
+//                        baseCheckApi()
+                        goToMobVerification("Empty",0)
 
                     }
 

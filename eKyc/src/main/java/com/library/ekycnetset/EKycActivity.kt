@@ -7,9 +7,6 @@ import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
@@ -47,7 +44,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             onBackPressed()
         }
 
-//        getInfoApi()
     }
 
     override fun getLayoutId(): Int {
@@ -86,28 +82,4 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             super.onBackPressed()
 
     }
-
-    private fun getInfoApi() {
-
-        showLoading()
-
-        disposable.add(
-            apiService.getInfo("8d42a6fb-4e67-4a9a-a15f-b179996c1fcd",kycPref.getApiKey(this)!!,"da5fb7066098256ab5b1896bf84f91b4c4464ea77e96d57c8bb1ae6e5dba3803")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<Any>() {
-
-                    override fun onSuccess(model: Any) {
-                        hideLoading()
-
-                    }
-
-                    override fun onError(e: Throwable) {
-                        hideLoading()
-                    }
-                })
-        )
-
-    }
-
 }
