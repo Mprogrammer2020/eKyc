@@ -63,9 +63,6 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp">
 
-
-
-
             <LinearLayout
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
@@ -266,7 +263,7 @@
 
                         <TextView
                             style="@style/TextViewKyc"
-                            android:text="Resend OTP"
+                            android:text="@string/resend_otp"
                             android:layout_margin="@dimen/_10sdp"
                             android:textColor="@color/colorEfxBlue"
                             android:gravity="center"/>

@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.library.ekycnetset">
 
-    <application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:requestLegacyExternalStorage="true">
 
         <activity
             android:theme="@style/ThemeFullScreen"

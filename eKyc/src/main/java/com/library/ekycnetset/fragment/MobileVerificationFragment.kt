@@ -49,7 +49,7 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
             }
 
             viewDataBinding.getOtpClick.setOnClickListener {
-                    sendSMSApi()
+                 sendSMSApi()
             }
 
 
@@ -73,8 +73,12 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
         showLoading()
 
         val jsonObject = JSONObject()
-        jsonObject.put("user_hash", arguments!!.getString("HASH"))
-        jsonObject.put("check_id", arguments!!.getInt("USER_ID"))
+
+//        jsonObject.put("user_hash", arguments!!.getString("HASH"))
+//        jsonObject.put("check_id", arguments!!.getInt("USER_ID"))
+
+        jsonObject.put("user_hash", "60b85e15-0f56-428c-b1b8-66076a61ff94")
+        jsonObject.put("check_id", 1515419)
 
         Log.e("Send SMS", jsonObject.toString())
 

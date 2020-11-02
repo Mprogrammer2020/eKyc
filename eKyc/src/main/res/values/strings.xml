@@ -83,5 +83,6 @@
     <string name="internet_error">Internet not available, Cross check your internet connectivity and try again</string>
     <string name="search">Search</string>
     <string name="no_results_found">No Results Found.</string>
+    <string name="resend_otp">Resend OTP</string>
 
 </resources>

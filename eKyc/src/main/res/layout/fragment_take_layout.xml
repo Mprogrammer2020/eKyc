@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -127,8 +127,6 @@
                     android:id="@+id/takeVideoClick"
                     layout="@layout/card_layout"/>
 
-
-
             </LinearLayout>
 
 
@@ -159,8 +157,5 @@
         </ScrollView>
 
     </LinearLayout>
-
-
-
 
 </layout>
