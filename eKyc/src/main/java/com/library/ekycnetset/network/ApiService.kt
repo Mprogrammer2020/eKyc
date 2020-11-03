@@ -18,10 +18,10 @@ interface ApiService {
     fun baseCheck(@Body body: RequestBody): Single<EKycModel.BaseCheck>
 
     @POST("auth/send-sms")
-    fun sendSMS(@Body body: RequestBody): Single<Any>
+    fun sendSMS(@Body body: RequestBody): Single<EKycModel.BaseCheck>
 
     @POST("auth/check-sms-code ")
-    fun checkSMSCode(@Body body: RequestBody): Single<Any>
+    fun checkSMSCode(@Body body: RequestBody): Single<EKycModel.BaseCheck>
 
     @GET("users/info/{id}/{api_key}/{signature}")
     fun getInfo(@Path("id") id: String, @Path("api_key") apiKey: String, @Path("signature") signature: String): Single<Any>

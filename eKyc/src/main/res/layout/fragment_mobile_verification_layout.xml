@@ -251,6 +251,8 @@
                             android:singleLine="true"
                             android:inputType="number"
                             android:gravity="center"
+                            android:maxEms="6"
+                            android:maxLength="6"
                             android:fontFamily="@font/helvetica_regular"
                             android:hint="@string/x_x_x_x_x_x"/>
 

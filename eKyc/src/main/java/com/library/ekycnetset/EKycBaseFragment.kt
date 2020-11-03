@@ -13,9 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.library.ekycnetset.base.BaseFragment
-import org.json.JSONObject
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -120,7 +118,6 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         }
     }
 
-
     fun notWithSpace(et: EditText) {
         val myWatcher = object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
@@ -151,49 +148,37 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 
     fun showError(e: Throwable, activity: AppCompatActivity) {
 
-        var isNetworkException: Boolean
+//        var isNetworkException: Boolean
 
-        try {
-            val obj = JSONObject((e as HttpException).response().errorBody()!!.string())
-            val error = obj.optString("message")
-            val code = e.code()
-
-            isNetworkException = false
-
-            Log.e("Error Message", "$error $code")
-
-//            if (code == 401) {
+//        try {
+//            val obj = JSONObject((e as HttpException).response().errorBody()!!.string())
+//            val error = obj.optString("message")
+//            val code = e.code()
 //
-//                bubblePref.clearPrefs(getContainerActivity())
+//            isNetworkException = false
 //
-////                displayIt(WelcomeFragment(), WelcomeFragment::class.java.canonicalName, true)
-////                fragmentManager?.popBackStackImmediate(
-////                    null,
-////                    FragmentManager.POP_BACK_STACK_INCLUSIVE
-////                )
+//            Log.e("Error Message", "$error $code")
 //
-//            } else {
-                setResponseDialog(activity, error)
-//            }
-
-
-        } catch (e: Exception) {
-            isNetworkException = true
-            e.printStackTrace()
-        }
-
-        Log.e("TAG", "onError: " + e.message)
-        if (isNetworkException) {
-
-            if (e.message!!.contains("Failed to connect") || e.message!!.contains("Unable to resolve"))
-                setResponseDialog(
-                    activity,
-                    activity.getString(R.string.internet_error)
-                )
-            else
+//            setResponseDialog(activity, error)
+//
+//
+//        } catch (e: Exception) {
+//            isNetworkException = true
+//            e.printStackTrace()
+//        }
+//
+//        Log.e("TAG", "onError: " + e.message)
+//        if (isNetworkException) {
+//
+//            if (e.message!!.contains("Failed to connect") || e.message!!.contains("Unable to resolve"))
+//                setResponseDialog(
+//                    activity,
+//                    activity.getString(R.string.internet_error)
+//                )
+//            else
                 setResponseDialog(activity, e.message!!)
-
-        }
+//
+//        }
     }
 
     fun setResponseDialog(activity: AppCompatActivity, message: String) {
@@ -254,7 +239,6 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 //        val mMonth = c.get(Calendar.MONTH)
 //        val mDay = c.get(Calendar.DAY_OF_MONTH)
 
-
         val datePickerDialog = DatePickerDialog(getContainerActivity(), R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
 
                 val calendar = Calendar.getInstance()
@@ -266,7 +250,6 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
                 val apiFormatDate = SimpleDateFormat("dd", Locale.ENGLISH)
                 val apiFormatMonth = SimpleDateFormat("MM", Locale.ENGLISH)
                 userDOB.selectedDate(apiFormatDate.format(calendar.time), apiFormatMonth.format(calendar.time), year)
-
 
             },
             mYear,
@@ -294,20 +277,6 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         val result = format.parse(dateInString)
         return result!!.time
     }
-
-//    fun validateUneditableET(et: EditText, msg: String): Boolean {
-//        when {
-//            et.text.toString().isEmpty() -> {
-//                BubbleCommon.setResponseDialog(
-//                    getContainerActivity(),
-//                    msg
-//                )
-//                return false
-//            }
-//            else -> return true
-//        }
-//
-//    }
 
     fun setEditableET(editText: EditText, isEditable: Boolean) {
         editText.isFocusable = isEditable

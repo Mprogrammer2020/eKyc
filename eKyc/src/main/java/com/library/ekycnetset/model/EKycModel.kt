@@ -9,5 +9,8 @@ class EKycModel {
         var status: String ?= null
         var user_hash: String ?= null
         var user_id: Int ?= null
+        var phone: String ?= null
     }
+
+
 }
