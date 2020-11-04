@@ -14,6 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.library.ekycnetset.base.BaseFragment
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -295,5 +302,29 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
                 0
             )
         }
+    }
+
+    fun sendFileApi(urlPath : String, file : File) {
+
+        showLoading()
+
+        val mFile = MultipartBody.Part.createFormData("file", file.name, RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file))
+
+        disposable.add(
+            apiService.sendFile(urlPath,"ced8648e-8d53-4203-b4b4-72aeabea157e",1523412, mFile)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<Any>() {
+
+                    override fun onSuccess(model: Any) {
+                        hideLoading()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        hideLoading()
+                        showError(e, getContainerActivity())
+                    }
+                })
+        )
     }
 }

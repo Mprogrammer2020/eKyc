@@ -16,10 +16,8 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycBaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycBaseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/model/EKycModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/model/EKycModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/network/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/network/ApiService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Github/widget/CollectionWidgetTutorial-TodoApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../efx_frontend/eFX" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -252,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604319988192</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="OTP verification is working now.">
+      <created>1604399547761</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1604399547761</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -269,7 +274,8 @@
     <MESSAGE value="Added SHA-256 hash generator for get info." />
     <MESSAGE value="Remove static user hash &amp; id" />
     <MESSAGE value="Remove static user hash &amp; id v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove static user hash &amp; id v2" />
+    <MESSAGE value="OTP verification is working now." />
+    <option name="LAST_COMMIT_MESSAGE" value="OTP verification is working now." />
   </component>
   <component name="WindowStateProjectService">
     <state x="513" y="287" width="950" height="530" key="#PSD" timestamp="1604309718059">
@@ -308,30 +314,34 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="839" y="319" key="AndroidProcessChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603950422836" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1604319987149">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1604399546805">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1604319987149" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604131154854">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1604399546805" />
+    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1604400053504">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1604131154854" />
-    <state width="1807" height="435" key="GridCell.Tab.0.bottom" timestamp="1604398945980">
+    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604400053504" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604473422859">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="435" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1604398945980" />
-    <state width="1807" height="435" key="GridCell.Tab.0.center" timestamp="1604398945978">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1604473422859" />
+    <state width="1807" height="747" key="GridCell.Tab.0.bottom" timestamp="1604470982215">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="435" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1604398945978" />
-    <state width="1807" height="435" key="GridCell.Tab.0.left" timestamp="1604398945977">
+    <state width="1807" height="747" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1604470982215" />
+    <state width="1807" height="747" key="GridCell.Tab.0.center" timestamp="1604470982214">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="435" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1604398945977" />
-    <state width="1807" height="435" key="GridCell.Tab.0.right" timestamp="1604398945979">
+    <state width="1807" height="747" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1604470982214" />
+    <state width="1807" height="747" key="GridCell.Tab.0.left" timestamp="1604470982214">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="435" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1604398945979" />
+    <state width="1807" height="747" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1604470982214" />
+    <state width="1807" height="747" key="GridCell.Tab.0.right" timestamp="1604470982215">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="747" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1604470982215" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1603950500127">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -356,21 +366,21 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1604041310862" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604319994520">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604399568321">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1604319994520" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1604399568321" />
     <state x="167" y="125" width="1653" height="855" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604131449272">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="167" y="125" width="1653" height="855" key="com.android.tools.idea.avdmanager.AvdListDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604131449272" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1604376607405">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1604463479827">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604376607405" />
-    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604033684842">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604463479827" />
+    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604400040367">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1604033684842" />
+    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1604400040367" />
   </component>
 </project>
