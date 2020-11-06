@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
+import com.library.ekycnetset.fragment.UploadDocumentFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 
 // Dependency e-KYC
@@ -38,7 +39,8 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             setResultCancelled()
         }
 
-        displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
+//        displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
+        displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
 
         viewDataBinding.toolbarLeftMain.setOnClickListener {
             onBackPressed()

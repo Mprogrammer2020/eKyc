@@ -77,4 +77,10 @@ dependencies {
     //loader
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
+    // cropper
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+    //runtime permission
+    implementation 'com.karumi:dexter:6.0.1'
+
 }

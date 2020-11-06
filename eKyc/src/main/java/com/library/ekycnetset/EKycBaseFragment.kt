@@ -327,4 +327,5 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
                 })
         )
     }
+
 }

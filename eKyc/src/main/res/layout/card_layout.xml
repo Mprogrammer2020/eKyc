@@ -84,6 +84,33 @@
 
             </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/sideTwo"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/uploadSideTwoTxt"
+                        style="@style/TextViewKyc"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/colorEfxBlue"
+                        android:text="@string/upload"/>
+
+                    <TextView
+                        android:id="@+id/uploadedSideTwoTxt"
+                        android:visibility="gone"
+                        style="@style/TextViewKyc"
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:textColor="@color/greenColor"
+                        android:text="@string/uploaded"/>
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 

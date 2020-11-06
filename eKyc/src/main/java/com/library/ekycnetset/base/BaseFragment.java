@@ -121,6 +121,9 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
 
     @SuppressWarnings("deprecation")
     public static Spanned fromHtml(String html){
+
+
+
         if(html == null){
             // return an empty spannable if the html is null
             return new SpannableString("");

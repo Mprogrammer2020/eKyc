@@ -28,7 +28,7 @@ interface ApiService {
     @POST("auth/send-document")
     fun sendDocument(@Query("user_hash") userHash : String,
                      @Query("check_id") userId : Int,
-                     @Query("step") side : Int,
+                     @Query("step") side : String,
                      @Part mFile: MultipartBody.Part) : Single<Any>
 
     @Multipart
