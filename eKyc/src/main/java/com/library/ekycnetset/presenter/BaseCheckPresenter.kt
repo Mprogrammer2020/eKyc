@@ -92,8 +92,8 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
                     if (validateCountry()) {
 
-//                        baseCheckApi()
-                        goToMobVerification("Empty",0)
+                        baseCheckApi()
+//                        goToMobVerification("Empty",0)
 
                     }
 
@@ -180,12 +180,12 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
     }
 
-    private fun goToMobVerification(userHash: String, userId: Int) {
+    private fun goToMobVerification() {
         val bundle = Bundle()
         bundle.putString("CODE",viewDataBinding.twoStep.codeTxt.text.toString())
         bundle.putString("MOB",viewDataBinding.twoStep.mobileET.text.toString())
-        bundle.putString("HASH",userHash)
-        bundle.putInt("USER_ID",userId)
+//        bundle.putString("HASH",userHash)
+//        bundle.putInt("USER_ID",userId)
         context.displayIt(context.setArguments(MobileVerificationFragment(),bundle), MobileVerificationFragment::class.java.canonicalName, true)
     }
 
@@ -233,7 +233,11 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
                     override fun onSuccess(model: EKycModel.BaseCheck) {
                         frag.hideLoading()
-                        goToMobVerification(model.user_hash!!, model.user_id!!)
+
+                        context.kycPref.storeHash(context,model.user_hash!!)
+                        context.kycPref.storeUserId(context,model.user_id!!)
+
+                        goToMobVerification()
                     }
 
                     override fun onError(e: Throwable) {

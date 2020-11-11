@@ -24,19 +24,12 @@ interface ApiService {
     @GET("users/info/{id}/{api_key}/{signature}")
     fun getInfo(@Path("id") id: String, @Path("api_key") apiKey: String, @Path("signature") signature: String): Single<Any>
 
-    @Multipart
     @POST("auth/send-document")
-    fun sendDocument(@Query("user_hash") userHash : String,
-                     @Query("check_id") userId : Int,
-                     @Query("step") side : String,
-                     @Part mFile: MultipartBody.Part) : Single<Any>
+    fun sendDocument(@Body boby: RequestBody) : Single<Any>
 
-    @Multipart
     @POST("auth/{path}")
     fun sendFile(@Path("path") path : String,
-                 @Query("user_hash") userHash : String,
-                 @Query("check_id") userId : Int,
-                 @Part mFile: MultipartBody.Part) : Single<Any>
+                 @Body boby: RequestBody) : Single<Any>
 
 //    @Multipart
 //    @POST("auth/send-statement")

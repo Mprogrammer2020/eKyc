@@ -1,7 +1,11 @@
 package com.library.ekycnetset.fragment
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -16,6 +20,7 @@ import com.library.ekycnetset.databinding.DialogInstLayoutBinding
 import com.library.ekycnetset.databinding.DialogSuccessLayoutBinding
 import com.library.ekycnetset.databinding.FragmentTakeLayoutBinding
 import com.library.ekycnetset.databinding.ItemInstLayoutBinding
+import com.library.ekycnetset.document.DocumentPresenter
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -23,23 +28,20 @@ import com.library.ekycnetset.databinding.ItemInstLayoutBinding
 
 class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
+    private var isSelfieSend = false
+    private var isVideoSend = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         viewDataBinding.takeSelfieClick.uploadTxt.setOnClickListener {
 
-            viewDataBinding.takeSelfieClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-            viewDataBinding.takeSelfieClick.uploadedTxt.visibility = View.VISIBLE
-            viewDataBinding.takeSelfieClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+            DocumentPresenter(getContainerActivity(), this, 1000).onScanClick()
 
         }
 
-
         setGlide(R.drawable.ic_take_video,viewDataBinding.takeVideoClick.iconOne)
         viewDataBinding.takeVideoClick.titleTxt.text = getString(R.string.take_a_video)
-
 
         viewDataBinding.takeVideoClick.uploadTxt.setOnClickListener {
 
@@ -50,7 +52,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         }
 
         viewDataBinding.nextClick.setOnClickListener {
-            success()
+            if (isSelfieSend && isVideoSend)
+                success()
         }
 
         instructions()
@@ -69,6 +72,35 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         return R.layout.fragment_take_layout
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            1000 -> {
+                if (resultCode == Activity.RESULT_OK) {
+
+                    val uri: Uri = data!!.getParcelableExtra("path")!!
+                    Log.e("Path",uri.path!!)
+
+                    sendFileApi("send-image",uri.path!!, object : OnSuccess{
+
+                        override fun onRes() {
+
+                            isSelfieSend = true
+
+                            viewDataBinding.takeSelfieClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.takeSelfieClick.uploadedTxt.visibility = View.VISIBLE
+                            viewDataBinding.takeSelfieClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+
+                        }
+
+                    })
+
+                }
+            }
+        }
+    }
+
     private fun success(){
 
         BubbleDialog(getContainerActivity(), R.layout.dialog_success_layout,
@@ -78,14 +110,10 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                     binder: DialogSuccessLayoutBinding,
                     dialog: Dialog) {
 
-
-
                     binder.goToHomeClick.setOnClickListener {
                         dialog.dismiss()
                         getContainerActivity().setResultOk()
                     }
-
-
 
                 }
 
@@ -98,9 +126,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         BubbleDialog(getContainerActivity(), R.layout.dialog_inst_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogInstLayoutBinding> {
 
-                override fun onBind(
-                    binder: DialogInstLayoutBinding,
-                    dialog: Dialog) {
+                override fun onBind(binder: DialogInstLayoutBinding, dialog: Dialog) {
 
                     val list = ArrayList<String>()
                     list.add("Please ensure that your whole face is in the image.")
@@ -124,7 +150,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
 
 
-                    binder.notAgreeClick.setOnClickListener {
+                    binder.agreeClick.setOnClickListener {
                         dialog.dismiss()
                     }
 
@@ -132,9 +158,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                 }
 
             })
-
     }
-
 
 }
 

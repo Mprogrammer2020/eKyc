@@ -20,10 +20,12 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 // by :- Deepak Kumar
 // at :- Netset Software
@@ -73,7 +75,7 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
             true
     }
 
-    fun alertBox(msg : String){
+    fun alertBox(msg: String){
         showToast(msg)
     }
 
@@ -246,7 +248,10 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 //        val mMonth = c.get(Calendar.MONTH)
 //        val mDay = c.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(getContainerActivity(), R.style.DatePickerDialogTheme, { _, year, monthOfYear, dayOfMonth ->
+        val datePickerDialog = DatePickerDialog(
+            getContainerActivity(),
+            R.style.DatePickerDialogTheme,
+            { _, year, monthOfYear, dayOfMonth ->
 
                 val calendar = Calendar.getInstance()
                 calendar.set(year, monthOfYear, dayOfMonth)
@@ -256,7 +261,11 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 
                 val apiFormatDate = SimpleDateFormat("dd", Locale.ENGLISH)
                 val apiFormatMonth = SimpleDateFormat("MM", Locale.ENGLISH)
-                userDOB.selectedDate(apiFormatDate.format(calendar.time), apiFormatMonth.format(calendar.time), year)
+                userDOB.selectedDate(
+                    apiFormatDate.format(calendar.time), apiFormatMonth.format(
+                        calendar.time
+                    ), year
+                )
 
             },
             mYear,
@@ -274,7 +283,7 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
     }
 
     interface OnSelectedDOB {
-        fun selectedDate(date: String, month : String, year : Int)
+        fun selectedDate(date: String, month: String, year: Int)
     }
 
     @Throws(ParseException::class)
@@ -304,20 +313,30 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         }
     }
 
-    fun sendFileApi(urlPath : String, file : File) {
+    fun sendFileApi(urlPath: String, filePath: String, listener : OnSuccess) {
 
         showLoading()
 
-        val mFile = MultipartBody.Part.createFormData("file", file.name, RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file))
+        val file = File(filePath)
+
+        val mBuilder = MultipartBody.Builder()
+        mBuilder.setType(MultipartBody.FORM)
+            .addFormDataPart("user_hash",kycPref.getHash(getContainerActivity())!!)
+            .addFormDataPart("check_id", kycPref.getUserId(getContainerActivity())!!.toString())
+            .addFormDataPart("file", file.name, file.asRequestBody("image/*".toMediaTypeOrNull()))
+            .build()
+
+        val requestBody = mBuilder.build()
 
         disposable.add(
-            apiService.sendFile(urlPath,"ced8648e-8d53-4203-b4b4-72aeabea157e",1523412, mFile)
+            apiService.sendFile(urlPath, requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Any>() {
 
                     override fun onSuccess(model: Any) {
                         hideLoading()
+                        listener.onRes()
                     }
 
                     override fun onError(e: Throwable) {
@@ -326,6 +345,10 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
                     }
                 })
         )
+    }
+
+    interface OnSuccess{
+        fun onRes()
     }
 
 }

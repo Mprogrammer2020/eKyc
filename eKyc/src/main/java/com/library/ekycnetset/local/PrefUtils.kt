@@ -23,6 +23,27 @@ class PrefUtils{
         return getSharedPreferences(context).getString("API_KEY", null)
     }
 
+
+    fun storeHash(context: Context, hash: String) {
+        val editor = getSharedPreferences(context).edit()
+        editor.putString("HASH", hash)
+        editor.apply()
+    }
+
+    fun getHash(context: Context): String? {
+        return getSharedPreferences(context).getString("HASH", null)
+    }
+
+    fun storeUserId(context: Context, userId: Int) {
+        val editor = getSharedPreferences(context).edit()
+        editor.putInt("USER_ID", userId)
+        editor.apply()
+    }
+
+    fun getUserId(context: Context): Int? {
+        return getSharedPreferences(context).getInt("USER_ID", 0)
+    }
+
     fun clearPrefs(context: Context){
         val sharedPrefs = context.getSharedPreferences("EKYC_PREF", Context.MODE_PRIVATE)
         val editor = sharedPrefs.edit()

@@ -7,11 +7,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.databinding.FragmentUploadDocLayoutBinding
 import com.library.ekycnetset.document.DocumentPresenter
+import com.library.ekycnetset.view.RealPath
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -25,6 +27,10 @@ import java.io.File
 //in : Kotlin
 
 class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>() {
+
+    private var isP1Send = false
+    private var isP2Send = false
+    private var isBankStatementSend = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,7 +51,10 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         viewDataBinding.incomeStatement.astTxt.visibility = View.GONE
 
         viewDataBinding.nextClick.setOnClickListener {
-            displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
+            if (isP1Send && isP2Send && isBankStatementSend)
+                displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
+            else
+                showToast("Please upload mandatory documents to proceed further.")
         }
 
         viewDataBinding.passportID.uploadTxt.setOnClickListener {
@@ -57,11 +66,11 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         }
 
         viewDataBinding.bankStatement.uploadTxt.setOnClickListener {
-
+            DocumentPresenter(getContainerActivity(), this, 3000).onFilePickerClick()
         }
 
         viewDataBinding.incomeStatement.uploadTxt.setOnClickListener {
-
+            DocumentPresenter(getContainerActivity(),this,4000).onFilePickerClick()
         }
 
     }
@@ -81,24 +90,67 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1000) {
-            if (resultCode == Activity.RESULT_OK) {
+        when (requestCode) {
+            1000 -> {
+                if (resultCode == Activity.RESULT_OK) {
 
-                val uri: Uri = data!!.getParcelableExtra("path")!!
-                Log.e("Path",uri.path!!)
-                sendDocumentApi("1",uri.path!!)
+                    val uri: Uri = data!!.getParcelableExtra("path")!!
+                    Log.e("Path",uri.path!!)
+                    sendDocumentApi("1",uri.path!!)
 
+                }
             }
-        }else if (requestCode == 2000){
+            2000 -> {
+                if (resultCode == Activity.RESULT_OK) {
 
-            if (resultCode == Activity.RESULT_OK) {
+                    val uri: Uri = data!!.getParcelableExtra("path")!!
+                    Log.e("Path",uri.path!!)
+                    sendDocumentApi("2",uri.path!!)
 
-                val uri: Uri = data!!.getParcelableExtra("path")!!
-                Log.e("Path",uri.path!!)
-                sendDocumentApi("2",uri.path!!)
-
+                }
             }
+            3000 -> {
+                if (resultCode == Activity.RESULT_OK) {
 
+                    val fileUri = data!!.data
+                    Log.e("Path", fileUri!!.path!!)
+
+                    sendFileApi("send-statement",RealPath.getPathFromURI(getContainerActivity(),fileUri), object : OnSuccess{
+
+                        override fun onRes() {
+
+                            isBankStatementSend = true
+
+                            viewDataBinding.bankStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.bankStatement.uploadedTxt.visibility = View.VISIBLE
+                            viewDataBinding.bankStatement.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+
+                        }
+
+                    })
+
+                }
+            }
+            4000 -> {
+                if (resultCode == Activity.RESULT_OK){
+
+                    val fileUri = data!!.data
+                    Log.e("Path", fileUri!!.path!!)
+
+                    sendFileApi("send-proof-income",RealPath.getPathFromURI(getContainerActivity(),fileUri), object : OnSuccess{
+
+                        override fun onRes() {
+
+                            viewDataBinding.incomeStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.incomeStatement.uploadedTxt.visibility = View.VISIBLE
+                            viewDataBinding.incomeStatement.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+
+                        }
+
+                    })
+
+                }
+            }
         }
     }
 
@@ -107,24 +159,40 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         showLoading()
 
         val file = File(filePath)
-        val mFile = MultipartBody.Part.createFormData("file", file.name,
-            file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-        )
+//        val mFile = MultipartBody.Part.createFormData("file", file.name,
+//            file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+//        )
 
-//        val mBuilder = MultipartBody.Builder()
-//        mBuilder.setType(MultipartBody.FORM)
-//            .addFormDataPart("file", file.name, RequestBody.create("image/*".toMediaTypeOrNull(), file))
-//            .build()
-//        val requestBody = mBuilder.build()
+        val mBuilder = MultipartBody.Builder()
+        mBuilder.setType(MultipartBody.FORM)
+            .addFormDataPart("user_hash",kycPref.getHash(getContainerActivity())!!)
+            .addFormDataPart("check_id", kycPref.getUserId(getContainerActivity())!!.toString())
+            .addFormDataPart("step", side)
+            .addFormDataPart("file", file.name, file.asRequestBody("image/*".toMediaTypeOrNull()))
+            .build()
+        val requestBody = mBuilder.build()
 
         disposable.add(
-            apiService.sendDocument("ced8648e-8d53-4203-b4b4-72aeabea157e",1523412, side, mFile)
+            apiService.sendDocument(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Any>() {
 
                     override fun onSuccess(model: Any) {
                         hideLoading()
+
+                        if (side == "1"){
+                            isP1Send = true
+                            viewDataBinding.passportID.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.passportID.uploadedTxt.visibility = View.VISIBLE
+                            viewDataBinding.passportID.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+                        }else if (side == "2"){
+                            isP2Send = true
+                            viewDataBinding.passportID.uploadSideTwoTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.passportID.uploadedSideTwoTxt.visibility = View.VISIBLE
+                            viewDataBinding.passportID.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+                        }
+
                     }
 
                     override fun onError(e: Throwable) {

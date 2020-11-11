@@ -16,7 +16,6 @@ import com.library.ekycnetset.R
 
 class DocumentPresenter(private var mActivity: EKycActivity, private var frag: Fragment, private var req : Int) {
 
-
     private fun showImagePickerOptions() {
         SimpleImagePickerActivity.showImagePickerOptions(
             mActivity,
@@ -31,6 +30,40 @@ class DocumentPresenter(private var mActivity: EKycActivity, private var frag: F
             },
             mActivity.getString(R.string.lbl_set_choose_option)
         )
+    }
+
+    fun onFilePickerClick() {
+        Dexter.withActivity(mActivity)
+            .withPermissions(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    if (report.areAllPermissionsGranted()) {
+                        openFilePicker()
+                    }
+
+                    if (report.isAnyPermissionPermanentlyDenied) {
+                        showSettingsDialog()
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest>,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
+    }
+
+    private fun openFilePicker(){
+        val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
+        chooseFile.setType("*/*")
+        chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
+        frag.startActivityForResult(chooseFile, req)
     }
 
     private fun launchCameraIntent() {

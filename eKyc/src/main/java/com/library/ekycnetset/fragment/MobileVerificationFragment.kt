@@ -82,8 +82,8 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
 
         val jsonObject = JSONObject()
 
-        jsonObject.put("user_hash", arguments!!.getString("HASH"))
-        jsonObject.put("check_id", arguments!!.getInt("USER_ID"))
+        jsonObject.put("user_hash", kycPref.getHash(getContainerActivity())!!)
+        jsonObject.put("check_id", kycPref.getUserId(getContainerActivity())!!)
 
 //        jsonObject.put("user_hash", "ced8648e-8d53-4203-b4b4-72aeabea157e")
 //        jsonObject.put("check_id", 1523412)
@@ -122,8 +122,8 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
 
         val jsonObject = JSONObject()
 
-        jsonObject.put("user_hash", arguments!!.getString("HASH"))
-        jsonObject.put("check_id", arguments!!.getInt("USER_ID"))
+        jsonObject.put("user_hash", kycPref.getHash(getContainerActivity())!!)
+        jsonObject.put("check_id", kycPref.getUserId(getContainerActivity())!!)
 //        jsonObject.put("user_hash", "ced8648e-8d53-4203-b4b4-72aeabea157e")
 //        jsonObject.put("check_id", 1523412)
         jsonObject.put("phone", fullMobNumber)
