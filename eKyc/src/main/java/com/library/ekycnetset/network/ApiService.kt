@@ -31,29 +31,6 @@ interface ApiService {
     fun sendFile(@Path("path") path : String,
                  @Body boby: RequestBody) : Single<Any>
 
-//    @Multipart
-//    @POST("auth/send-statement")
-//    fun sendStatement(@Query("user_hash") userHash : String,
-//                     @Query("check_id") userId : Int,
-//                     @Part mFile: MultipartBody.Part) : Single<Any>
-//
-//    @Multipart
-//    @POST("auth/send-proof-income")
-//    fun sendIncomeStatement(@Query("user_hash") userHash : String,
-//                     @Query("check_id") userId : Int,
-//                     @Part mFile: MultipartBody.Part) : Single<Any>
-//
-//    @Multipart
-//    @POST("auth/send-image")
-//    fun sendImage(@Query("user_hash") userHash : String,
-//                     @Query("check_id") userId : Int,
-//                     @Part mFile: MultipartBody.Part) : Single<Any>
-//
-//    @Multipart
-//    @POST("auth/send-video")
-//    fun sendVideo(@Query("user_hash") userHash : String,
-//                     @Query("check_id") userId : Int,
-//                     @Part mFile: MultipartBody.Part) : Single<Any>
 
 }
 

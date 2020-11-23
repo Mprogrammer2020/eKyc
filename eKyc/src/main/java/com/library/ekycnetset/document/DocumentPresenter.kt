@@ -32,6 +32,34 @@ class DocumentPresenter(private var mActivity: EKycActivity, private var frag: F
         )
     }
 
+    fun onVideoPickerClick() {
+        Dexter.withActivity(mActivity)
+            .withPermissions(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    if (report.areAllPermissionsGranted()) {
+                        val galleryPicker = GalleryPicker(mActivity,frag)
+                        galleryPicker.showPictureDialog()
+                    }
+
+                    if (report.isAnyPermissionPermanentlyDenied) {
+                        showSettingsDialog()
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest>,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
+    }
+
     fun onFilePickerClick() {
         Dexter.withActivity(mActivity)
             .withPermissions(

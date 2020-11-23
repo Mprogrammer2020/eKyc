@@ -39,7 +39,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         }
 
         displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-//        displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
+//        displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
 
         viewDataBinding.toolbarLeftMain.setOnClickListener {
             onBackPressed()

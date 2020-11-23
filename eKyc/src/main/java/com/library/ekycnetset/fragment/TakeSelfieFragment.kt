@@ -21,6 +21,8 @@ import com.library.ekycnetset.databinding.DialogSuccessLayoutBinding
 import com.library.ekycnetset.databinding.FragmentTakeLayoutBinding
 import com.library.ekycnetset.databinding.ItemInstLayoutBinding
 import com.library.ekycnetset.document.DocumentPresenter
+import com.library.ekycnetset.view.RealPath
+
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -40,14 +42,22 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
         }
 
-        setGlide(R.drawable.ic_take_video,viewDataBinding.takeVideoClick.iconOne)
+//        Log.e("HASH", kycPref.getHash(getContainerActivity())!!)
+//        Log.e("USER ID", kycPref.getUserId(getContainerActivity())!!.toString())
+
+        setGlide(R.drawable.ic_take_video, viewDataBinding.takeVideoClick.iconOne)
         viewDataBinding.takeVideoClick.titleTxt.text = getString(R.string.take_a_video)
 
         viewDataBinding.takeVideoClick.uploadTxt.setOnClickListener {
 
-            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
-            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+            DocumentPresenter(getContainerActivity(), this, 1000).onVideoPickerClick()
+
+//            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+//            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
+//            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
+//                context!!,
+//                R.drawable.green_stroke_rect
+//            )
 
         }
 
@@ -80,21 +90,63 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                 if (resultCode == Activity.RESULT_OK) {
 
                     val uri: Uri = data!!.getParcelableExtra("path")!!
-                    Log.e("Path",uri.path!!)
+                    Log.e("Path", uri.path!!)
 
-                    sendFileApi("send-image",uri.path!!, object : OnSuccess{
+                    sendFileApi("send-image", uri.path!!, object : OnSuccess {
 
                         override fun onRes() {
 
                             isSelfieSend = true
 
-                            viewDataBinding.takeSelfieClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.takeSelfieClick.uploadTxt.text =
+                                fromHtml(getString(R.string.upload_again))
                             viewDataBinding.takeSelfieClick.uploadedTxt.visibility = View.VISIBLE
-                            viewDataBinding.takeSelfieClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+                            viewDataBinding.takeSelfieClick.bg.background =
+                                ContextCompat.getDrawable(
+                                    context!!,
+                                    R.drawable.green_stroke_rect
+                                )
 
                         }
 
                     })
+
+                }
+            }
+            1 ->{
+
+                if (resultCode == Activity.RESULT_OK) {
+
+                    val uri: Uri = data!!.data!!
+                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
+
+                    sendFileApi("send-video", RealPath.getPathFromURI(getContainerActivity(),uri), object : OnSuccess {
+
+                        override fun onRes() {
+
+                            isVideoSend = true
+
+                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
+                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
+                                context!!,
+                                R.drawable.green_stroke_rect
+                            )
+
+                        }
+
+                    })
+
+                }
+
+
+            }
+            2 ->{
+
+                if (resultCode == Activity.RESULT_OK) {
+
+                    val uri: Uri = data!!.data!!
+                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
 
                 }
             }
@@ -108,7 +160,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                 override fun onBind(
                     binder: DialogSuccessLayoutBinding,
-                    dialog: Dialog) {
+                    dialog: Dialog
+                ) {
 
                     binder.goToHomeClick.setOnClickListener {
                         dialog.dismiss()
@@ -134,16 +187,22 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                     list.add("Do not wear any glasses or any type d things that will hide your face.")
                     list.add("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.")
 
-                    val mAdapter = RecyclerViewGenricAdapter<String, ItemInstLayoutBinding>(list,R.layout.item_inst_layout){
-                            binderInner, model, position, itemView ->
+                    val mAdapter = RecyclerViewGenricAdapter<String, ItemInstLayoutBinding>(
+                        list,
+                        R.layout.item_inst_layout
+                    ) { binderInner, model, position, itemView ->
 
 
-                        binderInner.srNum.text = (position+1).toString()
+                        binderInner.srNum.text = (position + 1).toString()
                         binderInner.text.text = model
 
                     }
 
-                    val mLayoutManager = LinearLayoutManager(getContainerActivity(), RecyclerView.VERTICAL, false)
+                    val mLayoutManager = LinearLayoutManager(
+                        getContainerActivity(),
+                        RecyclerView.VERTICAL,
+                        false
+                    )
                     binder.instRV.layoutManager = mLayoutManager
                     binder.instRV.itemAnimator = DefaultItemAnimator()
                     binder.instRV.adapter = mAdapter
