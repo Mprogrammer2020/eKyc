@@ -113,7 +113,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                 }
             }
-            1 ->{
+            1,2 ->{
 
                 if (resultCode == Activity.RESULT_OK) {
 
@@ -139,17 +139,16 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                 }
 
-
             }
-            2 ->{
-
-                if (resultCode == Activity.RESULT_OK) {
-
-                    val uri: Uri = data!!.data!!
-                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
-
-                }
-            }
+//            2 ->{
+//
+//                if (resultCode == Activity.RESULT_OK) {
+//
+//                    val uri: Uri = data!!.data!!
+//                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
+//
+//                }
+//            }
         }
     }
 
