@@ -61,6 +61,10 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
                 gotoDocFrag()
             }
 
+            viewDataBinding.resendOTPClick.setOnClickListener {
+                sendSMSApi()
+            }
+
         }
     }
 

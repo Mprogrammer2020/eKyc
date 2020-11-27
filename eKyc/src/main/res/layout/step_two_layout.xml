@@ -148,6 +148,8 @@
                         android:textColor="@color/colorBlack"
                         android:singleLine="true"
                         android:inputType="phone"
+                        android:maxLength="12"
+                        android:digits="1234567890"
                         android:fontFamily="@font/helvetica_regular"
                         android:hint="@string/e_g_mob"/>
 

@@ -63,7 +63,7 @@
                     style="@style/TextViewKyc"
                     android:text="@string/not_agree"
                     android:padding="@dimen/_12sdp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

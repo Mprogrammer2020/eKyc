@@ -123,6 +123,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
+                    android:maxLength="25"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_city"/>
 
@@ -176,6 +177,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
+                    android:maxLength="25"
                     android:hint="@string/e_g_address"
                     android:fontFamily="@font/helvetica_regular"/>
 
@@ -230,6 +232,7 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
+                    android:maxLength="20"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_zip"
                     android:inputType="number" />

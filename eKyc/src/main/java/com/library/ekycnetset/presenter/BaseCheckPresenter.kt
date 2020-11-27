@@ -1,8 +1,11 @@
 package com.library.ekycnetset.presenter
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.application.bubble.view.SpinnerAction
 import com.library.ekycnetset.EKycActivity
@@ -20,7 +23,12 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 
-class BaseCheckPresenter(private val context: EKycActivity, private val frag : StepOneFragment ,private val viewDataBinding: FragmentStepOneLayoutBinding) {
+
+class BaseCheckPresenter(
+    private val context: EKycActivity,
+    private val frag: StepOneFragment,
+    private val viewDataBinding: FragmentStepOneLayoutBinding
+) {
 
     private var birthdayDay : String ?= null
     private var birthdayMonth : String ?= null
@@ -32,6 +40,10 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
         mAppPresenter = AppPresenter(context)
 
+        notWithSpace(viewDataBinding.threeStep.cityET)
+        notWithSpace(viewDataBinding.threeStep.addressET)
+        notWithSpace(viewDataBinding.threeStep.zipET)
+
         viewDataBinding.prevClick.setOnClickListener {
 
             when (viewDataBinding.signUpViewFlipper.displayedChild) {
@@ -40,16 +52,38 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
                     viewDataBinding.prevClick.visibility = View.GONE
                     viewDataBinding.signUpViewFlipper.showPrevious()
-                    viewDataBinding.lineOne.background = ContextCompat.getDrawable(context, R.color.grey)
-                    viewDataBinding.textTwo.setTextColor(ContextCompat.getColor(context, R.color.colorBlack))
-                    viewDataBinding.stepTwoView.background = ContextCompat.getDrawable(context, R.drawable.circle_unselected)
+                    viewDataBinding.lineOne.background = ContextCompat.getDrawable(
+                        context,
+                        R.color.grey
+                    )
+                    viewDataBinding.textTwo.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.colorBlack
+                        )
+                    )
+                    viewDataBinding.stepTwoView.background = ContextCompat.getDrawable(
+                        context,
+                        R.drawable.circle_unselected
+                    )
 
                 }
                 2 -> {
                     viewDataBinding.signUpViewFlipper.showPrevious()
-                    viewDataBinding.lineTwo.background = ContextCompat.getDrawable(context, R.color.grey)
-                    viewDataBinding.textThree.setTextColor(ContextCompat.getColor(context, R.color.colorBlack))
-                    viewDataBinding.stepThreeView.background = ContextCompat.getDrawable(context, R.drawable.circle_unselected)
+                    viewDataBinding.lineTwo.background = ContextCompat.getDrawable(
+                        context,
+                        R.color.grey
+                    )
+                    viewDataBinding.textThree.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.colorBlack
+                        )
+                    )
+                    viewDataBinding.stepThreeView.background = ContextCompat.getDrawable(
+                        context,
+                        R.drawable.circle_unselected
+                    )
                 }
 
             }
@@ -63,13 +97,25 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
                 0 -> {
 
                     if (frag.validateEditText(viewDataBinding.oneStep.firstNameET) &&
-                        frag.validateEditText(viewDataBinding.oneStep.lastNameET)) {
+                        frag.validateEditText(viewDataBinding.oneStep.lastNameET)
+                    ) {
 
-                    viewDataBinding.prevClick.visibility = View.VISIBLE
-                    viewDataBinding.signUpViewFlipper.showNext()
-                    viewDataBinding.lineOne.background = ContextCompat.getDrawable(context, R.color.colorEfxBlue)
-                    viewDataBinding.textTwo.setTextColor(ContextCompat.getColor(context, R.color.colorEfxBlue))
-                    viewDataBinding.stepTwoView.background = ContextCompat.getDrawable(context, R.drawable.circle_selected)
+                        viewDataBinding.prevClick.visibility = View.VISIBLE
+                        viewDataBinding.signUpViewFlipper.showNext()
+                        viewDataBinding.lineOne.background = ContextCompat.getDrawable(
+                            context,
+                            R.color.colorEfxBlue
+                        )
+                        viewDataBinding.textTwo.setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.colorEfxBlue
+                            )
+                        )
+                        viewDataBinding.stepTwoView.background = ContextCompat.getDrawable(
+                            context,
+                            R.drawable.circle_selected
+                        )
 
 
                     }
@@ -79,16 +125,28 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
                     if (frag.validateEditText(viewDataBinding.twoStep.emailET) &&
                         frag.isEmailValid(viewDataBinding.twoStep.emailET) &&
-                        frag.validateEditText(viewDataBinding.twoStep.mobileET) && validateDOB()) {
+                        frag.validateEditText(viewDataBinding.twoStep.mobileET) && validateMob() && validateDOB()
+                    ) {
 
-                    viewDataBinding.signUpViewFlipper.showNext()
-                    viewDataBinding.lineTwo.background = ContextCompat.getDrawable(context, R.color.colorEfxBlue)
-                    viewDataBinding.textThree.setTextColor(ContextCompat.getColor(context, R.color.colorEfxBlue))
-                    viewDataBinding.stepThreeView.background = ContextCompat.getDrawable(context, R.drawable.circle_selected)
+                        viewDataBinding.signUpViewFlipper.showNext()
+                        viewDataBinding.lineTwo.background = ContextCompat.getDrawable(
+                            context,
+                            R.color.colorEfxBlue
+                        )
+                        viewDataBinding.textThree.setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.colorEfxBlue
+                            )
+                        )
+                        viewDataBinding.stepThreeView.background = ContextCompat.getDrawable(
+                            context,
+                            R.drawable.circle_selected
+                        )
 
                     }
                 }
-                2 ->{
+                2 -> {
 
                     if (validateCountry()) {
 
@@ -127,35 +185,44 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
         genders.add("Female")
         genders.add("Other")
 
-        SpinnerAction(context,viewDataBinding.twoStep.genderPicker,viewDataBinding.twoStep.genderTxt,genders)
+        SpinnerAction(
+            context,
+            viewDataBinding.twoStep.genderPicker,
+            viewDataBinding.twoStep.genderTxt,
+            genders
+        )
 
         viewDataBinding.twoStep.genderClick.setOnClickListener {
             viewDataBinding.twoStep.genderPicker.performClick()
         }
 
         viewDataBinding.twoStep.codeClick.setOnClickListener {
-            mAppPresenter!!.showCountryCodeDialog(true, object : AppPresenter.OnCountrySelectionListener{
+            mAppPresenter!!.showCountryCodeDialog(
+                true,
+                object : AppPresenter.OnCountrySelectionListener {
 
-                override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
+                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
 
-                    viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
+                        viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
 
-                }
+                    }
 
-            })
+                })
         }
 
         viewDataBinding.threeStep.countryClick.setOnClickListener {
-            mAppPresenter!!.showCountryCodeDialog(false, object : AppPresenter.OnCountrySelectionListener{
+            mAppPresenter!!.showCountryCodeDialog(
+                false,
+                object : AppPresenter.OnCountrySelectionListener {
 
-                override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
+                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
 
-                    viewDataBinding.threeStep.countryTxt.text = code.name!!
-                    countryNationality = code.code!!
+                        viewDataBinding.threeStep.countryTxt.text = code.name!!
+                        countryNationality = code.code!!
 
-                }
+                    }
 
-            })
+                })
         }
 
     }
@@ -164,6 +231,16 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
         if (viewDataBinding.threeStep.countryTxt.text.toString() == "Select Country"){
             context.showToast("Please select your country.")
+            return false
+        }else
+            return true
+
+    }
+
+    private fun validateMob() : Boolean{
+
+        if (viewDataBinding.twoStep.mobileET.text.toString().length < 6){
+            context.showToast("Please enter valid mobile number.")
             return false
         }else
             return true
@@ -182,11 +259,15 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
 
     private fun goToMobVerification() {
         val bundle = Bundle()
-        bundle.putString("CODE",viewDataBinding.twoStep.codeTxt.text.toString())
-        bundle.putString("MOB",viewDataBinding.twoStep.mobileET.text.toString())
+        bundle.putString("CODE", viewDataBinding.twoStep.codeTxt.text.toString())
+        bundle.putString("MOB", viewDataBinding.twoStep.mobileET.text.toString())
 //        bundle.putString("HASH",userHash)
 //        bundle.putInt("USER_ID",userId)
-        context.displayIt(context.setArguments(MobileVerificationFragment(),bundle), MobileVerificationFragment::class.java.canonicalName, true)
+        context.displayIt(
+            context.setArguments(MobileVerificationFragment(), bundle),
+            MobileVerificationFragment::class.java.canonicalName,
+            true
+        )
     }
 
     private fun baseCheckApi() {
@@ -196,9 +277,9 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
         var gender = "0"
         when(viewDataBinding.twoStep.genderTxt.text.toString()){
 
-            "Male"   -> gender = "0"
+            "Male" -> gender = "0"
             "Female" -> gender = "1"
-            "Other"  -> gender = "2"
+            "Other" -> gender = "2"
 
         }
 
@@ -208,7 +289,10 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
         jsonObject.put("last_name", viewDataBinding.oneStep.lastNameET.text.toString())
         jsonObject.put("middle_name", viewDataBinding.oneStep.middleNameET.text.toString())
         jsonObject.put("email", viewDataBinding.twoStep.emailET.text.toString())
-        jsonObject.put("phone", "${viewDataBinding.twoStep.codeTxt.text}${viewDataBinding.twoStep.mobileET.text}")
+        jsonObject.put(
+            "phone",
+            "${viewDataBinding.twoStep.codeTxt.text}${viewDataBinding.twoStep.mobileET.text}"
+        )
         jsonObject.put("phone2", "")
         jsonObject.put("gender", gender)
         jsonObject.put("birthday_day", birthdayDay!!)
@@ -234,10 +318,16 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
                     override fun onSuccess(model: EKycModel.BaseCheck) {
                         frag.hideLoading()
 
-                        context.kycPref.storeHash(context,model.user_hash!!)
-                        context.kycPref.storeUserId(context,model.user_id!!)
+                        if (model.status!! == "bad") {
+                            context.showToast("Server Error")
+                        } else {
+                            context.kycPref.storeHash(context, model.user_hash!!)
+                            context.kycPref.storeUserId(context, model.user_id!!)
 
-                        goToMobVerification()
+                            goToMobVerification()
+                        }
+
+
                     }
 
                     override fun onError(e: Throwable) {
@@ -247,6 +337,19 @@ class BaseCheckPresenter(private val context: EKycActivity, private val frag : S
                 })
         )
 
+    }
+
+    fun notWithSpace(editTextSansRegular: EditText) {
+        val myWatcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                if (editTextSansRegular.getText().toString()
+                        .equals(" ")
+                ) editTextSansRegular.setText("")
+            }
+        }
+        editTextSansRegular.addTextChangedListener(myWatcher)
     }
 
 }

@@ -6,6 +6,8 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.jaiselrahman.filepicker.activity.FilePickerActivity
+import com.jaiselrahman.filepicker.config.Configurations
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -14,7 +16,15 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.R
 
-class DocumentPresenter(private var mActivity: EKycActivity, private var frag: Fragment, private var req : Int) {
+
+class DocumentPresenter(
+    private var mActivity: EKycActivity,
+    private var frag: Fragment,
+    private var req: Int
+) {
+
+
+
 
     private fun showImagePickerOptions() {
         SimpleImagePickerActivity.showImagePickerOptions(
@@ -42,7 +52,7 @@ class DocumentPresenter(private var mActivity: EKycActivity, private var frag: F
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                     if (report.areAllPermissionsGranted()) {
-                        val galleryPicker = GalleryPicker(mActivity,frag)
+                        val galleryPicker = GalleryPicker(mActivity, frag)
                         galleryPicker.showPictureDialog()
                     }
 
@@ -88,10 +98,27 @@ class DocumentPresenter(private var mActivity: EKycActivity, private var frag: F
     }
 
     private fun openFilePicker(){
-        val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
-        chooseFile.setType("*/*")
-        chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
-        frag.startActivityForResult(chooseFile, req)
+
+//        val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
+//        chooseFile.setType("*/*")
+//        chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
+//        frag.startActivityForResult(chooseFile, req)
+
+//        rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
+//                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")){
+
+        val intent = Intent(mActivity, FilePickerActivity::class.java)
+        intent.putExtra(
+            FilePickerActivity.CONFIGS, Configurations.Builder()
+                .setCheckPermission(true)
+                .setShowImages(false)
+                .setShowVideos(false).setShowFiles(true).setSuffixes("jpg","jpeg","pdf","png","gif","tiff","pdf")
+                .enableImageCapture(false)
+                .setMaxSelection(1)
+                .setSkipZeroSizeFiles(true)
+                .build()
+        )
+        frag.startActivityForResult(intent, req)
     }
 
     private fun launchCameraIntent() {
@@ -127,6 +154,34 @@ class DocumentPresenter(private var mActivity: EKycActivity, private var frag: F
         intent.putExtra(SimpleImagePickerActivity.INTENT_ASPECT_RATIO_Y, 1)
         frag.startActivityForResult(intent, req)
     }
+
+    fun onSelfieClick() {
+        Dexter.withActivity(mActivity)
+            .withPermissions(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport) {
+                    if (report.areAllPermissionsGranted()) {
+                        launchCameraIntent()
+                    }
+
+                    if (report.isAnyPermissionPermanentlyDenied) {
+                        showSettingsDialog()
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: List<PermissionRequest>,
+                    token: PermissionToken
+                ) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
+    }
+
 
     fun onScanClick() {
         Dexter.withActivity(mActivity)

@@ -52,8 +52,8 @@
     <string name="upload_some_doc">Upload some of the documents mention below.</string>
     <string name="cust_id">Customer\'s ID or Passport</string>
     <string name="upload"><u>+ Upload</u></string>
-    <string name="upload_side_one"><u>+ Upload Side One</u></string>
-    <string name="upload_side_two"><u>+ Upload Side Two</u></string>
+    <string name="upload_side_one"><u>+ Upload Front Side</u></string>
+    <string name="upload_side_two"><u>+ Upload Back Side</u></string>
     <string name="upload_again"><u>+ Upload Again</u></string>
     <string name="uploaded">✔ Uploaded</string>
     <string name="bank_doc">Bank statement or Address proof</string>
@@ -88,7 +88,7 @@
     <string name="resend_otp">Resend OTP</string>
 
     <string name="lbl_set_profile_photo">Set profile image</string>
-    <string name="lbl_set_choose_option">Choose a scan option</string>
+    <string name="lbl_set_choose_option">Choose an option</string>
     <string name="lbl_set_doc_photo">Set document image</string>
     <string name="lbl_take_camera_picture">Take a picture</string>
     <string name="lbl_choose_from_gallery">Choose from gallery</string>
@@ -97,5 +97,6 @@
     <string name="dialog_permission_title">Grant Permissions</string>
     <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
     <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="submit">Submit</string>
 
 </resources>

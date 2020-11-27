@@ -14,6 +14,7 @@
         android:requestLegacyExternalStorage="true">
 
         <activity
+            android:screenOrientation="portrait"
             android:theme="@style/ThemeFullScreen"
             android:name=".EKycActivity"/>
 
@@ -30,11 +31,18 @@
         </provider>
 
         <!-- Simple Image Picker activity -->
-        <activity android:name=".document.SimpleImagePickerActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".document.SimpleImagePickerActivity" />
 
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".document.GalleryPicker" />
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".document.GalleryPicker" />
 
     </application>
 

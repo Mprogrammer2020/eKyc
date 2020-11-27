@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -161,6 +163,22 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     public void showToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+    class EmojiExcludeFilter implements InputFilter {
+
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            String specialChars = "@`/*!#$%^&*()\"{}_[]|\\?/<>,.:-'';€¤•§£¥...π¢¶®©₩￦";
+            for (int i = start; i < end; i++) {
+                int type = Character.getType(source.charAt(i));
+                if (type == Character.SURROGATE || type == Character.OTHER_SYMBOL || type == Character.MATH_SYMBOL || specialChars.contains("" + source) || Character.isWhitespace(0)) {
+                    return "";
+                }
+            }
+            return null;
+        }
     }
 
 }

@@ -2,9 +2,13 @@ package com.library.ekycnetset.fragment
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -16,13 +20,20 @@ import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
 import com.library.ekycnetset.base.adapter.RecyclerViewGenricAdapter
+import com.library.ekycnetset.compressor.CompressionListener
+import com.library.ekycnetset.compressor.VideoCompressor
+import com.library.ekycnetset.compressor.VideoQuality
+import com.library.ekycnetset.compressor.getMediaPath
 import com.library.ekycnetset.databinding.DialogInstLayoutBinding
 import com.library.ekycnetset.databinding.DialogSuccessLayoutBinding
 import com.library.ekycnetset.databinding.FragmentTakeLayoutBinding
 import com.library.ekycnetset.databinding.ItemInstLayoutBinding
 import com.library.ekycnetset.document.DocumentPresenter
 import com.library.ekycnetset.view.RealPath
-
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -37,9 +48,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         viewDataBinding.takeSelfieClick.uploadTxt.setOnClickListener {
-
-            DocumentPresenter(getContainerActivity(), this, 1000).onScanClick()
-
+            DocumentPresenter(getContainerActivity(), this, 1000).onSelfieClick()
         }
 
 //        Log.e("HASH", kycPref.getHash(getContainerActivity())!!)
@@ -64,6 +73,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         viewDataBinding.nextClick.setOnClickListener {
             if (isSelfieSend && isVideoSend)
                 success()
+            else
+                showToast("Please upload mandatory files.")
         }
 
         instructions()
@@ -113,32 +124,90 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                 }
             }
-            1,2 ->{
+            1, 2 -> {
 
                 if (resultCode == Activity.RESULT_OK) {
 
                     val uri: Uri = data!!.data!!
-                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
+                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(), uri))
 
-                    sendFileApi("send-video", RealPath.getPathFromURI(getContainerActivity(),uri), object : OnSuccess {
+                    val desFile =
+                        saveVideoFile(RealPath.getPathFromURI(getContainerActivity(), uri))
 
-                        override fun onRes() {
+                    VideoCompressor.start(
+                        RealPath.getPathFromURI(getContainerActivity(), uri),
+                        desFile!!.path,
+                        object : CompressionListener {
+                            override fun onProgress(percent: Float) {
+                                // Update UI with progress value
 
-                            isVideoSend = true
+                                //Update UI
+                                if (percent <= 100 && percent.toInt() % 5 == 0)
+                                    getContainerActivity().runOnUiThread {
+                                        viewDataBinding.precentProgressTxt.text = "${percent.toLong()}%"
+                                    }
+                            }
 
-                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
-                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
-                                context!!,
-                                R.drawable.green_stroke_rect
-                            )
+                            override fun onStart() {
+                                // Compression start
 
-                        }
+                                viewDataBinding.percentView.visibility = View.VISIBLE
+                            }
 
-                    })
+                            override fun onSuccess() {
 
+                                viewDataBinding.percentView.visibility = View.GONE
+
+                                sendFileApi(
+                                    "send-video",
+                                    desFile.path,
+                                    object : OnSuccess {
+
+                                        override fun onRes() {
+
+                                            isVideoSend = true
+
+                                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
+                                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+
+                                        }
+
+                                    })
+
+                            }
+
+                            override fun onFailure(failureMessage: String) {
+                                // On Failure
+                            }
+
+                            override fun onCancelled() {
+                                // On Cancelled
+                            }
+
+                        },
+                        VideoQuality.MEDIUM,
+                        isMinBitRateEnabled = false,
+                        keepOriginalResolution = false
+                    )
+
+//                    sendFileApi("send-video", RealPath.getPathFromURI(getContainerActivity(),uri), object : OnSuccess {
+//
+//                        override fun onRes() {
+//
+//                            isVideoSend = true
+//
+//                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+//                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
+//                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
+//                                context!!,
+//                                R.drawable.green_stroke_rect
+//                            )
+//
+//                        }
+//
+//                    })
                 }
-
             }
 //            2 ->{
 //
@@ -152,7 +221,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         }
     }
 
-    private fun success(){
+    private fun success() {
 
         BubbleDialog(getContainerActivity(), R.layout.dialog_success_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogSuccessLayoutBinding> {
@@ -170,10 +239,9 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                 }
 
             })
-
     }
 
-    private fun instructions(){
+    private fun instructions() {
 
         BubbleDialog(getContainerActivity(), R.layout.dialog_inst_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogInstLayoutBinding> {
@@ -182,8 +250,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                     val list = ArrayList<String>()
                     list.add("Please ensure that your whole face is in the image.")
-                    list.add("Please ensure that the image is taken with proper lighting (e.g. no glare, not too dark).")
-                    list.add("Do not wear any glasses or any type d things that will hide your face.")
+                    list.add("Please ensure that the image is taken with proper lighting (e.g. no glare, not too dark)")
+                    list.add("Do not wear any glasses or any type of things that will hide your face.")
                     list.add("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.")
 
                     val mAdapter = RecyclerViewGenricAdapter<String, ItemInstLayoutBinding>(
@@ -206,17 +274,81 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                     binder.instRV.itemAnimator = DefaultItemAnimator()
                     binder.instRV.adapter = mAdapter
 
-
-
                     binder.agreeClick.setOnClickListener {
                         dialog.dismiss()
                     }
 
-
+                    binder.notAgreeClick.setOnClickListener {
+                        dialog.dismiss()
+                    }
                 }
-
             })
     }
 
-}
+    @Suppress("DEPRECATION")
+    private fun saveVideoFile(filePath: String?): File? {
+        filePath?.let {
+            val videoFile = File(filePath)
+            val videoFileName = "${System.currentTimeMillis()}_${videoFile.name}"
+            val folderName = Environment.DIRECTORY_MOVIES
+            if (Build.VERSION.SDK_INT >= 30) {
 
+                val values = ContentValues().apply {
+
+                    put(
+                        MediaStore.Images.Media.DISPLAY_NAME,
+                        videoFileName
+                    )
+                    put(MediaStore.Images.Media.MIME_TYPE, "video/mp4")
+                    put(MediaStore.Images.Media.RELATIVE_PATH, folderName)
+                    put(MediaStore.Images.Media.IS_PENDING, 1)
+                }
+
+                val collection =
+                    MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+
+                val fileUri = getContainerActivity().contentResolver.insert(collection, values)
+
+                fileUri?.let {
+                    getContainerActivity().contentResolver.openFileDescriptor(fileUri, "rw")
+                        .use { descriptor ->
+                            descriptor?.let {
+                                FileOutputStream(descriptor.fileDescriptor).use { out ->
+                                    FileInputStream(videoFile).use { inputStream ->
+                                        val buf = ByteArray(4096)
+                                        while (true) {
+                                            val sz = inputStream.read(buf)
+                                            if (sz <= 0) break
+                                            out.write(buf, 0, sz)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    values.clear()
+                    values.put(MediaStore.Video.Media.IS_PENDING, 0)
+                    getContainerActivity().contentResolver.update(fileUri, values, null, null)
+
+                    return File(getMediaPath(getContainerActivity(), fileUri))
+                }
+            } else {
+                val downloadsPath =
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                val desFile = File(downloadsPath, videoFileName)
+
+                if (desFile.exists())
+                    desFile.delete()
+
+                try {
+                    desFile.createNewFile()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+                return desFile
+            }
+        }
+        return null
+    }
+}
