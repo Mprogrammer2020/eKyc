@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="eKycNetset/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKyc.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKyc.iml" group="eKycNetset/eKyc" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKycNetset.iml" filepath="$PROJECT_DIR$/.idea/modules/eKycNetset.iml" group="eKycNetset" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKycNetset.iml" filepath="$PROJECT_DIR$/.idea/modules/eKycNetset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" />
     </modules>
   </component>
 </project>

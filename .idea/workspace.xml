@@ -6,74 +6,29 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jaiselrahman_FilePicker_1_3_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_googlecode_mp4parser_isoparser_1_1_20_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_android_1_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_4_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/CompressionInterface.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/Compressor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/InputSurface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/MP4Builder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/Mp4Movie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/OutputSurface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/Result.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/Sample.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/TextureRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/Track.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/VideoCompressor.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor/getMediaPath.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/eKyc/eKyc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/eKyc/eKyc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/eKyc/eKyc.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/BaseFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/document/DocumentPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/document/DocumentPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/document/GalleryPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/document/GalleryPicker.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/TakeSelfieFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/RealPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/RealPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_mobile_verification_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/fragment_take_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_one_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_one_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_two_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Dark_Mode" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Dark_Mode]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -103,7 +58,6 @@
   <component name="ProjectId" id="1jB5mMaiI3JCrNZSYYrRHzTFQ67" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -116,6 +70,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -153,12 +108,13 @@
       </method>
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="app" />
+      <module name="eKycNetset.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -194,11 +150,16 @@
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -348,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606115865515</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Done Lib.">
+      <created>1606448044008</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1606448044008</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -371,7 +339,8 @@
     <MESSAGE value="Send Document Api completed.&#10;Pending Selfie and Video." />
     <MESSAGE value="Video Api Done." />
     <MESSAGE value="Video api done and from camera also." />
-    <option name="LAST_COMMIT_MESSAGE" value="Video api done and from camera also." />
+    <MESSAGE value="Done Lib." />
+    <option name="LAST_COMMIT_MESSAGE" value="Done Lib." />
   </component>
   <component name="WindowStateProjectService">
     <state x="513" y="287" width="950" height="530" key="#PSD" timestamp="1604309718059">
@@ -426,22 +395,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1606124483141" />
-    <state width="1807" height="526" key="GridCell.Tab.0.bottom" timestamp="1606396717053">
+    <state width="1807" height="609" key="GridCell.Tab.0.bottom" timestamp="1606452203883">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="526" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1606396717053" />
-    <state width="1807" height="526" key="GridCell.Tab.0.center" timestamp="1606396717052">
+    <state width="1807" height="609" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203883" />
+    <state width="1807" height="609" key="GridCell.Tab.0.center" timestamp="1606452203881">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="526" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1606396717052" />
-    <state width="1807" height="526" key="GridCell.Tab.0.left" timestamp="1606396717052">
+    <state width="1807" height="609" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203881" />
+    <state width="1807" height="609" key="GridCell.Tab.0.left" timestamp="1606452203879">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="526" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1606396717052" />
-    <state width="1807" height="526" key="GridCell.Tab.0.right" timestamp="1606396717053">
+    <state width="1807" height="609" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203879" />
+    <state width="1807" height="609" key="GridCell.Tab.0.right" timestamp="1606452203882">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="526" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1606396717053" />
+    <state width="1807" height="609" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203882" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1603950500127">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -466,10 +435,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1604041310862" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606115878304">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606448051891">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1606115878304" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1606448051891" />
     <state width="926" height="522" key="XDebugger.FullValuePopup" timestamp="1606375675072">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
