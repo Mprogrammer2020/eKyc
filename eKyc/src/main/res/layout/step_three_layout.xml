@@ -103,7 +103,7 @@
                         android:textSize="@dimen/_9sdp"
                         android:textColor="@color/textColor"
                         android:textAllCaps="true"
-                        android:text="@string/city"/>
+                        android:text="@string/address"/>
 
 <!--                    <TextView-->
 <!--                        style="@style/TextViewKyc"-->
@@ -114,7 +114,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/cityET"
+                    android:id="@+id/addressET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
                     android:textColorHint="@color/hintColor"
@@ -123,9 +123,8 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
-                    android:maxLength="25"
-                    android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/e_g_city"/>
+                    android:hint="@string/e_g_address"
+                    android:fontFamily="@font/helvetica_regular"/>
 
             </LinearLayout>
 
@@ -157,18 +156,18 @@
                         android:textSize="@dimen/_9sdp"
                         android:textColor="@color/textColor"
                         android:textAllCaps="true"
-                        android:text="@string/address"/>
+                        android:text="@string/city"/>
 
-<!--                    <TextView-->
-<!--                        style="@style/TextViewKyc"-->
-<!--                        android:text="@string/ast"-->
-<!--                        android:textSize="@dimen/_9sdp"-->
-<!--                        android:textColor="@android:color/holo_red_dark"/>-->
+                    <!--                    <TextView-->
+                    <!--                        style="@style/TextViewKyc"-->
+                    <!--                        android:text="@string/ast"-->
+                    <!--                        android:textSize="@dimen/_9sdp"-->
+                    <!--                        android:textColor="@android:color/holo_red_dark"/>-->
 
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/addressET"
+                    android:id="@+id/cityET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
                     android:textColorHint="@color/hintColor"
@@ -177,9 +176,8 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
-                    android:maxLength="25"
-                    android:hint="@string/e_g_address"
-                    android:fontFamily="@font/helvetica_regular"/>
+                    android:fontFamily="@font/helvetica_regular"
+                    android:hint="@string/e_g_city"/>
 
             </LinearLayout>
 
@@ -232,7 +230,6 @@
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:singleLine="true"
-                    android:maxLength="20"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_zip"
                     android:inputType="number" />
