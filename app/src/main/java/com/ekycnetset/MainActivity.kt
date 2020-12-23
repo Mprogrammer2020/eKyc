@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this,EKycActivity::class.java)
 
-            startActivityForResult(intent,1000)
+            startActivityForResult(intent,Constants.BASIS_REQ_CODE)
 
         }
 
@@ -28,10 +28,15 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1000) {
+        if (requestCode == Constants.BASIS_REQ_CODE) {
 
             if (resultCode == Activity.RESULT_OK) {
+
                 Log.e("RESULT","OK")
+
+                Log.e(Constants.BASIS_USER_HASH, data!!.getStringExtra(Constants.BASIS_USER_HASH)!!)
+                Log.e(Constants.BASIS_USER_ID, data.getIntExtra(Constants.BASIS_USER_ID,0).toString())
+
             }
 
             if (resultCode == RESULT_CANCELED){

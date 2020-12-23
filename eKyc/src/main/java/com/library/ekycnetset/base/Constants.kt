@@ -7,4 +7,9 @@ object Constants {
 
     const val API_KEY = "API_KEY"
 
+    const val BASIS_REQ_CODE = 3451
+
+    const val BASIS_USER_HASH = "BASIS_USER_HASH"
+    const val BASIS_USER_ID = "BASIS_USER_ID"
+
 }

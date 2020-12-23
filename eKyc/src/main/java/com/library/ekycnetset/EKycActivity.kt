@@ -39,7 +39,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         }
 
         displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-//        displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
+//        displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
 
         viewDataBinding.toolbarLeftMain.setOnClickListener {
             onBackPressed()
@@ -71,6 +71,8 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     fun setResultOk() {
         val intent = Intent()
+        intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
+        intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
         setResult(RESULT_OK, intent)
         finish()
     }

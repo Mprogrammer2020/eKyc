@@ -11,14 +11,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/dialog_inst_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Dark_Mode]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3_XL_API_29]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -313,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606707198178</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Remove unused code">
+      <created>1608698161140</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1608698161140</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -338,7 +360,9 @@
     <MESSAGE value="Video api done and from camera also." />
     <MESSAGE value="Done Lib." />
     <MESSAGE value="github library." />
-    <option name="LAST_COMMIT_MESSAGE" value="github library." />
+    <MESSAGE value="Remove unused code" />
+    <MESSAGE value="Send user hash and user id to application." />
+    <option name="LAST_COMMIT_MESSAGE" value="Send user hash and user id to application." />
   </component>
   <component name="WindowStateProjectService">
     <state x="513" y="287" width="950" height="530" key="#PSD" timestamp="1604309718059">
@@ -381,10 +405,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="839" y="319" key="AndroidProcessChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1606392728500" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1606707197117">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1608700022113">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1606707197117" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1608700022113" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1604400053504">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -393,22 +417,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1606124483141" />
-    <state width="1807" height="609" key="GridCell.Tab.0.bottom" timestamp="1606452203883">
+    <state width="1807" height="674" key="GridCell.Tab.0.bottom" timestamp="1608699857222">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="609" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203883" />
-    <state width="1807" height="609" key="GridCell.Tab.0.center" timestamp="1606452203881">
+    <state width="1807" height="674" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1608699857222" />
+    <state width="1807" height="674" key="GridCell.Tab.0.center" timestamp="1608699857221">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="609" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203881" />
-    <state width="1807" height="609" key="GridCell.Tab.0.left" timestamp="1606452203879">
+    <state width="1807" height="674" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1608699857221" />
+    <state width="1807" height="674" key="GridCell.Tab.0.left" timestamp="1608699857220">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="609" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203879" />
-    <state width="1807" height="609" key="GridCell.Tab.0.right" timestamp="1606452203882">
+    <state width="1807" height="674" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1608699857220" />
+    <state width="1807" height="674" key="GridCell.Tab.0.right" timestamp="1608699857221">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="609" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1606452203882" />
+    <state width="1807" height="674" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1608699857221" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1603950500127">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -433,10 +457,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1604041310862" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606707252432">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1608698168190">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1606707252432" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1608698168190" />
     <state width="926" height="522" key="XDebugger.FullValuePopup" timestamp="1606375675072">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
