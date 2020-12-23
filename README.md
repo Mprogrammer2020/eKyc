@@ -33,7 +33,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.Mprogrammer2020:eKyc:v1.4'
+	        implementation 'com.github.Mprogrammer2020:eKyc:v1.6'
 	}
 
 #### Usage
@@ -41,7 +41,7 @@ Step 2. Add the dependency
  ```
 val intent = Intent(this,EKycActivity::class.java)
 intent.putExtra(Constants.API_KEY,"ADD_YOUR_BASIS_ID_API_KEY_HERE")
-startActivityForResult(intent,1000)
+startActivityForResult(intent,Constants.BASIS_REQ_CODE)
  ```
 
 #### Handle result
@@ -49,7 +49,7 @@ startActivityForResult(intent,1000)
  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1000) {
+        if (requestCode == Constants.BASIS_REQ_CODE) {
 
             if (resultCode == Activity.RESULT_OK) {
                 Log.e("RESULT","OK")
