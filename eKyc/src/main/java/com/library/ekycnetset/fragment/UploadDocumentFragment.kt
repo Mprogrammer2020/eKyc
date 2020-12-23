@@ -9,13 +9,11 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.jaiselrahman.filepicker.activity.FilePickerActivity
-import com.jaiselrahman.filepicker.model.MediaFile
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.databinding.FragmentUploadDocLayoutBinding
 import com.library.ekycnetset.document.DocumentPresenter
-import com.library.ekycnetset.view.RealPath
+import com.nbsp.materialfilepicker.ui.FilePickerActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -114,27 +112,10 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
             3000 -> {
                 if (resultCode == Activity.RESULT_OK) {
 
-                   val files = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)
+                    val filePath = data!!.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)
+                    Log.e("File Path Frag", filePath!!)
 
-                    if (files!!.size == 0){
-                        Log.e("Not","Selected")
-                    }else{
-
-                        val fileUri = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)!![0].uri
-//                    val fileUri = data!!.data
-                        Log.e("Path", fileUri!!.path!!)
-
-
-                        if (fileUri.toString().contains("content://com.google.android.apps.docs.storage/")){
-                            showToast("You can't select file from google drive")
-                        }else{
-
-                            val rPath = RealPath.getPathFromURI(getContainerActivity(),fileUri)
-
-                            if (rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
-                                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")){
-
-                                sendFileApi("send-statement",RealPath.getPathFromURI(getContainerActivity(),fileUri), object : OnSuccess{
+                             sendFileApi("send-statement",filePath, object : OnSuccess{
 
                                     override fun onRes() {
 
@@ -148,71 +129,25 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
                                 })
 
-                            }else
-                                showToast("Only the gives file are accepted (jpg/jpeg/png/gif/tiff/pdf)")
-
-
-                        }
-
-                    }
-
-
-
                 }
             }
             4000 -> {
                 if (resultCode == Activity.RESULT_OK){
 
-                    val files = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)
+                    val filePath = data!!.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)
+                    Log.e("File Path Frag", filePath!!)
 
-                    if (files!!.size == 0){
-                        Log.e("Not","Selected")
-                    }else {
+                            sendFileApi("send-proof-income", filePath, object : OnSuccess {
 
-                        val fileUri =
-                            data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)!![0].uri
-                        Log.e("Path", fileUri!!.path!!)
+                                    override fun onRes() {
 
-                        if (fileUri.toString()
-                                .contains("content://com.google.android.apps.docs.storage/")
-                        ) {
-                            showToast("You can't select file from google drive")
-                        } else {
+                                        viewDataBinding.incomeStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                                        viewDataBinding.incomeStatement.uploadedTxt.visibility = View.VISIBLE
+                                        viewDataBinding.incomeStatement.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
 
-                            val rPath = RealPath.getPathFromURI(getContainerActivity(), fileUri)
+                                    }
 
-                            if (rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
-                                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")
-                            ) {
-
-                                sendFileApi(
-                                    "send-proof-income",
-                                    RealPath.getPathFromURI(getContainerActivity(), fileUri),
-                                    object : OnSuccess {
-
-                                        override fun onRes() {
-
-                                            viewDataBinding.incomeStatement.uploadTxt.text =
-                                                fromHtml(getString(R.string.upload_again))
-                                            viewDataBinding.incomeStatement.uploadedTxt.visibility =
-                                                View.VISIBLE
-                                            viewDataBinding.incomeStatement.bg.background =
-                                                ContextCompat.getDrawable(
-                                                    context!!,
-                                                    R.drawable.green_stroke_rect
-                                                )
-
-                                        }
-
-                                    })
-
-                            } else
-                                showToast("Only the gives file are accepted (jpg/jpeg/png/gif/tiff/pdf)")
-
-                        }
-
-                    }
-
+                                })
                 }
             }
         }
@@ -269,3 +204,194 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
 }
 
+//
+//override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//    super.onActivityResult(requestCode, resultCode, data)
+//
+//    when (requestCode) {
+//        1000 -> {
+//            if (resultCode == Activity.RESULT_OK) {
+//
+//                val uri: Uri = data!!.getParcelableExtra("path")!!
+//                Log.e("Path",uri.path!!)
+//                sendDocumentApi("1",uri.path!!)
+//
+//            }
+//        }
+//        2000 -> {
+//            if (resultCode == Activity.RESULT_OK) {
+//
+//                val uri: Uri = data!!.getParcelableExtra("path")!!
+//                Log.e("Path",uri.path!!)
+//                sendDocumentApi("2",uri.path!!)
+//
+//            }
+//        }
+//        3000 -> {
+//            if (resultCode == Activity.RESULT_OK) {
+//
+//                val filePath = data!!.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)
+//                Log.e("File Path Frag", filePath!!)
+//
+////                   val files = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)
+////
+////                    if (files!!.size == 0){
+////                        Log.e("Not","Selected")
+////                    }else{
+////
+////                        val fileUri = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)!![0].uri
+//////                    val fileUri = data!!.data
+////                        Log.e("Path", fileUri!!.path!!)
+////
+////
+////                        if (fileUri.toString().contains("content://com.google.android.apps.docs.storage/")){
+////
+////                            val gf = getContainerActivity().getFileFromUri(getContainerActivity(),fileUri)
+////                            Log.e("File Path",gf.absolutePath)
+////
+//////                            showToast("You can't select file from google drive")
+////
+////                            sendFileApi(
+////                                "send-statement",
+////                                filePath,
+////                                object : OnSuccess {
+////
+////                                    override fun onRes() {
+////
+////                                        viewDataBinding.incomeStatement.uploadTxt.text =
+////                                            fromHtml(getString(R.string.upload_again))
+////                                        viewDataBinding.incomeStatement.uploadedTxt.visibility =
+////                                            View.VISIBLE
+////                                        viewDataBinding.incomeStatement.bg.background =
+////                                            ContextCompat.getDrawable(
+////                                                context!!,
+////                                                R.drawable.green_stroke_rect
+////                                            )
+////
+////                                    }
+////
+////                                })
+////
+////                        }else{
+////
+////                            val rPath = FileUtils.getRealPath(getContainerActivity(),fileUri)
+////
+////                            if (rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
+////                                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")){
+////
+//                sendFileApi("send-statement",filePath, object : EKycBaseFragment.OnSuccess {
+//
+//                    override fun onRes() {
+//
+//                        isBankStatementSend = true
+//
+//                        viewDataBinding.bankStatement.uploadTxt.text =
+//                            BaseFragment.fromHtml(getString(R.string.upload_again))
+//                        viewDataBinding.bankStatement.uploadedTxt.visibility = View.VISIBLE
+//                        viewDataBinding.bankStatement.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+//
+//                    }
+//
+//                })
+////
+////                            }else
+////                                showToast("Only the gives file are accepted (jpg/jpeg/png/gif/tiff/pdf)")
+////
+////
+////                        }
+////
+////                    }
+////
+//
+//
+//            }
+//        }
+//        4000 -> {
+//            if (resultCode == Activity.RESULT_OK){
+//
+//                val filePath = data!!.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)
+//                Log.e("File Path Frag", filePath!!)
+//
+////
+////                    val files = data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)
+////
+////                    if (files!!.size == 0){
+////                        Log.e("Not","Selected")
+////                    }else {
+////
+////                        val fileUri =
+////                            data!!.getParcelableArrayListExtra<MediaFile>(FilePickerActivity.MEDIA_FILES)!![0].uri
+////                        Log.e("Path", fileUri!!.path!!)
+////
+////                        if (fileUri.toString()
+////                                .contains("content://com.google.android.apps.docs.storage/")
+////                        ) {
+////
+////                            val gf = getContainerActivity().getFileFromUri(getContainerActivity(),fileUri)
+////                            Log.e("File Path",gf.absolutePath)
+////
+//////                            showToast("You can't select file from google drive")
+////
+//                sendFileApi(
+//                    "send-proof-income",
+//                    filePath,
+//                    object : EKycBaseFragment.OnSuccess {
+//
+//                        override fun onRes() {
+//
+//                            viewDataBinding.incomeStatement.uploadTxt.text =
+//                                BaseFragment.fromHtml(getString(R.string.upload_again))
+//                            viewDataBinding.incomeStatement.uploadedTxt.visibility =
+//                                View.VISIBLE
+//                            viewDataBinding.incomeStatement.bg.background =
+//                                ContextCompat.getDrawable(
+//                                    context!!,
+//                                    R.drawable.green_stroke_rect
+//                                )
+//
+//                        }
+//
+//                    })
+////
+////
+////
+////                        } else {
+////
+////                            val rPath = FileUtils.getRealPath(getContainerActivity(),fileUri)
+////
+////                            if (rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
+////                                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")
+////                            ) {
+////
+////                                sendFileApi(
+////                                    "send-proof-income",
+////                                    rPath,
+////                                    object : OnSuccess {
+////
+////                                        override fun onRes() {
+////
+////                                            viewDataBinding.incomeStatement.uploadTxt.text =
+////                                                fromHtml(getString(R.string.upload_again))
+////                                            viewDataBinding.incomeStatement.uploadedTxt.visibility =
+////                                                View.VISIBLE
+////                                            viewDataBinding.incomeStatement.bg.background =
+////                                                ContextCompat.getDrawable(
+////                                                    context!!,
+////                                                    R.drawable.green_stroke_rect
+////                                                )
+////
+////                                        }
+////
+////                                    })
+////
+////                            } else
+////                                showToast("Only the gives file are accepted (jpg/jpeg/png/gif/tiff/pdf)")
+////
+////                        }
+////
+////                    }
+////
+//            }
+//        }
+//    }
+//}

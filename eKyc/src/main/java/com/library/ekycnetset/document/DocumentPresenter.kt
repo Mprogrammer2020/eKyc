@@ -6,8 +6,6 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.jaiselrahman.filepicker.activity.FilePickerActivity
-import com.jaiselrahman.filepicker.config.Configurations
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -15,6 +13,8 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.R
+import com.nbsp.materialfilepicker.MaterialFilePicker
+import java.util.regex.Pattern
 
 
 class DocumentPresenter(
@@ -22,9 +22,6 @@ class DocumentPresenter(
     private var frag: Fragment,
     private var req: Int
 ) {
-
-
-
 
     private fun showImagePickerOptions() {
         SimpleImagePickerActivity.showImagePickerOptions(
@@ -80,7 +77,8 @@ class DocumentPresenter(
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                     if (report.areAllPermissionsGranted()) {
-                        openFilePicker()
+//                        openFilePicker()
+                        filePickerV2()
                     }
 
                     if (report.isAnyPermissionPermanentlyDenied) {
@@ -97,29 +95,53 @@ class DocumentPresenter(
             }).check()
     }
 
-    private fun openFilePicker(){
+    private fun filePickerV2(){
 
-//        val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
-//        chooseFile.setType("*/*")
-//        chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
-//        frag.startActivityForResult(chooseFile, req)
+        MaterialFilePicker()
+            // Pass a source of context. Can be:
+            //    .withActivity(Activity activity)
+            //    .withFragment(Fragment fragment)
+            //    .withSupportFragment(androidx.fragment.app.Fragment fragment)
+            .withSupportFragment(frag)
+            // With cross icon on the right side of toolbar for closing picker straight away
+            .withCloseMenu(true)
+            // Entry point path (user will start from it)
+            // Root path (user won't be able to come higher than it)
+            // Showing hidden files
+            .withHiddenFiles(true)
+            // Want to choose only jpg images
+            .withFilter(Pattern.compile(".*\\.(jpg|jpeg|pdf|png|gif|tiff)$"))
+            // Don't apply filter to directories names
+            .withFilterDirectories(false)
+            .withTitle("Pick a file")
+            .withRequestCode(req)
+            .start()
 
-//        rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
-//                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")){
-
-        val intent = Intent(mActivity, FilePickerActivity::class.java)
-        intent.putExtra(
-            FilePickerActivity.CONFIGS, Configurations.Builder()
-                .setCheckPermission(true)
-                .setShowImages(false)
-                .setShowVideos(false).setShowFiles(true).setSuffixes("jpg","jpeg","pdf","png","gif","tiff","pdf")
-                .enableImageCapture(false)
-                .setMaxSelection(1)
-                .setSkipZeroSizeFiles(true)
-                .build()
-        )
-        frag.startActivityForResult(intent, req)
     }
+
+//    private fun openFilePicker(){
+//
+////        val chooseFile = Intent(Intent.ACTION_GET_CONTENT)
+////        chooseFile.setType("*/*")
+////        chooseFile.addCategory(Intent.CATEGORY_OPENABLE)
+////        frag.startActivityForResult(chooseFile, req)
+//
+////        rPath.contains("jpg") || rPath.contains("jpeg") || rPath.contains("png") ||
+////                rPath.contains("gif") || rPath.contains("tiff") || rPath.contains("pdf")){
+//
+//        val intent = Intent(mActivity, FilePickerActivity::class.java)
+//        intent.putExtra(
+//            FilePickerActivity.CONFIGS, Configurations.Builder()
+//                .setCheckPermission(true)
+//                .setShowImages(false)
+//                .setShowVideos(false).setShowFiles(true).setSuffixes("jpg","jpeg","pdf","png","gif","tiff","pdf")
+//                .enableImageCapture(false)
+//                .setMaxSelection(1)
+//                .setSkipZeroSizeFiles(true)
+//                .build()
+//        )
+//        frag.startActivityForResult(intent, req)
+//    }
 
     private fun launchCameraIntent() {
         val intent = Intent(mActivity, SimpleImagePickerActivity::class.java)

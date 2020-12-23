@@ -2,8 +2,12 @@ package com.library.ekycnetset.base;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.OpenableColumns;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.MotionEvent;
@@ -22,6 +26,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.application.bubble.local.PrefUtils;
 import com.application.linkodes.network.ApiClient;
 import com.application.linkodes.network.ApiService;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Objects;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -179,6 +189,81 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
             }
             return null;
         }
+    }
+
+    // Google Drive
+
+    public File getFileFromUri(final Context context, final Uri uri) throws Exception {
+
+//        if (isGoogleDrive(uri)) // check if file selected from google drive
+//        {
+            return saveFileIntoExternalStorageByUri(context, uri);
+//        }else
+//            // do your other calculation for the other files and return that file
+//            return null;
+    }
+
+
+    private boolean isGoogleDrive(Uri uri)
+    {
+        return "com.google.android.apps.docs.storage.legacy".equals(uri.getAuthority());
+    }
+
+    private File saveFileIntoExternalStorageByUri(Context context, Uri uri) throws
+
+            Exception {
+        InputStream inputStream = context.getContentResolver().openInputStream(uri);
+        int originalSize = inputStream.available();
+
+        BufferedInputStream bis = null;
+        BufferedOutputStream bos = null;
+        String fileName = getFileName(context, uri);
+        File file = makeEmptyFileIntoExternalStorageWithTitle(fileName);
+        bis = new BufferedInputStream(inputStream);
+        bos = new BufferedOutputStream(new FileOutputStream(
+                file, false));
+
+        byte[] buf = new byte[originalSize];
+        bis.read(buf);
+        do {
+            bos.write(buf);
+        } while (bis.read(buf) != -1);
+
+        bos.flush();
+        bos.close();
+        bis.close();
+
+        return file;
+
+    }
+
+    private String getFileName(Context context, Uri uri)
+    {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+
+    private File makeEmptyFileIntoExternalStorageWithTitle(String title) {
+        String root =  Environment.getExternalStorageDirectory().getAbsolutePath();
+        return new File(root, title);
     }
 
 }

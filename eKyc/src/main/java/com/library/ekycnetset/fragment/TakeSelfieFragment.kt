@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
+import com.library.ekycnetset.base.FileUtils
 import com.library.ekycnetset.base.adapter.RecyclerViewGenricAdapter
 import com.library.ekycnetset.compressor.CompressionListener
 import com.library.ekycnetset.compressor.VideoCompressor
@@ -29,7 +30,6 @@ import com.library.ekycnetset.databinding.DialogSuccessLayoutBinding
 import com.library.ekycnetset.databinding.FragmentTakeLayoutBinding
 import com.library.ekycnetset.databinding.ItemInstLayoutBinding
 import com.library.ekycnetset.document.DocumentPresenter
-import com.library.ekycnetset.view.RealPath
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -129,13 +129,13 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                 if (resultCode == Activity.RESULT_OK) {
 
                     val uri: Uri = data!!.data!!
-                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(), uri))
+                    Log.e("Path", FileUtils.getRealPath(getContainerActivity(),uri))
 
                     val desFile =
-                        saveVideoFile(RealPath.getPathFromURI(getContainerActivity(), uri))
+                        saveVideoFile(FileUtils.getRealPath(getContainerActivity(),uri))
 
                     VideoCompressor.start(
-                        RealPath.getPathFromURI(getContainerActivity(), uri),
+                        FileUtils.getRealPath(getContainerActivity(),uri),
                         desFile!!.path,
                         object : CompressionListener {
                             override fun onProgress(percent: Float) {
