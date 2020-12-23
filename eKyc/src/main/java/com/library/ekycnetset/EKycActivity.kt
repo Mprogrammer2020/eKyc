@@ -47,17 +47,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == 3000 && resultCode == RESULT_OK) {
-//            val filePath = data!!.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)
-//            Log.e("File Path", filePath!!)
-//            // Do anything with file
-//        }
-//
-//    }
-
     override fun getLayoutId(): Int {
         return R.layout.activity_e_kyc
     }
