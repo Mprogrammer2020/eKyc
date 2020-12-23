@@ -53,6 +53,11 @@ startActivityForResult(intent,Constants.BASIS_REQ_CODE)
 
             if (resultCode == Activity.RESULT_OK) {
                 Log.e("RESULT","OK")
+		
+		// You'll get user hash and id from basis.
+		Log.e("BASIS USER HASH", data!!.getStringExtra(Constants.BASIS_USER_HASH)!!)
+                Log.e("BASIS USER ID", data.getIntExtra(Constants.BASIS_USER_ID,0).toString())
+
             }
 
             if (resultCode == RESULT_CANCELED){
