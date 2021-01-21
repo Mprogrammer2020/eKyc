@@ -6,19 +6,35 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UpdateFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/update_info_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/MobileVerificationFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/local/PrefUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/local/PrefUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/step_three_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +59,8 @@
       <list>
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -61,14 +77,14 @@
     <property name="DEBUGGABLE_DEVICE" value="samsung-sm_g935f-ce0117110d46760705" />
     <property name="DEBUGGABLE_PROCESS" value="com.ekycnetset" />
     <property name="DEBUGGER_ID" value="Auto" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="R9ZN60JRWWY" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-23T06:21:21.577Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_XL_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-12T04:54:19.571Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../eFX_project/clientsBitBucket/efx_frontend/eFX" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -89,8 +105,8 @@
       <recent name="com.library.ekycnetset.document" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset" />
@@ -334,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608700023767</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Main">
+      <created>1608708995066</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1608708995066</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -361,7 +384,8 @@
     <MESSAGE value="github library." />
     <MESSAGE value="Remove unused code" />
     <MESSAGE value="Send user hash and user id to application." />
-    <option name="LAST_COMMIT_MESSAGE" value="Send user hash and user id to application." />
+    <MESSAGE value="Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main" />
   </component>
   <component name="WindowStateProjectService">
     <state x="513" y="287" width="950" height="530" key="#PSD" timestamp="1604309718059">
@@ -404,34 +428,34 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="839" y="319" key="AndroidProcessChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1606392728500" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1608700022113">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1608708994571">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1608700022113" />
-    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1604400053504">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1608708994571" />
+    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1608709123627">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604400053504" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1606124483141">
+    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1608709123627" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1610700886574">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1606124483141" />
-    <state width="1807" height="674" key="GridCell.Tab.0.bottom" timestamp="1608700892239">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1610700886574" />
+    <state width="1807" height="501" key="GridCell.Tab.0.bottom" timestamp="1610610779304">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="674" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1608700892239" />
-    <state width="1807" height="674" key="GridCell.Tab.0.center" timestamp="1608700892237">
+    <state width="1807" height="501" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1610610779304" />
+    <state width="1807" height="501" key="GridCell.Tab.0.center" timestamp="1610610779303">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="674" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1608700892237" />
-    <state width="1807" height="674" key="GridCell.Tab.0.left" timestamp="1608700892236">
+    <state width="1807" height="501" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1610610779303" />
+    <state width="1807" height="501" key="GridCell.Tab.0.left" timestamp="1610610779302">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="674" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1608700892236" />
-    <state width="1807" height="674" key="GridCell.Tab.0.right" timestamp="1608700892238">
+    <state width="1807" height="501" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1610610779302" />
+    <state width="1807" height="501" key="GridCell.Tab.0.right" timestamp="1610610779304">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="674" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1608700892238" />
+    <state width="1807" height="501" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1610610779304" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1603950500127">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -452,14 +476,18 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="520" y="245" width="936" height="615" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603358848360" />
+    <state x="253" y="27" width="1470" height="1053" key="ScreenshotViewer.Dimensions" timestamp="1610609528649">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="253" y="27" width="1470" height="1053" key="ScreenshotViewer.Dimensions/67.27.1853.1053@67.27.1853.1053" timestamp="1610609528649" />
     <state x="482" y="187" key="SettingsEditor" timestamp="1604041310862">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1604041310862" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1608700032525">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1608709013020">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1608700032525" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1608709013020" />
     <state width="926" height="522" key="XDebugger.FullValuePopup" timestamp="1606375675072">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -472,10 +500,14 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1606447842015" />
-    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606116082037">
+    <state x="761" y="472" width="464" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608709019820">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1606116082037" />
+    <state x="761" y="472" width="464" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1608709019820" />
+    <state x="556" y="341" width="864" height="423" key="git4idea.merge.GitPullDialog" timestamp="1608709039858">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="556" y="341" width="864" height="423" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1608709039858" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1605074591131">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -551,17 +583,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt</url>
-          <line>171</line>
+          <line>173</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt</url>
-          <line>173</line>
+          <line>175</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UploadDocumentFragment.kt</url>
-          <line>181</line>
+          <line>183</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">

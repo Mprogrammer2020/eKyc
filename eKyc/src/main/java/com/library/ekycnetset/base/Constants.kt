@@ -12,4 +12,11 @@ object Constants {
     const val BASIS_USER_HASH = "BASIS_USER_HASH"
     const val BASIS_USER_ID = "BASIS_USER_ID"
 
+    const val F_NAME = "F_NAME"
+    const val L_NAME = "L_NAME"
+    const val EMAIL = "EMAIL"
+    const val PHONE_CODE = "PHONE_CODE"
+    const val PHONE_NUMBER = "PHONE_NUMBER"
+    const val ADDRESS = "ADDRESS"
+
 }

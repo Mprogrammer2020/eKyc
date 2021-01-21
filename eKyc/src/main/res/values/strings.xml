@@ -12,6 +12,8 @@
     <string name="continue_txt">Continue</string>
 
     <string name="tell_us_one">Tell us about yourself (Step 1 of 4)</string>
+    <string name="update_info">Update Info</string>
+    <string name="update">Update</string>
     <string name="just_follow">Just follow three steps below to tell us about yourself</string>
     <string name="step_1">1</string>
     <string name="step_2">2</string>
@@ -19,12 +21,13 @@
     <string name="req_fields">Required fields</string>
     <string name="ast">*</string>
     <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
+    <string name="last_name">Last Name (Surname)</string>
     <string name="middle_name">Middle Name</string>
     <string name="next_txt">Next</string>
     <string name="prev_txt">Previous</string>
 
     <string name="mob_ver_two">Mobile number verification (Step 2 of 4)</string>
+    <string name="mob_ver_two_sim">Mobile number verification</string>
     <string name="e_g_first_name">E.g. Kim</string>
     <string name="e_g_middle_name">E.g. Elizabeth</string>
     <string name="e_g_last_name">E.g. Smith</string>
@@ -41,6 +44,7 @@
     <string name="gender">Gender</string>
 
     <string name="country_of_citizenship">Country Of Citizenship</string>
+    <string name="country_of_residence">Country Of Residence</string>
     <string name="city">City</string>
     <string name="address">Address</string>
     <string name="zip">Zip Code</string>

@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         eKyc.setOnClickListener {
 
             val intent = Intent(this,EKycActivity::class.java)
-            intent.putExtra(Constants.API_KEY, "")
+            intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
+
+
+
             startActivityForResult(intent,Constants.BASIS_REQ_CODE)
 
         }

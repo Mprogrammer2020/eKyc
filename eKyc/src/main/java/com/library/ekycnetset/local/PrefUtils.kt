@@ -51,4 +51,14 @@ class PrefUtils{
         editor.apply()
     }
 
+    fun storeUserAppInfo(context: Context, key: String, info : String) {
+        val editor = getSharedPreferences(context).edit()
+        editor.putString(key, info)
+        editor.apply()
+    }
+
+    fun getUserAppInfo(context: Context, key: String): String? {
+        return getSharedPreferences(context).getString(key, null)
+    }
+
 }

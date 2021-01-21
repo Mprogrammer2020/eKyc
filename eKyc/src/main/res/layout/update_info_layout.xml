@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
+            android:elevation="@dimen/_16sdp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/textColor"
+                        android:textAllCaps="true"
+                        android:text="@string/address"/>
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@android:color/holo_red_dark"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/addressET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:textColorHint="@color/hintColor"
+                    android:background="@null"
+                    android:textSize="@dimen/_11sdp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:singleLine="true"
+                    android:fontFamily="@font/helvetica_regular"
+                    android:hint="@string/e_g_address"
+                    android:inputType="textEmailAddress" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
+            android:elevation="@dimen/_16sdp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/textColor"
+                        android:textAllCaps="true"
+                        android:text="@string/mob_number"/>
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@android:color/holo_red_dark"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/codeClick"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:id="@+id/codeTxt"
+                            style="@style/TextViewKyc"
+                            android:text="+1"
+                            android:fontFamily="@font/helvetica_regular" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:src="@drawable/ic_down_arrow"/>
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@color/grey"/>
+
+
+                    <EditText
+                        android:layout_weight="4"
+                        android:id="@+id/mobileET"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:textColorHint="@color/hintColor"
+                        android:background="@null"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/colorBlack"
+                        android:singleLine="true"
+                        android:inputType="phone"
+                        android:maxLength="12"
+                        android:digits="1234567890"
+                        android:fontFamily="@font/helvetica_regular"
+                        android:hint="@string/e_g_mob"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/updateClick"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:fontFamily="@font/helvetica_bold"
+            android:layout_margin="@dimen/_16sdp"
+            android:textColor="@color/colorButtonText"
+            android:text="@string/update"
+            android:textSize="@dimen/_11sdp"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_button"/>
+
+    </LinearLayout>
+
+</layout>

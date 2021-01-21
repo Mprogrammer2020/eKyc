@@ -12,6 +12,7 @@ import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.AppPresenter
+import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
 import com.library.ekycnetset.fragment.MobileVerificationFragment
 import com.library.ekycnetset.fragment.StepOneFragment
@@ -22,7 +23,6 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
-
 
 class BaseCheckPresenter(
     private val context: EKycActivity,
@@ -35,6 +35,7 @@ class BaseCheckPresenter(
     private var birthdayYear : String ?= null
     private var mAppPresenter : AppPresenter ?= null
     private var countryNationality : String ?= null
+    private var countryResidence : String ?= null
 
     init {
 
@@ -43,6 +44,13 @@ class BaseCheckPresenter(
         notWithSpace(viewDataBinding.threeStep.cityET)
         notWithSpace(viewDataBinding.threeStep.addressET)
         notWithSpace(viewDataBinding.threeStep.zipET)
+
+        viewDataBinding.oneStep.firstNameET.setText(context.kycPref.getUserAppInfo(context,Constants.F_NAME))
+        viewDataBinding.oneStep.lastNameET.setText(context.kycPref.getUserAppInfo(context,Constants.L_NAME))
+        viewDataBinding.twoStep.emailET.setText(context.kycPref.getUserAppInfo(context,Constants.EMAIL))
+        viewDataBinding.twoStep.mobileET.setText(context.kycPref.getUserAppInfo(context,Constants.PHONE_NUMBER))
+        viewDataBinding.twoStep.codeTxt.text = context.kycPref.getUserAppInfo(context,Constants.PHONE_CODE)
+        viewDataBinding.threeStep.addressET.setText(context.kycPref.getUserAppInfo(context,Constants.ADDRESS))
 
         viewDataBinding.prevClick.setOnClickListener {
 
@@ -117,7 +125,6 @@ class BaseCheckPresenter(
                             R.drawable.circle_selected
                         )
 
-
                     }
                 }
 
@@ -183,7 +190,7 @@ class BaseCheckPresenter(
         val genders: ArrayList<String> = ArrayList()
         genders.add("Male")
         genders.add("Female")
-        genders.add("Other")
+//        genders.add("Other")
 
         SpinnerAction(
             context,
@@ -225,14 +232,35 @@ class BaseCheckPresenter(
                 })
         }
 
+        // Country Res
+        viewDataBinding.threeStep.countryResClick.setOnClickListener {
+            mAppPresenter!!.showCountryCodeDialog(
+                false,
+                object : AppPresenter.OnCountrySelectionListener {
+
+                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
+
+                        viewDataBinding.threeStep.countryResTxt.text = code.name!!
+                        countryResidence = code.code!!
+
+                    }
+
+                })
+        }
+
     }
 
     private fun validateCountry() : Boolean{
 
         if (viewDataBinding.threeStep.countryTxt.text.toString() == "Select Country"){
-            context.showToast("Please select your country.")
+            context.showToast("Please select your country of citizenship.")
             return false
-        }else
+        }
+        else if (viewDataBinding.threeStep.countryResTxt.text.toString() == "Select Country"){
+            context.showToast("Please select your country of residence.")
+            return false
+        }
+        else
             return true
 
     }
@@ -299,10 +327,23 @@ class BaseCheckPresenter(
         jsonObject.put("birthday_month", birthdayMonth!!)
         jsonObject.put("birthday_year", birthdayYear!!)
         jsonObject.put("country_nationality", countryNationality!!)
-        jsonObject.put("country_residence", countryNationality!!)
+        jsonObject.put("country_residence", countryResidence!!)
         jsonObject.put("city", viewDataBinding.threeStep.cityET.text.toString())
         jsonObject.put("address", viewDataBinding.threeStep.addressET.text.toString())
         jsonObject.put("zip", viewDataBinding.threeStep.zipET.text.toString())
+
+
+//        if (context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_HASH).isNullOrEmpty()){
+//            Log.e("BASIS USER HASH","PLS. NOT USE")
+//        }else{
+//            jsonObject.put("user_hash", context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_HASH)!!)
+//        }
+//
+//        if (context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_ID).isNullOrEmpty()){
+//            Log.e("BASIS USER ID","PLS. NOT USE")
+//        }else{
+//            jsonObject.put("check_id", context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_ID)!!)
+//        }
 
         Log.e("Check Base", jsonObject.toString())
 
@@ -327,7 +368,6 @@ class BaseCheckPresenter(
                             goToMobVerification()
                         }
 
-
                     }
 
                     override fun onError(e: Throwable) {
@@ -339,12 +379,12 @@ class BaseCheckPresenter(
 
     }
 
-    fun notWithSpace(editTextSansRegular: EditText) {
+    private fun notWithSpace(editTextSansRegular: EditText) {
         val myWatcher: TextWatcher = object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(s: Editable) {
-                if (editTextSansRegular.getText().toString()
+                if (editTextSansRegular.text.toString()
                         .equals(" ")
                 ) editTextSansRegular.setText("")
             }

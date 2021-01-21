@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.AppPresenter
+import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.FragmentMobileVerificationLayoutBinding
 import com.library.ekycnetset.model.EKycModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,6 +30,12 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
 
         if (mAppPresenter == null){
             mAppPresenter = AppPresenter(getContainerActivity())
+
+            if (kycPref.getUserAppInfo(getContainerActivity(), Constants.BASIS_USER_HASH).isNullOrEmpty()){
+                viewDataBinding.progress.visibility = View.VISIBLE
+            }else{
+                viewDataBinding.progress.visibility = View.GONE
+            }
 
             viewDataBinding.codeTxt.text = arguments!!.getString("CODE")
             viewDataBinding.mobileET.setText(arguments!!.getString("MOB"))
@@ -58,7 +65,11 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
             }
 
             viewDataBinding.skipClick.setOnClickListener {
-                gotoDocFrag()
+                if (kycPref.getUserAppInfo(getContainerActivity(), Constants.BASIS_USER_HASH).isNullOrEmpty()){
+                    gotoDocFrag()
+                }else{
+                    getContainerActivity().setResultOk()
+                }
             }
 
             viewDataBinding.resendOTPClick.setOnClickListener {
@@ -73,7 +84,10 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
     }
 
     override fun setTitle(): String {
-        return getString(R.string.mob_ver_two)
+        if (kycPref.getUserAppInfo(getContainerActivity(), Constants.BASIS_USER_HASH).isNullOrEmpty())
+            return getString(R.string.mob_ver_two)
+        else
+            return getString(R.string.mob_ver_two_sim)
     }
 
     override fun getLayoutId(): Int {
@@ -151,7 +165,14 @@ class MobileVerificationFragment : EKycBaseFragment<FragmentMobileVerificationLa
                             setResponseDialog(getContainerActivity(),"You've Entered Wrong OTP Code.")
                             viewDataBinding.otp.setText("")
                         }else if (model.status == "ok"){
-                            gotoDocFrag()
+
+                            if (kycPref.getUserAppInfo(getContainerActivity(), Constants.BASIS_USER_HASH).isNullOrEmpty()){
+                                gotoDocFrag()
+                            }else{
+                                getContainerActivity().setResultOk()
+                            }
+
+//                            gotoDocFrag()
                         }
                     }
 

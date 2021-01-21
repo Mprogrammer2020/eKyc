@@ -30,7 +30,7 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
     private var isP1Send = false
     private var isP2Send = false
-    private var isBankStatementSend = false
+//    private var isBankStatementSend = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,13 +45,15 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
         setGlide(R.drawable.ic_bank_st,viewDataBinding.bankStatement.iconOne)
         viewDataBinding.bankStatement.titleTxt.text = getString(R.string.bank_doc)
+        viewDataBinding.bankStatement.astTxt.visibility = View.GONE
 
         setGlide(R.drawable.ic_income_st,viewDataBinding.incomeStatement.iconOne)
         viewDataBinding.incomeStatement.titleTxt.text = getString(R.string.income_statement)
         viewDataBinding.incomeStatement.astTxt.visibility = View.GONE
 
         viewDataBinding.nextClick.setOnClickListener {
-            if (isP1Send && isP2Send && isBankStatementSend)
+//            if (isP1Send && isP2Send && isBankStatementSend)
+            if (isP1Send && isP2Send)
                 displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
             else
                 showToast("Please upload mandatory documents to proceed further.")
@@ -119,7 +121,7 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
                                     override fun onRes() {
 
-                                        isBankStatementSend = true
+//                                        isBankStatementSend = true
 
                                         viewDataBinding.bankStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
                                         viewDataBinding.bankStatement.uploadedTxt.visibility = View.VISIBLE
