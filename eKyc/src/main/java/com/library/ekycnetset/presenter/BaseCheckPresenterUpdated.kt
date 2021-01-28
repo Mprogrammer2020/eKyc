@@ -36,12 +36,12 @@ class BaseCheckPresenterUpdated(
     private val viewDataBinding: FragmentStepOneLayoutBinding
 ) {
 
-    private var birthdayDay : String ?= null
-    private var birthdayMonth : String ?= null
-    private var birthdayYear : String ?= null
+    private var birthdayDay : String = ""
+    private var birthdayMonth : String = ""
+    private var birthdayYear : String = ""
     private var mAppPresenter : AppPresenter ?= null
-    private var countryNationality : String ?= null
-    private var countryResidence : String ?= null
+    private var countryNationality : String = ""
+    private var countryResidence : String = ""
 
     init {
 
@@ -525,11 +525,11 @@ class BaseCheckPresenterUpdated(
         jsonObject.put("phone2", "")
         jsonObject.put("gender", gender)
         jsonObject.put("Occupation", viewDataBinding.twoStep.occTxt.text.toString())
-        jsonObject.put("birthday_day", birthdayDay!!)
-        jsonObject.put("birthday_month", birthdayMonth!!)
-        jsonObject.put("birthday_year", birthdayYear!!)
-        jsonObject.put("country_nationality", countryNationality!!)
-        jsonObject.put("country_residence", countryResidence!!)
+        jsonObject.put("birthday_day", birthdayDay)
+        jsonObject.put("birthday_month", birthdayMonth)
+        jsonObject.put("birthday_year", birthdayYear)
+        jsonObject.put("country_nationality", countryNationality)
+        jsonObject.put("country_residence", countryResidence)
         jsonObject.put("city", viewDataBinding.threeStep.cityET.text.toString())
         jsonObject.put("address", viewDataBinding.threeStep.addressET.text.toString())
         jsonObject.put("zip", viewDataBinding.threeStep.zipET.text.toString())
