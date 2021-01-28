@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
-import com.library.ekycnetset.presenter.BaseCheckPresenter
+//import com.library.ekycnetset.presenter.BaseCheckPresenter
+import com.library.ekycnetset.presenter.BaseCheckPresenterUpdated
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -14,13 +15,13 @@ import com.library.ekycnetset.presenter.BaseCheckPresenter
 
 class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
 
-    private var mPresenter : BaseCheckPresenter ?= null
+    private var mPresenter : BaseCheckPresenterUpdated ?= null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (mPresenter == null){
-            mPresenter = BaseCheckPresenter(getContainerActivity(),this,viewDataBinding)
+            mPresenter = BaseCheckPresenterUpdated(getContainerActivity(),this,viewDataBinding)
         }
     }
 

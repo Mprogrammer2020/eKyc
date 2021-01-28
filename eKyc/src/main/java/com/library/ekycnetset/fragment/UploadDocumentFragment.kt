@@ -30,7 +30,8 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
     private var isP1Send = false
     private var isP2Send = false
-//    private var isBankStatementSend = false
+    private var isBankStatementSend = false
+    private var isIncomeStatementSend = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,17 +44,35 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         viewDataBinding.passportID.uploadTxt.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         viewDataBinding.passportID.uploadSideTwoTxt.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
+        if (getContainerActivity().getAdminSettings()[14].value)
+            viewDataBinding.passportID.astTxt.visibility = View.VISIBLE
+        else
+            viewDataBinding.passportID.astTxt.visibility = View.GONE
+
+
         setGlide(R.drawable.ic_bank_st,viewDataBinding.bankStatement.iconOne)
         viewDataBinding.bankStatement.titleTxt.text = getString(R.string.bank_doc)
-        viewDataBinding.bankStatement.astTxt.visibility = View.GONE
+//        viewDataBinding.bankStatement.astTxt.visibility = View.GONE
+
+        if (getContainerActivity().getAdminSettings()[15].value)
+            viewDataBinding.bankStatement.astTxt.visibility = View.VISIBLE
+        else
+            viewDataBinding.bankStatement.astTxt.visibility = View.GONE
 
         setGlide(R.drawable.ic_income_st,viewDataBinding.incomeStatement.iconOne)
         viewDataBinding.incomeStatement.titleTxt.text = getString(R.string.income_statement)
-        viewDataBinding.incomeStatement.astTxt.visibility = View.GONE
+//        viewDataBinding.incomeStatement.astTxt.visibility = View.GONE
+
+        if (getContainerActivity().getAdminSettings()[16].value)
+            viewDataBinding.incomeStatement.astTxt.visibility = View.VISIBLE
+        else
+            viewDataBinding.incomeStatement.astTxt.visibility = View.GONE
+
 
         viewDataBinding.nextClick.setOnClickListener {
-//            if (isP1Send && isP2Send && isBankStatementSend)
-            if (isP1Send && isP2Send)
+//            if (isP1Send && isP2Send && isBankStatementSend & isIncomeStatementSend)
+//            if (isP1Send && isP2Send)
+            if (validateDocs())
                 displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
             else
                 showToast("Please upload mandatory documents to proceed further.")
@@ -89,6 +108,33 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         return R.layout.fragment_upload_doc_layout
     }
 
+    private var isMandatory = true
+
+    private fun validateDocs(): Boolean {
+        if (getContainerActivity().getAdminSettings()[14].value){
+            isMandatory = (isP1Send && isP2Send)
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        if (getContainerActivity().getAdminSettings()[15].value){
+            isMandatory = isBankStatementSend
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        if (getContainerActivity().getAdminSettings()[16].value){
+            isMandatory = isIncomeStatementSend
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        return true
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -121,7 +167,7 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
 
                                     override fun onRes() {
 
-//                                        isBankStatementSend = true
+                                        isBankStatementSend = true
 
                                         viewDataBinding.bankStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
                                         viewDataBinding.bankStatement.uploadedTxt.visibility = View.VISIBLE
@@ -142,6 +188,8 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
                             sendFileApi("send-proof-income", filePath, object : OnSuccess {
 
                                     override fun onRes() {
+
+                                        isIncomeStatementSend = true
 
                                         viewDataBinding.incomeStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
                                         viewDataBinding.incomeStatement.uploadedTxt.visibility = View.VISIBLE

@@ -19,4 +19,6 @@ object Constants {
     const val PHONE_NUMBER = "PHONE_NUMBER"
     const val ADDRESS = "ADDRESS"
 
+    const val ADMIN_SETTINGS_LIST = "ADMIN_SETTINGS_LIST"
+
 }

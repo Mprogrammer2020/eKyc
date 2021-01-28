@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -30,16 +30,17 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/email_address"
                         android:textAllCaps="true"
-                        android:text="@string/email_address"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
+                        android:id="@+id/astEm"
                         style="@style/TextViewKyc"
                         android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -47,15 +48,15 @@
                     android:id="@+id/emailET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
+                    android:background="@null"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="@dimen/_11sdp" />
 
             </LinearLayout>
 
@@ -64,18 +65,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -84,16 +86,17 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/mob_number"
                         android:textAllCaps="true"
-                        android:text="@string/mob_number"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
+                        android:id="@+id/astMN"
                         style="@style/TextViewKyc"
                         android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -106,25 +109,25 @@
 
                     <LinearLayout
                         android:id="@+id/codeClick"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:layout_weight="1">
 
 
                         <TextView
                             android:id="@+id/codeTxt"
                             style="@style/TextViewKyc"
-                            android:text="+1"
-                            android:fontFamily="@font/helvetica_regular" />
+                            android:fontFamily="@font/helvetica_regular"
+                            android:text="+1" />
 
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:padding="@dimen/_3sdp"
                             android:layout_marginStart="@dimen/_10sdp"
-                            android:src="@drawable/ic_down_arrow"/>
+                            android:padding="@dimen/_3sdp"
+                            android:src="@drawable/ic_down_arrow" />
 
 
                     </LinearLayout>
@@ -134,24 +137,24 @@
                         android:layout_width="@dimen/_1sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@color/grey"/>
+                        android:background="@color/grey" />
 
 
                     <EditText
-                        android:layout_weight="4"
                         android:id="@+id/mobileET"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_25sdp"
-                        android:textColorHint="@color/hintColor"
+                        android:layout_weight="4"
                         android:background="@null"
-                        android:textSize="@dimen/_11sdp"
-                        android:textColor="@color/colorBlack"
-                        android:singleLine="true"
-                        android:inputType="phone"
-                        android:maxLength="12"
                         android:digits="1234567890"
                         android:fontFamily="@font/helvetica_regular"
-                        android:hint="@string/e_g_mob"/>
+                        android:hint="@string/e_g_mob"
+                        android:inputType="phone"
+                        android:maxLength="12"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/_11sdp" />
 
                 </LinearLayout>
 
@@ -162,18 +165,18 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -182,16 +185,17 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/dob"
                         android:textAllCaps="true"
-                        android:text="@string/dob"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
+                        android:id="@+id/astDOB"
                         style="@style/TextViewKyc"
                         android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -199,30 +203,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/dob"
-                    android:clickable="false"
-                    android:focusableInTouchMode="false"
-                    android:focusable="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
-                    android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/dob_format"/>
+                    <EditText
+                        android:id="@+id/dob"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@null"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/helvetica_regular"
+                        android:hint="@string/dob_format"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/_11sdp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
-                        android:padding="@dimen/_1sdp"
-                        android:tint="@color/hintColor"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_calendar"/>
+                        android:padding="@dimen/_1sdp"
+                        android:src="@drawable/ic_calendar"
+                        android:tint="@color/hintColor" />
 
 
                 </RelativeLayout>
@@ -234,19 +238,18 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_8sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -255,47 +258,119 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/gender"
                         android:textAllCaps="true"
-                        android:text="@string/gender"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
-<!--                    <TextView-->
-<!--                        style="@style/TextViewKyc"-->
-<!--                        android:text="@string/ast"-->
-<!--                        android:textSize="@dimen/_9sdp"-->
-<!--                        android:textColor="@android:color/holo_red_dark"/>-->
+                    <TextView
+                        android:id="@+id/astGen"
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
-               <RelativeLayout
-                   android:id="@+id/genderClick"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/genderClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                   <TextView
-                       android:id="@+id/genderTxt"
-                       style="@style/TextViewKyc"
-                       android:layout_height="@dimen/_25sdp"
-                       android:gravity="center_vertical"
-                       android:text="Male"/>
+                    <TextView
+                        android:id="@+id/genderTxt"
+                        style="@style/TextViewKyc"
+                        android:layout_height="@dimen/_25sdp"
+                        android:gravity="center_vertical"
+                        android:text="Male" />
 
 
-                   <androidx.appcompat.widget.AppCompatImageView
-                       android:layout_width="@dimen/_15sdp"
-                       android:layout_height="@dimen/_15sdp"
-                       android:padding="@dimen/_3sdp"
-                       android:layout_alignParentEnd="true"
-                       android:layout_centerVertical="true"
-                       android:src="@drawable/ic_down_arrow"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/_3sdp"
+                        android:src="@drawable/ic_down_arrow" />
 
-               </RelativeLayout>
+                </RelativeLayout>
 
                 <Spinner
                     android:id="@+id/genderPicker"
                     android:layout_width="match_parent"
-                    android:background="@null"
-                    android:layout_height="0dp"/>
+                    android:layout_height="0dp"
+                    android:background="@null" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/occupation"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <TextView
+                        android:id="@+id/astOcc"
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/occClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/occTxt"
+                        style="@style/TextViewKyc"
+                        android:layout_height="@dimen/_25sdp"
+                        android:gravity="center_vertical"
+                        android:text="Software Engineer" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/_3sdp"
+                        android:src="@drawable/ic_down_arrow" />
+
+                </RelativeLayout>
+
+                <Spinner
+                    android:id="@+id/occPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@null" />
 
             </LinearLayout>
 

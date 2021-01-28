@@ -57,6 +57,18 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         setGlide(R.drawable.ic_take_video, viewDataBinding.takeVideoClick.iconOne)
         viewDataBinding.takeVideoClick.titleTxt.text = getString(R.string.take_a_video)
 
+        if (getContainerActivity().getAdminSettings()[17].value)
+            viewDataBinding.takeSelfieClick.astTxt.visibility = View.VISIBLE
+        else
+            viewDataBinding.takeSelfieClick.astTxt.visibility = View.GONE
+
+
+        if (getContainerActivity().getAdminSettings()[18].value)
+            viewDataBinding.takeVideoClick.astTxt.visibility = View.VISIBLE
+        else
+            viewDataBinding.takeVideoClick.astTxt.visibility = View.GONE
+
+
         viewDataBinding.takeVideoClick.uploadTxt.setOnClickListener {
 
             DocumentPresenter(getContainerActivity(), this, 1000).onVideoPickerClick()
@@ -71,7 +83,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         }
 
         viewDataBinding.nextClick.setOnClickListener {
-            if (isSelfieSend && isVideoSend)
+//            if (isSelfieSend && isVideoSend)
+            if (validateSelfies())
                 success()
             else
                 showToast("Please upload mandatory files.")
@@ -92,6 +105,27 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_take_layout
     }
+
+    private var isMandatory = true
+
+    private fun validateSelfies(): Boolean {
+        if (getContainerActivity().getAdminSettings()[17].value){
+            isMandatory = isSelfieSend
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        if (getContainerActivity().getAdminSettings()[18].value){
+            isMandatory = isVideoSend
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        return true
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <TextView
-                    style="@style/TextViewKyc"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/textColor"
-                    android:textAllCaps="true"
-                    android:text="@string/first_name"/>
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/first_name"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
-                <TextView
-                    style="@style/TextViewKyc"
-                    android:text="@string/ast"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@android:color/holo_red_dark"/>
+                    <TextView
+                        android:id="@+id/astFN"
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
-            </LinearLayout>
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/firstNameET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:maxLength="25"
-                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
+                    android:background="@null"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/e_g_first_name"/>
+                    android:hint="@string/e_g_first_name"
+                    android:maxLength="25"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="@dimen/_11sdp" />
 
             </LinearLayout>
 
@@ -66,20 +67,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -88,16 +88,17 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/last_name"
                         android:textAllCaps="true"
-                        android:text="@string/last_name"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
+                        android:id="@+id/astLN"
                         style="@style/TextViewKyc"
                         android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -105,16 +106,16 @@
                     android:id="@+id/lastNameET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:maxLength="25"
-                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
+                    android:background="@null"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/e_g_last_name"/>
+                    android:hint="@string/e_g_last_name"
+                    android:maxLength="25"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="@dimen/_11sdp" />
 
             </LinearLayout>
 
@@ -123,19 +124,19 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             android:layout_marginBottom="@dimen/_8sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
             android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
             app:cardPreventCornerOverlap="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -144,16 +145,17 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
+                        android:text="@string/middle_name"
                         android:textAllCaps="true"
-                        android:text="@string/middle_name"/>
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
 
-                    <!--                    <TextView-->
-                    <!--                        style="@style/TextViewKyc"-->
-                    <!--                        android:text="@string/ast"-->
-                    <!--                        android:textSize="@dimen/_9sdp"-->
-                    <!--                        android:textColor="@android:color/holo_red_dark"/>-->
+                    <TextView
+                        android:id="@+id/astMN"
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -161,21 +163,21 @@
                     android:id="@+id/middleNameET"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:maxLength="25"
-                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:textColor="@color/colorBlack"
                     android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
+                    android:background="@null"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/e_g_middle_name"/>
+                    android:hint="@string/e_g_middle_name"
+                    android:maxLength="25"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="@dimen/_11sdp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </layout>

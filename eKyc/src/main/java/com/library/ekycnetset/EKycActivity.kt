@@ -9,11 +9,14 @@ import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
 import com.library.ekycnetset.fragment.UpdateFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
+import com.library.ekycnetset.model.Data
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
 
 class EKycActivity : BaseActivity<ActivityEKycBinding>() {
+
+    private var adminSettingsList = ArrayList<Data>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,10 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     kycPref.storeUserAppInfo(this,Constants.PHONE_NUMBER,bundle.getString(Constants.PHONE_NUMBER)!!)
                     kycPref.storeUserAppInfo(this,Constants.PHONE_CODE,bundle.getString(Constants.PHONE_CODE)!!)
                     kycPref.storeUserAppInfo(this,Constants.ADDRESS,bundle.getString(Constants.ADDRESS)!!)
+
+
+                    adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
+
 
                     if (bundle.getString(Constants.BASIS_USER_HASH).isNullOrEmpty()){
                         Log.e("BASIS USER HASH","NOT AVAILABLE")
@@ -106,6 +113,10 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
         setResult(RESULT_OK, intent)
         finish()
+    }
+
+    fun getAdminSettings() : ArrayList<Data>{
+        return adminSettingsList
     }
 
     override fun onBackPressed() {

@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.application.bubble.view.SpinnerAction
+import com.application.bubble.view.SpinnerActionOccupation
+import com.google.gson.Gson
 import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
@@ -17,12 +19,15 @@ import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
 import com.library.ekycnetset.fragment.MobileVerificationFragment
 import com.library.ekycnetset.fragment.StepOneFragment
 import com.library.ekycnetset.model.EKycModel
+import com.library.ekycnetset.model.Occupation
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BaseCheckPresenter(
     private val context: EKycActivity,
@@ -51,6 +56,80 @@ class BaseCheckPresenter(
         viewDataBinding.twoStep.mobileET.setText(context.kycPref.getUserAppInfo(context,Constants.PHONE_NUMBER))
         viewDataBinding.twoStep.codeTxt.text = context.kycPref.getUserAppInfo(context,Constants.PHONE_CODE)
         viewDataBinding.threeStep.addressET.setText(context.kycPref.getUserAppInfo(context,Constants.ADDRESS))
+
+
+        // First Set Mandatory
+
+        if (context.getAdminSettings()[0].value)
+            viewDataBinding.oneStep.astFN.visibility = View.VISIBLE
+        else
+            viewDataBinding.oneStep.astFN.visibility = View.GONE
+
+        if (context.getAdminSettings()[1].value)
+            viewDataBinding.oneStep.astLN.visibility = View.VISIBLE
+        else
+            viewDataBinding.oneStep.astLN.visibility = View.GONE
+
+        if (context.getAdminSettings()[2].value)
+            viewDataBinding.oneStep.astMN.visibility = View.VISIBLE
+        else
+            viewDataBinding.oneStep.astMN.visibility = View.GONE
+
+        // Second Set Mandatory
+
+        if (context.getAdminSettings()[3].value)
+            viewDataBinding.twoStep.astEm.visibility = View.VISIBLE
+        else
+            viewDataBinding.twoStep.astEm.visibility = View.GONE
+
+        if (context.getAdminSettings()[4].value)
+            viewDataBinding.twoStep.astMN.visibility = View.VISIBLE
+        else
+            viewDataBinding.twoStep.astMN.visibility = View.GONE
+
+        if (context.getAdminSettings()[5].value)
+            viewDataBinding.twoStep.astDOB.visibility = View.VISIBLE
+        else
+            viewDataBinding.twoStep.astDOB.visibility = View.GONE
+
+        if (context.getAdminSettings()[6].value)
+            viewDataBinding.twoStep.astGen.visibility = View.VISIBLE
+        else
+            viewDataBinding.twoStep.astGen.visibility = View.GONE
+
+        if (context.getAdminSettings()[7].value)
+            viewDataBinding.twoStep.astOcc.visibility = View.VISIBLE
+        else
+            viewDataBinding.twoStep.astOcc.visibility = View.GONE
+
+        // Third Set Mandatory
+
+        if (context.getAdminSettings()[8].value)
+            viewDataBinding.threeStep.astCC.visibility = View.VISIBLE
+        else
+            viewDataBinding.threeStep.astCC.visibility = View.GONE
+
+        if (context.getAdminSettings()[9].value)
+            viewDataBinding.threeStep.astCR.visibility = View.VISIBLE
+        else
+            viewDataBinding.threeStep.astCR.visibility = View.GONE
+
+        if (context.getAdminSettings()[10].value)
+            viewDataBinding.threeStep.astAdd.visibility = View.VISIBLE
+        else
+            viewDataBinding.threeStep.astAdd.visibility = View.GONE
+
+        if (context.getAdminSettings()[11].value)
+            viewDataBinding.threeStep.astCity.visibility = View.VISIBLE
+        else
+            viewDataBinding.threeStep.astCity.visibility = View.GONE
+
+        if (context.getAdminSettings()[12].value)
+            viewDataBinding.threeStep.astZip.visibility = View.VISIBLE
+        else
+            viewDataBinding.threeStep.astZip.visibility = View.GONE
+
+
 
         viewDataBinding.prevClick.setOnClickListener {
 
@@ -203,6 +282,26 @@ class BaseCheckPresenter(
             viewDataBinding.twoStep.genderPicker.performClick()
         }
 
+        //Occupation started
+
+        val inputStream = context.resources.openRawResource(R.raw.occupation)
+        val jsonString = Scanner(inputStream).useDelimiter("\\A").next()
+//        Log.e("Occupation", jsonString)
+        val occupation = Gson().fromJson(jsonString, Occupation::class.java)
+
+        SpinnerActionOccupation(
+            context,
+            viewDataBinding.twoStep.occPicker,
+            viewDataBinding.twoStep.occTxt,
+            occupation.occupations
+        )
+
+        viewDataBinding.twoStep.occClick.setOnClickListener {
+            viewDataBinding.twoStep.occPicker.performClick()
+        }
+
+        //Occupation ended
+
         viewDataBinding.twoStep.codeClick.setOnClickListener {
             mAppPresenter!!.showCountryCodeDialog(
                 true,
@@ -323,6 +422,7 @@ class BaseCheckPresenter(
         )
         jsonObject.put("phone2", "")
         jsonObject.put("gender", gender)
+        jsonObject.put("Occupation", viewDataBinding.twoStep.occTxt.text.toString())
         jsonObject.put("birthday_day", birthdayDay!!)
         jsonObject.put("birthday_month", birthdayMonth!!)
         jsonObject.put("birthday_year", birthdayYear!!)
