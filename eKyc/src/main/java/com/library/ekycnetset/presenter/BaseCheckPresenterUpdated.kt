@@ -27,8 +27,11 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.jvm.Throws
 
 class BaseCheckPresenterUpdated(
     private val context: EKycActivity,
@@ -247,6 +250,14 @@ class BaseCheckPresenterUpdated(
         }
 
 
+        if (!context.kycPref.getUserAppInfo(context,Constants.DOB).isNullOrEmpty()){
+
+            Log.e("pre dob",context.kycPref.getUserAppInfo(context,Constants.DOB)!!)
+            Log.e("pre dob formatted",setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
+            viewDataBinding.twoStep.dob.setText(setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
+        }
+
+
         viewDataBinding.twoStep.dob.setOnClickListener {
 
             frag.commonDOBSelection(viewDataBinding.twoStep.dob, object :
@@ -347,6 +358,17 @@ class BaseCheckPresenterUpdated(
                 })
         }
 
+    }
+
+    @Throws(ParseException::class)
+    private fun setDateInFormat(dateInString: String): String {
+
+        val format = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+        val outputFormatDate = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)
+
+        val result = format.parse(dateInString)
+
+        return outputFormatDate.format(result!!)
     }
 
 
