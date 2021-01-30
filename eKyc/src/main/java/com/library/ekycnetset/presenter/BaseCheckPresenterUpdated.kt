@@ -253,6 +253,13 @@ class BaseCheckPresenterUpdated(
         if (!context.kycPref.getUserAppInfo(context,Constants.DOB).isNullOrEmpty()){
 
             Log.e("pre dob",context.kycPref.getUserAppInfo(context,Constants.DOB)!!)
+
+            val preDob = context.kycPref.getUserAppInfo(context,Constants.DOB)!!.split("-").toTypedArray()
+
+            birthdayDay = preDob[2]
+            birthdayMonth = preDob[1]
+            birthdayYear = preDob[0]
+
             Log.e("pre dob formatted",setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
             viewDataBinding.twoStep.dob.setText(setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
         }
@@ -496,7 +503,7 @@ class BaseCheckPresenterUpdated(
 
     private fun validateDOB() : Boolean{
 
-        if (birthdayYear.isNullOrEmpty()){
+        if (birthdayYear.isEmpty()){
             context.showToast("Please select your D.O.B.")
             return false
         }else
