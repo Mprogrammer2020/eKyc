@@ -112,6 +112,8 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         val intent = Intent()
         intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
         intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
+        intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
+        intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
         setResult(RESULT_OK, intent)
         finish()
     }

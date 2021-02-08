@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
+import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.base.FileUtils
 import com.library.ekycnetset.base.adapter.RecyclerViewGenricAdapter
 import com.library.ekycnetset.compressor.CompressionListener
@@ -270,8 +271,19 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                         Log.e("CB 1", binder.cbOne.isChecked.toString())
                         Log.e("CB 2", binder.cbTwo.isChecked.toString())
 
-                        dialog.dismiss()
-                        getContainerActivity().setResultOk()
+                        if (binder.cbOne.isChecked){
+
+                            kycPref.storeUserAppInfo(getContainerActivity(), Constants.CHECK_ONE, binder.cbOne.isChecked.toString())
+                            kycPref.storeUserAppInfo(getContainerActivity(), Constants.CHECK_TWO, binder.cbTwo.isChecked.toString())
+
+                            dialog.dismiss()
+                            getContainerActivity().setResultOk()
+
+                        }else{
+                            showToast("Please accept our terms & conditions and privacy policy.")
+                        }
+
+
                     }
 
                 }
