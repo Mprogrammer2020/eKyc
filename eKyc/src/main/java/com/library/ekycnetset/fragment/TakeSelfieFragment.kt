@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -25,10 +26,7 @@ import com.library.ekycnetset.compressor.CompressionListener
 import com.library.ekycnetset.compressor.VideoCompressor
 import com.library.ekycnetset.compressor.VideoQuality
 import com.library.ekycnetset.compressor.getMediaPath
-import com.library.ekycnetset.databinding.DialogInstLayoutBinding
-import com.library.ekycnetset.databinding.DialogSuccessLayoutBinding
-import com.library.ekycnetset.databinding.FragmentTakeLayoutBinding
-import com.library.ekycnetset.databinding.ItemInstLayoutBinding
+import com.library.ekycnetset.databinding.*
 import com.library.ekycnetset.document.DocumentPresenter
 import java.io.File
 import java.io.FileInputStream
@@ -257,15 +255,21 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
     private fun success() {
 
-        BubbleDialog(getContainerActivity(), R.layout.dialog_success_layout,
-            object : BubbleDialog.LinkodesDialogBinding<DialogSuccessLayoutBinding> {
+        BubbleDialog(getContainerActivity(), R.layout.dialog_terms_layout,
+            object : BubbleDialog.LinkodesDialogBinding<DialogTermsLayoutBinding> {
 
                 override fun onBind(
-                    binder: DialogSuccessLayoutBinding,
+                    binder: DialogTermsLayoutBinding,
                     dialog: Dialog
                 ) {
 
+                    binder.textOne.setMovementMethod(LinkMovementMethod.getInstance())
+
                     binder.goToHomeClick.setOnClickListener {
+
+                        Log.e("CB 1", binder.cbOne.isChecked.toString())
+                        Log.e("CB 2", binder.cbTwo.isChecked.toString())
+
                         dialog.dismiss()
                         getContainerActivity().setResultOk()
                     }
@@ -274,6 +278,26 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
             })
     }
+
+//    private fun success() {
+//
+//        BubbleDialog(getContainerActivity(), R.layout.dialog_success_layout,
+//            object : BubbleDialog.LinkodesDialogBinding<DialogSuccessLayoutBinding> {
+//
+//                override fun onBind(
+//                    binder: DialogSuccessLayoutBinding,
+//                    dialog: Dialog
+//                ) {
+//
+//                    binder.goToHomeClick.setOnClickListener {
+//                        dialog.dismiss()
+//                        getContainerActivity().setResultOk()
+//                    }
+//
+//                }
+//
+//            })
+//    }
 
     private fun instructions() {
 

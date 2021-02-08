@@ -22,4 +22,7 @@ object Constants {
 
     const val ADMIN_SETTINGS_LIST = "ADMIN_SETTINGS_LIST"
 
+    const val CHECK_ONE = "CHECK_ONE"
+    const val CHECK_TWO = "CHECK_TWO"
+
 }

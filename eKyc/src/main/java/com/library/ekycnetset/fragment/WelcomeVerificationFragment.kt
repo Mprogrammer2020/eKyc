@@ -38,6 +38,34 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         return R.layout.fragment_welcome_verification
     }
 
+//    private fun success() {
+//
+//        BubbleDialog(getContainerActivity(), R.layout.dialog_terms_layout,
+//            object : BubbleDialog.LinkodesDialogBinding<DialogTermsLayoutBinding> {
+//
+//                override fun onBind(
+//                    binder: DialogTermsLayoutBinding,
+//                    dialog: Dialog
+//                ) {
+//
+//
+//                    binder.textOne.setMovementMethod(LinkMovementMethod.getInstance())
+//
+//                    binder.goToHomeClick.setOnClickListener {
+//
+//
+//                        Log.e("CB 1", binder.cbOne.isChecked.toString())
+//                        Log.e("CB 2", binder.cbTwo.isChecked.toString())
+//
+//                        dialog.dismiss()
+//
+//                    }
+//
+//                }
+//
+//            })
+//    }
+
 
 }
 
