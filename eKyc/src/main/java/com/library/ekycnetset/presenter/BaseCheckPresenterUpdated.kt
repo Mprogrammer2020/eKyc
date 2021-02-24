@@ -553,7 +553,7 @@ class BaseCheckPresenterUpdated(
         )
         jsonObject.put("phone2", "")
         jsonObject.put("gender", gender)
-        jsonObject.put("Occupation", viewDataBinding.twoStep.occTxt.text.toString())
+        jsonObject.put("occupation", viewDataBinding.twoStep.occTxt.text.toString())
         jsonObject.put("birthday_day", birthdayDay)
         jsonObject.put("birthday_month", birthdayMonth)
         jsonObject.put("birthday_year", birthdayYear)
