@@ -8,7 +8,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -18,14 +18,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/SpinnerAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/view/SpinnerAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/raw/occupation.json" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/raw/occupation.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +79,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -98,11 +102,11 @@
       <recent name="com.library.ekycnetset.document" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/res/raw" />
       <recent name="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/compressor" />
-      <recent name="$PROJECT_DIR$/eKyc/src/main/res" />
     </key>
   </component>
   <component name="RunManager">
@@ -399,11 +403,17 @@
       <option name="project" value="LOCAL" />
       <updated>1612768916976</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="occupation fixed">
+      <created>1614158923983</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1614158923984</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="UI finalizing v1.1 - Deepak Kumar" />
     <MESSAGE value="Api integration started - Deepak Kumar" />
     <MESSAGE value="Api integration started - Deepak Kumar&#10;Mobile OTP Code" />
     <MESSAGE value="Api integration started - basis ID" />
@@ -428,17 +438,10 @@
     <MESSAGE value="Dob issue fixed" />
     <MESSAGE value="Added terms checkbox." />
     <MESSAGE value="terms check added." />
-    <option name="LAST_COMMIT_MESSAGE" value="terms check added." />
+    <MESSAGE value="occupation fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="occupation fixed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="513" y="287" width="950" height="530" key="#PSD" timestamp="1604309718059">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="513" y="287" width="950" height="530" key="#PSD/67.27.1853.1053@67.27.1853.1053" timestamp="1604309718059" />
-    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604309647487">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604309647487" />
     <state x="767" y="271" width="442" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1611815004762">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -459,10 +462,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="839" y="319" key="AndroidProcessChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1611820155045" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1612768916682">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1614158923049">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1612768916682" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1614158923049" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1608709123627">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -471,22 +474,22 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1610700886574" />
-    <state width="1807" height="556" key="GridCell.Tab.0.bottom" timestamp="1612768866547">
+    <state width="1807" height="556" key="GridCell.Tab.0.bottom" timestamp="1614163836149">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1612768866547" />
-    <state width="1807" height="556" key="GridCell.Tab.0.center" timestamp="1612768866546">
+    <state width="1807" height="556" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836149" />
+    <state width="1807" height="556" key="GridCell.Tab.0.center" timestamp="1614163836147">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1612768866546" />
-    <state width="1807" height="556" key="GridCell.Tab.0.left" timestamp="1612768866544">
+    <state width="1807" height="556" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836147" />
+    <state width="1807" height="556" key="GridCell.Tab.0.left" timestamp="1614163836146">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1612768866544" />
-    <state width="1807" height="556" key="GridCell.Tab.0.right" timestamp="1612768866546">
+    <state width="1807" height="556" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836146" />
+    <state width="1807" height="556" key="GridCell.Tab.0.right" timestamp="1614163836148">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1612768866546" />
+    <state width="1807" height="556" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836148" />
     <state width="1807" height="435" key="GridCell.Tab.1.bottom" timestamp="1611820240001">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -507,18 +510,14 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="253" y="27" width="1470" height="1053" key="ScreenshotViewer.Dimensions/67.27.1853.1053@67.27.1853.1053" timestamp="1612519157343" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1612768953839">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1614158986741">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1612768953839" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1614158986741" />
     <state width="926" height="522" key="XDebugger.FullValuePopup" timestamp="1606375675072">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="926" height="522" key="XDebugger.FullValuePopup/67.27.1853.1053@67.27.1853.1053" timestamp="1606375675072" />
-    <state x="167" y="125" width="1653" height="855" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1604131449272">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="167" y="125" width="1653" height="855" key="com.android.tools.idea.avdmanager.AvdListDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1604131449272" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1606447842015">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -531,10 +530,6 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="556" y="341" width="864" height="423" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1608709039858" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1605074591131">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1605074591131" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -636,17 +631,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt</url>
-          <line>289</line>
+          <line>290</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt</url>
-          <line>287</line>
+          <line>288</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenter.kt</url>
-          <line>291</line>
+          <line>292</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">

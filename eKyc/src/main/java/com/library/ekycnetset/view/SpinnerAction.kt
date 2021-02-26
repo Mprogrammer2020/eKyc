@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.library.ekycnetset.view.SimpleSpinnerAdapter
 
@@ -23,7 +24,20 @@ class SpinnerAction(activity : AppCompatActivity, spinner : Spinner, et : TextVi
                     position: Int,
                     id: Long
                 ) {
+
+//                    if (isMandatory){
+//
+//                        if (position == 0){
+//                            Toast.makeText(activity,"Please select gender",Toast.LENGTH_SHORT).show()
+//                        }else{
+//                            et.text = data[position]
+//                        }
+//
+//                    }
+
                     et.text = data[position]
+
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {

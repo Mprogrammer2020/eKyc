@@ -1,4 +1,5 @@
 {"occupations" :[
+  {"id": 0, "name": "Select"},
   {"id": 1, "name": "Academic Professional"},
   {"id": 2, "name": "Accountant"},
   {"id": 3, "name": "Actuary"},

@@ -285,6 +285,7 @@ class BaseCheckPresenterUpdated(
         }
 
         val genders: ArrayList<String> = ArrayList()
+        genders.add("Select")
         genders.add("Male")
         genders.add("Female")
 //        genders.add("Other")
@@ -426,7 +427,37 @@ class BaseCheckPresenterUpdated(
                 return false
             }
         }
+
+        if (context.getAdminSettings()[6].value){
+            isMandatory = validateGender()
+            if (!isMandatory) {
+                return false
+            }
+        }
+
+        if (context.getAdminSettings()[7].value){
+            isMandatory = validateOccupation()
+            if (!isMandatory) {
+                return false
+            }
+        }
         return true
+    }
+
+    private fun validateGender(): Boolean{
+        if (viewDataBinding.twoStep.genderTxt.text.toString() == "Select"){
+            context.showToast("Please select your gender")
+            return false
+        }else
+            return true
+    }
+
+    private fun validateOccupation(): Boolean{
+        if (viewDataBinding.twoStep.occTxt.text.toString() == "Select"){
+            context.showToast("Please select your occupation")
+            return false
+        }else
+            return true
     }
 
     private fun isDataValidForStepThree(): Boolean {
@@ -532,7 +563,7 @@ class BaseCheckPresenterUpdated(
 
         frag.showLoading()
 
-        var gender = "0"
+        var gender = ""
         when(viewDataBinding.twoStep.genderTxt.text.toString()){
 
             "Male" -> gender = "0"
@@ -540,6 +571,13 @@ class BaseCheckPresenterUpdated(
             "Other" -> gender = "2"
 
         }
+
+        var occupation = ""
+
+        if (viewDataBinding.twoStep.occTxt.text.toString() == "Select")
+            occupation = ""
+        else
+            occupation = viewDataBinding.twoStep.occTxt.text.toString()
 
         val jsonObject = JSONObject()
         jsonObject.put("key", context.kycPref.getApiKey(context)!!)
@@ -553,7 +591,8 @@ class BaseCheckPresenterUpdated(
         )
         jsonObject.put("phone2", "")
         jsonObject.put("gender", gender)
-        jsonObject.put("occupation", viewDataBinding.twoStep.occTxt.text.toString())
+        jsonObject.put("occupation", occupation)
+//        jsonObject.put("occupation", viewDataBinding.twoStep.occTxt.text.toString())
         jsonObject.put("birthday_day", birthdayDay)
         jsonObject.put("birthday_month", birthdayMonth)
         jsonObject.put("birthday_year", birthdayYear)
