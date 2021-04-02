@@ -33,6 +33,8 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
                 } else {
                     getContainerActivity().requestFullStorageAccess(this)
                 }
+            }else{
+                displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
             }
 
 //            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
