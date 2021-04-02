@@ -1,7 +1,11 @@
 package com.library.ekycnetset.fragment
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
@@ -21,7 +25,17 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         }
 
         viewDataBinding.continueClick.setOnClickListener {
-            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                    // perform action when allow permission success
+                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+                } else {
+                    getContainerActivity().requestFullStorageAccess(this)
+                }
+            }
+
+//            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
         }
 
     }
@@ -36,6 +50,22 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_welcome_verification
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+         if (requestCode == 5000){
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                    // perform action when allow permission success
+                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+                } else {
+                    Toast.makeText(getContainerActivity(), "Allow permission for storage access!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
     }
 
 //    private fun success() {

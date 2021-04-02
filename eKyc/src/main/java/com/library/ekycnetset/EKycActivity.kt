@@ -1,8 +1,14 @@
 package com.library.ekycnetset
 
+import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import androidx.fragment.app.Fragment
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
@@ -11,12 +17,14 @@ import com.library.ekycnetset.fragment.UpdateFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
 
+
 // Dependency e-KYC
 // Developed by : Deepak Kumar
 
 class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     private var adminSettingsList = ArrayList<Data>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +79,9 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             setResultCancelled()
         }
 
+
+
+
         if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
             displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
         }else{
@@ -84,6 +95,12 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             onBackPressed()
         }
 
+    }
+
+    @RequiresPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
+    @RequiresApi(Build.VERSION_CODES.R)
+    fun requestFullStorageAccess(frag : WelcomeVerificationFragment) {
+        frag.startActivityForResult(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),5000)
     }
 
     override fun getLayoutId(): Int {
