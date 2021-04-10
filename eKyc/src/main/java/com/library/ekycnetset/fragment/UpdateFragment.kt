@@ -30,7 +30,11 @@ class UpdateFragment : EKycBaseFragment<UpdateInfoLayoutBinding>() {
 
         mAppPresenter = AppPresenter(getContainerActivity())
 
-        viewDataBinding.addressET.setText(kycPref.getUserAppInfo(getContainerActivity(), Constants.ADDRESS))
+//        viewDataBinding.addressET.setText(kycPref.getUserAppInfo(getContainerActivity(), Constants.ADDRESS))
+
+        viewDataBinding.nameView.firstNameET.setText(kycPref.getUserAppInfo(getContainerActivity(), Constants.F_NAME))
+        viewDataBinding.nameView.lastNameET.setText(kycPref.getUserAppInfo(getContainerActivity(), Constants.L_NAME))
+
         viewDataBinding.mobileET.setText(kycPref.getUserAppInfo(getContainerActivity(), Constants.PHONE_NUMBER))
         viewDataBinding.codeTxt.text = kycPref.getUserAppInfo(getContainerActivity(), Constants.PHONE_CODE)
 
@@ -50,7 +54,12 @@ class UpdateFragment : EKycBaseFragment<UpdateInfoLayoutBinding>() {
         }
 
         viewDataBinding.updateClick.setOnClickListener {
-                baseCheckUpdateApi()
+
+            if (validateEditText(viewDataBinding.nameView.firstNameET) &&
+                    validateEditText(viewDataBinding.nameView.lastNameET) &&
+                    validateEditText(viewDataBinding.nameView.middleNameET) &&
+                    validateEditText(viewDataBinding.mobileET))
+                        baseCheckUpdateApi()
         }
 
 
@@ -75,15 +84,19 @@ class UpdateFragment : EKycBaseFragment<UpdateInfoLayoutBinding>() {
         val jsonObject = JSONObject()
         jsonObject.put("key", kycPref.getApiKey(getContainerActivity())!!)
 
-        jsonObject.put("first_name", "Deepak")
-        jsonObject.put("last_name", "Kumar")
-        jsonObject.put("email", "deepak@gmail.com")
+        jsonObject.put("first_name", viewDataBinding.nameView.firstNameET.text.toString())
+        jsonObject.put("last_name", viewDataBinding.nameView.lastNameET.text.toString())
+        jsonObject.put("middle_name", viewDataBinding.nameView.middleNameET.text.toString())
 
-        jsonObject.put("birthday_day", "13")
-        jsonObject.put("birthday_month", "03")
-        jsonObject.put("birthday_year", "1993")
+        jsonObject.put("email", kycPref.getUserAppInfo(getContainerActivity(), Constants.EMAIL))
 
-        jsonObject.put("country_nationality", "IN")
+        val preDob = kycPref.getUserAppInfo(getContainerActivity(),Constants.DOB)!!.split("-").toTypedArray()
+
+        jsonObject.put("birthday_day", preDob[2])
+        jsonObject.put("birthday_month", preDob[1])
+        jsonObject.put("birthday_year", preDob[0])
+
+        jsonObject.put("country_nationality", kycPref.getUserAppInfo(getContainerActivity(), Constants.NATIONALITY))
 
         if (kycPref.getUserAppInfo(getContainerActivity(), Constants.PHONE_NUMBER) == viewDataBinding.mobileET.text.toString()){
             Log.e("Mobile","SKIP")
@@ -96,7 +109,7 @@ class UpdateFragment : EKycBaseFragment<UpdateInfoLayoutBinding>() {
 
         }
 
-        jsonObject.put("address", viewDataBinding.addressET.text.toString())
+//        jsonObject.put("address", viewDataBinding.addressET.text.toString())
 
 
         if (kycPref.getUserAppInfo(getContainerActivity(),Constants.BASIS_USER_HASH).isNullOrEmpty()){

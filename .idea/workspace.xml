@@ -13,18 +13,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UpdateFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/UpdateFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/res/layout/update_info_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/res/layout/update_info_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RZ8N82Q2QMM]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_3_XL_API_29]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -412,11 +418,17 @@
       <option name="project" value="LOCAL" />
       <updated>1617338776770</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Scoped storage fixed on low also">
+      <created>1617346576246</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1617346576246</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Api integration started - basis ID" />
     <MESSAGE value="Added SHA-256 hash generator for get info." />
     <MESSAGE value="Remove static user hash &amp; id" />
     <MESSAGE value="Remove static user hash &amp; id v2" />
@@ -441,7 +453,8 @@
     <MESSAGE value="occupation fixed" />
     <MESSAGE value="select option in gender, occupation" />
     <MESSAGE value="Scoped storage fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scoped storage fixed" />
+    <MESSAGE value="Scoped storage fixed on low also" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scoped storage fixed on low also" />
   </component>
   <component name="WindowStateProjectService">
     <state x="767" y="271" width="442" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1611815004762">
@@ -464,34 +477,30 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="839" y="319" key="AndroidProcessChooserDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1611820155045" />
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1617338773943">
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2" timestamp="1617346575252">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1617338773943" />
-    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1608709123627">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="167" y="125" width="1653" height="855" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1608709123627" />
+    <state x="377" y="127" width="1223" height="850" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1617346575252" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1617279716150">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1617279716150" />
-    <state width="1807" height="556" key="GridCell.Tab.0.bottom" timestamp="1614163836149">
+    <state width="1807" height="586" key="GridCell.Tab.0.bottom" timestamp="1618030783866">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836149" />
-    <state width="1807" height="556" key="GridCell.Tab.0.center" timestamp="1614163836147">
+    <state width="1807" height="586" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1618030783866" />
+    <state width="1807" height="586" key="GridCell.Tab.0.center" timestamp="1618030783865">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836147" />
-    <state width="1807" height="556" key="GridCell.Tab.0.left" timestamp="1614163836146">
+    <state width="1807" height="586" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1618030783865" />
+    <state width="1807" height="586" key="GridCell.Tab.0.left" timestamp="1618030783865">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836146" />
-    <state width="1807" height="556" key="GridCell.Tab.0.right" timestamp="1614163836148">
+    <state width="1807" height="586" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1618030783865" />
+    <state width="1807" height="586" key="GridCell.Tab.0.right" timestamp="1618030783865">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="556" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614163836148" />
+    <state width="1807" height="586" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1618030783865" />
     <state width="1807" height="435" key="GridCell.Tab.1.bottom" timestamp="1611820240001">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -512,18 +521,14 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="253" y="27" width="1470" height="1053" key="ScreenshotViewer.Dimensions/67.27.1853.1053@67.27.1853.1053" timestamp="1612519157343" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1617338788481">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1617346582265">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1617338788481" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1617346582265" />
     <state x="761" y="472" width="464" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612768623529">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="761" y="472" width="464" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1612768623529" />
-    <state x="556" y="341" width="864" height="423" key="git4idea.merge.GitPullDialog" timestamp="1608709039858">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="556" y="341" width="864" height="423" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1608709039858" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

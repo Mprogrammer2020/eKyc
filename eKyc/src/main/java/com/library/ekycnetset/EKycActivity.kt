@@ -50,6 +50,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     kycPref.storeUserAppInfo(this,Constants.PHONE_CODE,bundle.getString(Constants.PHONE_CODE)?: "")
                     kycPref.storeUserAppInfo(this,Constants.ADDRESS,bundle.getString(Constants.ADDRESS)?: "")
                     kycPref.storeUserAppInfo(this,Constants.DOB,bundle.getString(Constants.DOB)?: "")
+                    kycPref.storeUserAppInfo(this,Constants.NATIONALITY,bundle.getString(Constants.NATIONALITY)?: "")
 
 
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
@@ -129,8 +130,12 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         val intent = Intent()
         intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
         intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
-        intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
-        intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
+
+        if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
+            intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
+            intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
+        }
+
         setResult(RESULT_OK, intent)
         finish()
     }

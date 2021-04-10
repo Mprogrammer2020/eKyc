@@ -7,59 +7,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_6sdp"
-            android:elevation="@dimen/_16sdp"
-            app:cardPreventCornerOverlap="true">
+            android:layout_height="@dimen/_8sdp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:orientation="vertical">
+        <include
+            android:id="@+id/nameView"
+            layout="@layout/step_one_layout"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_8sdp"-->
+<!--            android:layout_marginStart="@dimen/_16sdp"-->
+<!--            android:layout_marginEnd="@dimen/_16sdp"-->
+<!--            app:cardCornerRadius="@dimen/_6sdp"-->
+<!--            android:elevation="@dimen/_16sdp"-->
+<!--            app:cardPreventCornerOverlap="true">-->
 
-                    <TextView
-                        style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/textColor"
-                        android:textAllCaps="true"
-                        android:text="@string/address"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_10sdp"-->
+<!--                android:orientation="vertical">-->
 
-                    <TextView
-                        style="@style/TextViewKyc"
-                        android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        style="@style/TextViewKyc"-->
+<!--                        android:textSize="@dimen/_9sdp"-->
+<!--                        android:textColor="@color/textColor"-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:text="@string/address"/>-->
 
-                <EditText
-                    android:id="@+id/addressET"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_25sdp"
-                    android:textColorHint="@color/hintColor"
-                    android:background="@null"
-                    android:textSize="@dimen/_11sdp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:singleLine="true"
-                    android:fontFamily="@font/helvetica_regular"
-                    android:hint="@string/e_g_address"
-                    android:inputType="textEmailAddress" />
+<!--                    <TextView-->
+<!--                        style="@style/TextViewKyc"-->
+<!--                        android:text="@string/ast"-->
+<!--                        android:textSize="@dimen/_9sdp"-->
+<!--                        android:textColor="@android:color/holo_red_dark"/>-->
 
-            </LinearLayout>
+<!--                </LinearLayout>-->
 
-        </androidx.cardview.widget.CardView>
+<!--                <EditText-->
+<!--                    android:id="@+id/addressET"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_25sdp"-->
+<!--                    android:textColorHint="@color/hintColor"-->
+<!--                    android:background="@null"-->
+<!--                    android:textSize="@dimen/_11sdp"-->
+<!--                    android:textColor="@color/colorBlack"-->
+<!--                    android:layout_marginTop="@dimen/_3sdp"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:fontFamily="@font/helvetica_regular"-->
+<!--                    android:hint="@string/e_g_address"-->
+<!--                    android:inputType="textEmailAddress" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
