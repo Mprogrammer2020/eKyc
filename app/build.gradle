@@ -35,6 +35,8 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+
 }
 
 dependencies {
@@ -50,6 +52,9 @@ dependencies {
 
     // Dependency on a local library module
     implementation project(":eKyc")
+
+
+
 
 
 
