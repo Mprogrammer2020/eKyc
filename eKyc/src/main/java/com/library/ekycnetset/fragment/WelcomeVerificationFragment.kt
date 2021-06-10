@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -39,17 +40,13 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         viewDataBinding.continueClick.setOnClickListener {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (isExternalPermissionGranted) {
-                    if (Environment.isExternalStorageManager()) {
-                        // perform action when allow permission success
-                        displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-                    } else {
-                        getContainerActivity().requestFullStorageAccess(this)
-                    }
+                if (Environment.isExternalStorageManager()) {
+                    // perform action when allow permission success
+                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
                 } else {
                     setExternalPermissionDialog(getContainerActivity())
                 }
-            }else{
+            } else {
                 displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
             }
 
@@ -69,21 +66,25 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
     override fun getLayoutId(): Int {
         if (rootView == 0) {
             rootView = R.layout.fragment_welcome_verification
-            setExternalPermissionDialog(getContainerActivity())
+            //  setExternalPermissionDialog(getContainerActivity())
         }
         return rootView
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-         if (requestCode == 5000){
+        if (requestCode == 5000) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 if (Environment.isExternalStorageManager()) {
                     // perform action when allow permission success
                     displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
                 } else {
-                    Toast.makeText(getContainerActivity(), "Allow permission for storage access!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        getContainerActivity(),
+                        "Allow permission for storage access!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -104,12 +105,15 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         //alertDialog.window?.setLayout(activity.setDialogWidth(), WindowManager.LayoutParams.WRAP_CONTENT)
 
         notNowBtn!!.setOnClickListener {
-            isExternalPermissionGranted = false
+//            isExternalPermissionGranted = false
             alertDialog.dismiss()
         }
 
         continueBtn!!.setOnClickListener {
-            isExternalPermissionGranted = true
+//            isExternalPermissionGranted = true
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                getContainerActivity().requestFullStorageAccess(this)
+            }
             alertDialog.dismiss()
         }
     }
