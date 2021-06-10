@@ -80,9 +80,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             setResultCancelled()
         }
 
-
-
-
         if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
             displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
         }else{

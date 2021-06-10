@@ -33,6 +33,7 @@ import java.util.*
 
 abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), FragmentView {
 
+    var isExternalPermissionGranted: Boolean = false
     private lateinit var mContainerActivity: EKycActivity
 
     override fun onAttach(context: Context) {

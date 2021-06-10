@@ -18,12 +18,7 @@ import com.library.ekycnetset.model.Data
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-
-
     val mList = ArrayList<Data>()
-
-
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,11 +102,9 @@ class MainActivity : AppCompatActivity() {
 
 
                 if (data.getStringExtra(Constants.CHECK_ONE) != null){
-
                     Log.e(Constants.CHECK_ONE, data.getStringExtra(Constants.CHECK_ONE)!!)
                     Log.e(Constants.CHECK_TWO, data.getStringExtra(Constants.CHECK_TWO)!!)
                 }
-
             }
 
             if (resultCode == RESULT_CANCELED){

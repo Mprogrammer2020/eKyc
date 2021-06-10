@@ -10,6 +10,7 @@
     <string name="take_selfie">Take a selfie and a video</string>
     <string name="do_it_later"><u>Do it later</u></string>
     <string name="continue_txt">Continue</string>
+    <string name="not_now">Not Now</string>
 
     <string name="tell_us_one">Tell us about yourself (Step 1 of 4)</string>
     <string name="update_info">Update Info</string>
@@ -80,6 +81,7 @@
     <string name="go_to_home">Go To Home</string>
     <string name="your_ekyc_information_has_been_nsubmitted_successfully">Your eKYC information has been\nsubmitted successfully.</string>
     <string name="congratulations">Congratulations</string>
+
     <string name="please_ensure_that_your_whole_face_is_in_the_image">Please ensure that your whole face is in the image.</string>
     <string name="selfie_instructions">Selfie Instructions</string>
     <string name="agree">Agree</string>
@@ -107,5 +109,6 @@
     <string name="check_box_line_one">Check here to indicate that you have read, understand and agree to eFX <u><font color="#007BB1"><a href='https://api.e-fx.asia/EFXUserManagement/views/terms-and-conditions'>Terms and Conditions, and Privacy Policy.</a></font></u></string>
     <string name="check_box_line_two">I also want to receive marketing materials and communications from eFX and its affiliated companies.</string>
     <string name="terms_and_conditions_and_privacy_policy">Terms and Conditions, and Privacy Policy.</string>
+    <string name="external_permission_text">To attach files for kyc, allow efx, access to your device\'s photos, media and files.</string>
 
 </resources>

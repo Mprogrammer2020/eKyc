@@ -1,12 +1,23 @@
 package com.library.ekycnetset.fragment
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.databinding.FragmentWelcomeVerificationBinding
@@ -16,6 +27,7 @@ import com.library.ekycnetset.databinding.FragmentWelcomeVerificationBinding
 //in : Kotlin
 
 class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerificationBinding>() {
+    var rootView: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,11 +39,15 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         viewDataBinding.continueClick.setOnClickListener {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (Environment.isExternalStorageManager()) {
-                    // perform action when allow permission success
-                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+                if (isExternalPermissionGranted) {
+                    if (Environment.isExternalStorageManager()) {
+                        // perform action when allow permission success
+                        displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+                    } else {
+                        getContainerActivity().requestFullStorageAccess(this)
+                    }
                 } else {
-                    getContainerActivity().requestFullStorageAccess(this)
+                    setExternalPermissionDialog(getContainerActivity())
                 }
             }else{
                 displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
@@ -51,7 +67,11 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_welcome_verification
+        if (rootView == 0) {
+            rootView = R.layout.fragment_welcome_verification
+            setExternalPermissionDialog(getContainerActivity())
+        }
+        return rootView
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -69,6 +89,31 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
         }
     }
+
+    fun setExternalPermissionDialog(activity: AppCompatActivity) {
+        val dialogBuilder = AlertDialog.Builder(activity)
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_ask_for_external_permission, null)
+        dialogBuilder.setView(dialogView)
+        val notNowBtn = dialogView.findViewById<TextView>(R.id.notNowBtn)
+        val continueBtn = dialogView.findViewById<TextView>(R.id.continueBtn)
+        val alertDialog = dialogBuilder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+        //alertDialog.window?.setLayout(activity.setDialogWidth(), WindowManager.LayoutParams.WRAP_CONTENT)
+
+        notNowBtn!!.setOnClickListener {
+            isExternalPermissionGranted = false
+            alertDialog.dismiss()
+        }
+
+        continueBtn!!.setOnClickListener {
+            isExternalPermissionGranted = true
+            alertDialog.dismiss()
+        }
+    }
+
 
 //    private fun success() {
 //
