@@ -111,18 +111,17 @@ class MainActivity : AppCompatActivity() {
                 Log.e("RESULT","CANCELED")
             }
 
-        }else if (requestCode == 5000){
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (Environment.isExternalStorageManager()) {
-                    // perform action when allow permission success
-                    move()
-                } else {
-                    Toast.makeText(this, "Allow permission for storage access!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
         }
+//        else if (requestCode == 5000){
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//                if (Environment.isExternalStorageManager()) {
+//                    // perform action when allow permission success
+//                    move()
+//                } else {
+//                    Toast.makeText(this, "Allow permission for storage access!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
 
     }
 

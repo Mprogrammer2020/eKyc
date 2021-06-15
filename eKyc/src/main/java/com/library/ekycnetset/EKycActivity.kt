@@ -95,11 +95,11 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     }
 
-    @RequiresPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
-    @RequiresApi(Build.VERSION_CODES.R)
-    fun requestFullStorageAccess(frag : WelcomeVerificationFragment) {
-        frag.startActivityForResult(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),5000)
-    }
+//    @RequiresPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
+//    @RequiresApi(Build.VERSION_CODES.R)
+//    fun requestFullStorageAccess(frag : WelcomeVerificationFragment) {
+//        frag.startActivityForResult(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),5000)
+//    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_e_kyc

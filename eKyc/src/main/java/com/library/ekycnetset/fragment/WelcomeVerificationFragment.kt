@@ -39,18 +39,18 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
         viewDataBinding.continueClick.setOnClickListener {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (Environment.isExternalStorageManager()) {
-                    // perform action when allow permission success
-                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-                } else {
-                    setExternalPermissionDialog(getContainerActivity())
-                }
-            } else {
-                displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-            }
+            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
 
-//            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//                if (Environment.isExternalStorageManager()) {
+//                    // perform action when allow permission success
+//                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+//                } else {
+//                    getContainerActivity().requestFullStorageAccess(this)
+//                }
+//            } else {
+//                displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+//            }
         }
 
     }
@@ -73,49 +73,21 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 5000) {
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (Environment.isExternalStorageManager()) {
-                    // perform action when allow permission success
-                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-                } else {
-                    Toast.makeText(
-                        getContainerActivity(),
-                        "Allow permission for storage access!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-
-        }
-    }
-
-    fun setExternalPermissionDialog(activity: AppCompatActivity) {
-        val dialogBuilder = AlertDialog.Builder(activity)
-        val inflater = this.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_ask_for_external_permission, null)
-        dialogBuilder.setView(dialogView)
-        val notNowBtn = dialogView.findViewById<TextView>(R.id.notNowBtn)
-        val continueBtn = dialogView.findViewById<TextView>(R.id.continueBtn)
-        val alertDialog = dialogBuilder.create()
-        alertDialog.setCancelable(false)
-        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alertDialog.show()
-        //alertDialog.window?.setLayout(activity.setDialogWidth(), WindowManager.LayoutParams.WRAP_CONTENT)
-
-        notNowBtn!!.setOnClickListener {
-//            isExternalPermissionGranted = false
-            alertDialog.dismiss()
-        }
-
-        continueBtn!!.setOnClickListener {
-//            isExternalPermissionGranted = true
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                getContainerActivity().requestFullStorageAccess(this)
-            }
-            alertDialog.dismiss()
-        }
+//        if (requestCode == 5000) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//                if (Environment.isExternalStorageManager()) {
+//                    // perform action when allow permission success
+//                    displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
+//                } else {
+//                    Toast.makeText(
+//                        getContainerActivity(),
+//                        "Allow permission for storage access!",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//
+//        }
     }
 
 
