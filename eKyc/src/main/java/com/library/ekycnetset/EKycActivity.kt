@@ -83,7 +83,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
             displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
         }else{
-            displayIt(UpdateFragment(), UpdateFragment::class.java.canonicalName, true)
+            displayIt(WelcomeVerificationFragment(), UpdateFragment::class.java.canonicalName, true)
         }
 
 

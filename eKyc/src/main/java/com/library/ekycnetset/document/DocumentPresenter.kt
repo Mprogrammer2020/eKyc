@@ -3,6 +3,7 @@ package com.library.ekycnetset.document
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -13,7 +14,9 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.R
+import com.library.ekycnetset.fragment.UploadDocumentFragment
 import com.nbsp.materialfilepicker.MaterialFilePicker
+import com.obsez.android.lib.filechooser.ChooserDialog
 import java.util.regex.Pattern
 
 
@@ -78,7 +81,8 @@ class DocumentPresenter(
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                     if (report.areAllPermissionsGranted()) {
 //                        openFilePicker()
-                        filePickerV2()
+//                        filePickerV2()
+                        filePickerNewV2()
                     }
 
                     if (report.isAnyPermissionPermanentlyDenied) {
@@ -93,6 +97,18 @@ class DocumentPresenter(
                     token.continuePermissionRequest()
                 }
             }).check()
+    }
+
+    private fun filePickerNewV2() {
+        // getDocument();
+        ChooserDialog().with(mActivity)
+            .withStartFile(Environment.getExternalStorageDirectory().absolutePath)
+            .withFilter(false, false, "pdf", "docx", "doc", "xlsx", "xls", "ppt", "pptx", "png", "jpg", "jpeg")
+            .withResources(R.string.title_choose, R.string.title_choose, R.string.dialog_cancel)
+            .withChosenListener(ChooserDialog.Result { s, file ->
+                (frag as UploadDocumentFragment).fileWithRequestCode(req, s)
+            })
+            .build().show()
     }
 
     private fun filePickerV2(){

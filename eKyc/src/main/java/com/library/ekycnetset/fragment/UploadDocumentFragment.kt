@@ -252,6 +252,33 @@ class UploadDocumentFragment : EKycBaseFragment<FragmentUploadDocLayoutBinding>(
         )
     }
 
+    fun fileWithRequestCode(req: Int, path: String) {
+        if (req == 3000) {
+            val filePath = path
+            sendFileApi("send-statement", filePath, object : OnSuccess {
+                override fun onRes() {
+                    isBankStatementSend = true
+                    viewDataBinding.bankStatement.uploadTxt.text =
+                        fromHtml(getString(R.string.upload_again))
+                    viewDataBinding.bankStatement.uploadedTxt.visibility = View.VISIBLE
+                    viewDataBinding.bankStatement.bg.background =
+                        ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+
+                }
+
+            })
+        } else if (req == 4000) {
+            val filePath = path
+            sendFileApi("send-proof-income", filePath, object : OnSuccess {
+                override fun onRes() {
+                    isIncomeStatementSend = true
+                    viewDataBinding.incomeStatement.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                    viewDataBinding.incomeStatement.uploadedTxt.visibility = View.VISIBLE
+                    viewDataBinding.incomeStatement.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+                }
+            })
+        }
+    }
 }
 
 //
