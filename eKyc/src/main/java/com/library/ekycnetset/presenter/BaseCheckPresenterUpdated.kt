@@ -635,7 +635,7 @@ class BaseCheckPresenterUpdated(
                             context.kycPref.storeHash(context, model.user_hash!!)
                             context.kycPref.storeUserId(context, model.user_id!!)
 
-                            if (context.getAdminSettings()[4].value && context.getAdminSettings()[10].value)
+                            if (context.getAdminSettings()[4].value && context.getAdminSettings()[13].value)
                                 goToMobVerification()
                             else
                                 gotoDocFrag()

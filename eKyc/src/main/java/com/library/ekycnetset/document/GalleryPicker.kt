@@ -34,7 +34,7 @@ class GalleryPicker(val activity: AppCompatActivity, val frag : Fragment){
 
     private fun takeVideoFromCamera() {
         val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
-        intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10)
+        intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 20)
         frag.startActivityForResult(intent, CAMERA)
     }
 

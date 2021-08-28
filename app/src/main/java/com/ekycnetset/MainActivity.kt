@@ -127,7 +127,8 @@ class MainActivity : AppCompatActivity() {
     fun move(){
 
         val intent = Intent(this,EKycActivity::class.java)
-        intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
+//        intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
+        intent.putExtra(Constants.API_KEY, "prod-XWzdnqGSToqEqoZaPrprUfUunGiirYav")
 
         intent.putExtra(Constants.F_NAME, "Steve")
         intent.putExtra(Constants.L_NAME, "Roger")

@@ -47,11 +47,12 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         viewDataBinding.takeSelfieClick.uploadTxt.setOnClickListener {
-            DocumentPresenter(getContainerActivity(), this, 1000).onSelfieClick()
+            val list = ArrayList<String>()
+            list.add("Please ensure that your whole face is in the image.")
+            list.add("Please ensure that the image is taken with proper lighting. (e.g. no glare, not too dark)")
+            list.add("Do not wear any glasses or any type of things that will hide your face.")
+            instructions(list, true)
         }
-
-//        Log.e("HASH", kycPref.getHash(getContainerActivity())!!)
-//        Log.e("USER ID", kycPref.getUserId(getContainerActivity())!!.toString())
 
         setGlide(R.drawable.ic_take_video, viewDataBinding.takeVideoClick.iconOne)
         viewDataBinding.takeVideoClick.titleTxt.text = getString(R.string.take_a_video)
@@ -69,16 +70,14 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
 
         viewDataBinding.takeVideoClick.uploadTxt.setOnClickListener {
-
-            DocumentPresenter(getContainerActivity(), this, 1000).onVideoPickerClick()
-
-//            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-//            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
-//            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
-//                context!!,
-//                R.drawable.green_stroke_rect
-//            )
-
+            val list = ArrayList<String>()
+            list.add("Please ensure that your whole face is in the Video.")
+            list.add("Please ensure that the video is taken with proper lighting. (e.g. no glare, not too dark)")
+            list.add("Look 5 seconds straight.")
+            list.add("Look 5 seconds left.")
+            list.add("Look 5 seconds right.")
+            list.add("Take Photo ID near your face and look into camera for 5 seconds.")
+            instructions(list, false)
         }
 
         viewDataBinding.nextClick.setOnClickListener {
@@ -88,8 +87,6 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
             else
                 showToast("Please upload mandatory files.")
         }
-
-        instructions()
 
     }
 
@@ -142,14 +139,9 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                             isSelfieSend = true
 
-                            viewDataBinding.takeSelfieClick.uploadTxt.text =
-                                fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.takeSelfieClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
                             viewDataBinding.takeSelfieClick.uploadedTxt.visibility = View.VISIBLE
-                            viewDataBinding.takeSelfieClick.bg.background =
-                                ContextCompat.getDrawable(
-                                    context!!,
-                                    R.drawable.green_stroke_rect
-                                )
+                            viewDataBinding.takeSelfieClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
 
                         }
 
@@ -311,18 +303,12 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 //            })
 //    }
 
-    private fun instructions() {
+    private fun instructions(list: ArrayList<String>, isForCamera: Boolean) {
 
         BubbleDialog(getContainerActivity(), R.layout.dialog_inst_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogInstLayoutBinding> {
 
                 override fun onBind(binder: DialogInstLayoutBinding, dialog: Dialog) {
-
-                    val list = ArrayList<String>()
-                    list.add("Please ensure that your whole face is in the image.")
-                    list.add("Please ensure that the image is taken with proper lighting (e.g. no glare, not too dark)")
-                    list.add("Do not wear any glasses or any type of things that will hide your face.")
-                    list.add("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.")
 
                     val mAdapter = RecyclerViewGenricAdapter<String, ItemInstLayoutBinding>(
                         list,
@@ -335,17 +321,19 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                     }
 
-                    val mLayoutManager = LinearLayoutManager(
-                        getContainerActivity(),
-                        RecyclerView.VERTICAL,
-                        false
-                    )
+                    val mLayoutManager = LinearLayoutManager(getContainerActivity(), RecyclerView.VERTICAL, false)
                     binder.instRV.layoutManager = mLayoutManager
                     binder.instRV.itemAnimator = DefaultItemAnimator()
                     binder.instRV.adapter = mAdapter
 
+                    if (isForCamera) binder.title.text = getString(R.string.selfie_instructions) else binder.title.text = getString(R.string.video_instructions)
                     binder.agreeClick.setOnClickListener {
                         dialog.dismiss()
+                        if (isForCamera) {
+                            DocumentPresenter(getContainerActivity(), this@TakeSelfieFragment, 1000).onSelfieClick()
+                        } else {
+                            DocumentPresenter(getContainerActivity(), this@TakeSelfieFragment, 1000).onVideoPickerClick()
+                        }
                     }
 
                     binder.notAgreeClick.setOnClickListener {

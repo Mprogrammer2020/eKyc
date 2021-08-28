@@ -61,9 +61,8 @@
                 <TextView
                     android:id="@+id/notAgreeClick"
                     style="@style/TextViewKyc"
-                    android:text="@string/not_agree"
+                    android:text="@string/cancel"
                     android:padding="@dimen/_12sdp"
-                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

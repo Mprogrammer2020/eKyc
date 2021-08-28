@@ -69,7 +69,7 @@
     <string name="one_last">One last step!</string>
     <string name="one_last_two">&#160;Take a selfie and a video.</string>
     <string name="take_a_selfie">Take a selfie</string>
-    <string name="take_a_video">Take a video</string>
+    <string name="take_a_video">Take a 20 seconds video</string>
     <string name="we_will_send_you_an">We will send you an&#160;</string>
     <string name="on_this_mobile_number">on this mobile number.</string>
     <string name="one_time_password_otp">One Time Password (OTP)</string>
@@ -84,8 +84,10 @@
 
     <string name="please_ensure_that_your_whole_face_is_in_the_image">Please ensure that your whole face is in the image.</string>
     <string name="selfie_instructions">Selfie Instructions</string>
+    <string name="video_instructions">Video Instructions</string>
     <string name="agree">Agree</string>
     <string name="not_agree">Not Agree</string>
+    <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
 
     <string name="internet_error">Internet not available, Cross check your internet connectivity and try again</string>

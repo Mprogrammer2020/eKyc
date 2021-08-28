@@ -154,6 +154,8 @@
                         android:inputType="phone"
                         android:maxLength="12"
                         android:singleLine="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:textColor="@color/colorBlack"
                         android:textColorHint="@color/hintColor"
                         android:textSize="@dimen/_11sdp" />
