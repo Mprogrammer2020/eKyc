@@ -304,17 +304,17 @@ class BaseCheckPresenter(
         //Occupation ended
 
         viewDataBinding.twoStep.codeClick.setOnClickListener {
-            mAppPresenter!!.showCountryCodeDialog(
-                true,
-                object : AppPresenter.OnCountrySelectionListener {
-
-                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
-
-                        viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
-
-                    }
-
-                })
+//            mAppPresenter!!.showCountryCodeDialog(
+//                true,
+//                object : AppPresenter.OnCountrySelectionListener {
+//
+//                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
+//
+//                        viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
+//
+//                    }
+//
+//                })
         }
 
         viewDataBinding.threeStep.countryClick.setOnClickListener {
