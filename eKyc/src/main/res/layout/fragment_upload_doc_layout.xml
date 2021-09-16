@@ -116,6 +116,7 @@
                     layout="@layout/card_layout"/>
 
                 <include
+                    android:visibility="gone"
                     android:id="@+id/incomeStatement"
                     layout="@layout/card_layout"/>
 

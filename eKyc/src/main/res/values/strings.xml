@@ -48,7 +48,7 @@
     <string name="country_of_residence">Country Of Residence</string>
     <string name="city">City</string>
     <string name="address">Address</string>
-    <string name="zip">Zip Code</string>
+    <string name="zip">Zip/Postal Code</string>
     <string name="e_g_city">E.g. California</string>
     <string name="e_g_address">E.g. 1639 Stroop Hill Road</string>
     <string name="e_g_zip">E.g. 90001</string>
