@@ -67,7 +67,7 @@
                 <LinearLayout
                     android:id="@+id/customCB"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +85,7 @@
                         style="@style/TextViewKyc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="@string/check_box_line_one" />
 
 
@@ -93,7 +94,7 @@
                 <LinearLayout
                     android:id="@+id/customCB2"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -109,6 +110,7 @@
                         style="@style/TextViewKyc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="@string/check_box_line_two" />
 
                 </LinearLayout>
