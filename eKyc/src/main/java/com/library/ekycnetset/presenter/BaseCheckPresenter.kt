@@ -50,12 +50,16 @@ class BaseCheckPresenter(
         notWithSpace(viewDataBinding.threeStep.addressET)
         notWithSpace(viewDataBinding.threeStep.zipET)
 
+        countryNationality = "MY"
+        countryResidence = "MY"
         viewDataBinding.oneStep.firstNameET.setText(context.kycPref.getUserAppInfo(context,Constants.F_NAME))
         viewDataBinding.oneStep.lastNameET.setText(context.kycPref.getUserAppInfo(context,Constants.L_NAME))
         viewDataBinding.twoStep.emailET.setText(context.kycPref.getUserAppInfo(context,Constants.EMAIL))
         viewDataBinding.twoStep.mobileET.setText(context.kycPref.getUserAppInfo(context,Constants.PHONE_NUMBER))
         viewDataBinding.twoStep.codeTxt.text = context.kycPref.getUserAppInfo(context,Constants.PHONE_CODE)
         viewDataBinding.threeStep.addressET.setText(context.kycPref.getUserAppInfo(context,Constants.ADDRESS))
+        viewDataBinding.threeStep.countryTxt.setText("Malaysia")
+        viewDataBinding.threeStep.countryResTxt.setText("Malaysia")
 
 
         // First Set Mandatory

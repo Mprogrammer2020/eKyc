@@ -75,7 +75,11 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     }
 
     public void showLoading() {
-        mActivity.showLoading();
+        try {
+            mActivity.showLoading();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void hideLoading() {
