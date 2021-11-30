@@ -27,7 +27,7 @@ class TermsAndPrivacyWebViewFragment(var title: String) : EKycBaseFragment<Layou
     }
 
     override fun setTitle(): String {
-       return ""
+       return title
     }
 
 
