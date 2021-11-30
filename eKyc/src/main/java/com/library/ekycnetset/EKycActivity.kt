@@ -10,9 +10,11 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import androidx.fragment.app.Fragment
+import com.application.efx.auth.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
+import com.library.ekycnetset.fragment.TakeSelfieFragment
 import com.library.ekycnetset.fragment.UpdateFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
@@ -142,11 +144,13 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
     }
 
     override fun onBackPressed() {
-
-        if (currentFragment is WelcomeVerificationFragment)
+        if (currentFragment is WelcomeVerificationFragment) {
             setResultCancelled()
-        else
+        } else if (currentFragment is TermsAndPrivacyWebViewFragment) {
+            (currentFragment as TermsAndPrivacyWebViewFragment).onBackPress()
+        } else {
             super.onBackPressed()
+        }
 
     }
 }

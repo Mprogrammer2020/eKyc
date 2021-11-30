@@ -1,6 +1,7 @@
 package com.library.ekycnetset.base
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.KeyEvent
@@ -8,10 +9,11 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.library.ekycnetset.R
 
 
-class BubbleDialog<T : ViewDataBinding>(activity: AppCompatActivity, layoutId : Int, binder : LinkodesDialogBinding<T>){
+class BubbleDialog<T : ViewDataBinding>(context: Context?, activity: AppCompatActivity, layoutId : Int, binder : LinkodesDialogBinding<T>){
 
     init {
 

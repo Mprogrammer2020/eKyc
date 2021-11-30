@@ -2,21 +2,31 @@ package com.library.ekycnetset.fragment
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.ContentValues
-import android.content.Intent
+import android.content.*
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.text.Spannable
+import android.text.SpannableString
 import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.application.efx.auth.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
@@ -34,6 +44,7 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.IOException
 
+
 //by : Deepak Kumar
 //at : Netset Software
 //in : Kotlin
@@ -42,7 +53,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
     private var isSelfieSend = false
     private var isVideoSend = false
-
+    private var isFirstBoxChecked = false
+    private var isSecondBoxChecked = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -68,7 +80,6 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
         else
             viewDataBinding.takeVideoClick.astTxt.visibility = View.GONE
 
-
         viewDataBinding.takeVideoClick.uploadTxt.setOnClickListener {
             val list = ArrayList<String>()
             list.add("Please ensure that your whole face is in the Video.")
@@ -87,7 +98,6 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
             else
                 showToast("Please upload mandatory files.")
         }
-
     }
 
     override fun getCurrentFragment(): Fragment {
@@ -136,31 +146,26 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                     sendFileApi("send-image", uri.path!!, object : OnSuccess {
 
                         override fun onRes() {
-
                             isSelfieSend = true
-
-                            viewDataBinding.takeSelfieClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
+                            viewDataBinding.takeSelfieClick.uploadTxt.text =
+                                fromHtml(getString(R.string.upload_again))
                             viewDataBinding.takeSelfieClick.uploadedTxt.visibility = View.VISIBLE
-                            viewDataBinding.takeSelfieClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
-
+                            viewDataBinding.takeSelfieClick.bg.background =
+                                ContextCompat.getDrawable(
+                                    context!!,
+                                    R.drawable.green_stroke_rect
+                                )
                         }
-
                     })
-
                 }
             }
             1, 2 -> {
-
                 if (resultCode == Activity.RESULT_OK) {
-
                     val uri: Uri = data!!.data!!
-                    Log.e("Path", FileUtils.getRealPath(getContainerActivity(),uri))
-
-                    val desFile =
-                        saveVideoFile(FileUtils.getRealPath(getContainerActivity(),uri))
-
+                    Log.e("Path", FileUtils.getRealPath(getContainerActivity(), uri))
+                    val desFile = saveVideoFile(FileUtils.getRealPath(getContainerActivity(), uri))
                     VideoCompressor.start(
-                        FileUtils.getRealPath(getContainerActivity(),uri),
+                        FileUtils.getRealPath(getContainerActivity(), uri),
                         desFile!!.path,
                         object : CompressionListener {
                             override fun onProgress(percent: Float) {
@@ -169,7 +174,8 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                                 //Update UI
                                 if (percent <= 100 && percent.toInt() % 5 == 0)
                                     getContainerActivity().runOnUiThread {
-                                        viewDataBinding.precentProgressTxt.text = "${percent.toLong()}%"
+                                        viewDataBinding.precentProgressTxt.text =
+                                            "${percent.toLong()}%"
                                     }
                             }
 
@@ -192,9 +198,19 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                                             isVideoSend = true
 
-                                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-                                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
-                                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(context!!, R.drawable.green_stroke_rect)
+                                            viewDataBinding.takeVideoClick.uploadTxt.text =
+                                                fromHtml(
+                                                    getString(
+                                                        R.string.upload_again
+                                                    )
+                                                )
+                                            viewDataBinding.takeVideoClick.uploadedTxt.visibility =
+                                                View.VISIBLE
+                                            viewDataBinding.takeVideoClick.bg.background =
+                                                ContextCompat.getDrawable(
+                                                    context!!,
+                                                    R.drawable.green_stroke_rect
+                                                )
 
                                         }
 
@@ -215,71 +231,96 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                         isMinBitRateEnabled = false,
                         keepOriginalResolution = false
                     )
-
-//                    sendFileApi("send-video", RealPath.getPathFromURI(getContainerActivity(),uri), object : OnSuccess {
-//
-//                        override fun onRes() {
-//
-//                            isVideoSend = true
-//
-//                            viewDataBinding.takeVideoClick.uploadTxt.text = fromHtml(getString(R.string.upload_again))
-//                            viewDataBinding.takeVideoClick.uploadedTxt.visibility = View.VISIBLE
-//                            viewDataBinding.takeVideoClick.bg.background = ContextCompat.getDrawable(
-//                                context!!,
-//                                R.drawable.green_stroke_rect
-//                            )
-//
-//                        }
-//
-//                    })
                 }
             }
-//            2 ->{
-//
-//                if (resultCode == Activity.RESULT_OK) {
-//
-//                    val uri: Uri = data!!.data!!
-//                    Log.e("Path", RealPath.getPathFromURI(getContainerActivity(),uri))
-//
-//                }
-//            }
         }
     }
 
     private fun success() {
+        LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
 
-        BubbleDialog(getContainerActivity(), R.layout.dialog_terms_layout,
+        BubbleDialog(context, getContainerActivity(), R.layout.dialog_terms_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogTermsLayoutBinding> {
-
                 override fun onBind(
                     binder: DialogTermsLayoutBinding,
                     dialog: Dialog
                 ) {
-
                     binder.textOne.setMovementMethod(LinkMovementMethod.getInstance())
+                    val wordtoSpan: Spannable = SpannableString(getContainerActivity().getString(R.string.check_box_line_one_))
+                    val spanForTermsAndConditions: ClickableSpan = object : ClickableSpan() {
+                        override fun onClick(widget: View) {
+                            dialog.dismiss()
+                            LocalBroadcastManager.getInstance(getContainerActivity()).registerReceiver(broadCastReceiver, IntentFilter("broadcast"))
+                           displayIt(TermsAndPrivacyWebViewFragment(getContainerActivity().getString(R.string.terms_conditions)), TermsAndPrivacyWebViewFragment::class.java.canonicalName, true)
 
+                        }
+                    }
+                    val spanForPrivacyPolicy: ClickableSpan = object : ClickableSpan() {
+                        override fun onClick(widget: View) {
+                            dialog.dismiss()
+                            LocalBroadcastManager.getInstance(getContainerActivity()).registerReceiver(broadCastReceiver, IntentFilter("broadcast"))
+                            displayIt(TermsAndPrivacyWebViewFragment(getContainerActivity().getString(R.string.privacy_policy)), TermsAndPrivacyWebViewFragment::class.java.canonicalName, true)
+                        }
+                    }
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForTermsAndConditions, 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForPrivacyPolicy, 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                    binder.textOne.text = wordtoSpan
+
+                    binder.cbOne.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
+                        override fun onCheckedChanged(
+                            buttonView: CompoundButton?,
+                            isChecked: Boolean
+                        ) {
+                            isFirstBoxChecked = isChecked
+
+                        }
+                    })
+
+                    binder.cbTwo.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
+                        override fun onCheckedChanged(
+                            buttonView: CompoundButton?,
+                            isChecked: Boolean
+                        ) {
+                            isSecondBoxChecked = isChecked
+                        }
+                    })
+
+                    if (isFirstBoxChecked) {
+                        binder.cbOne.isChecked = true
+                    }
+                    if (isSecondBoxChecked) {
+                        binder.cbTwo.isChecked = true
+                    }
                     binder.goToHomeClick.setOnClickListener {
-
                         Log.e("CB 1", binder.cbOne.isChecked.toString())
                         Log.e("CB 2", binder.cbTwo.isChecked.toString())
 
-                        if (binder.cbOne.isChecked){
-
-                            kycPref.storeUserAppInfo(getContainerActivity(), Constants.CHECK_ONE, binder.cbOne.isChecked.toString())
-                            kycPref.storeUserAppInfo(getContainerActivity(), Constants.CHECK_TWO, binder.cbTwo.isChecked.toString())
+                        if (binder.cbOne.isChecked) {
+                            kycPref.storeUserAppInfo(
+                                getContainerActivity(),
+                                Constants.CHECK_ONE,
+                                binder.cbOne.isChecked.toString()
+                            )
+                            kycPref.storeUserAppInfo(
+                                getContainerActivity(),
+                                Constants.CHECK_TWO,
+                                binder.cbTwo.isChecked.toString()
+                            )
 
                             dialog.dismiss()
                             getContainerActivity().setResultOk()
 
-                        }else{
+                        } else {
                             showToast("Please accept our terms & conditions and privacy policy.")
                         }
-
-
                     }
-
                 }
-
             })
     }
 
@@ -305,7 +346,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
     private fun instructions(list: ArrayList<String>, isForCamera: Boolean) {
 
-        BubbleDialog(getContainerActivity(), R.layout.dialog_inst_layout,
+        BubbleDialog(context, getContainerActivity(), R.layout.dialog_inst_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogInstLayoutBinding> {
 
                 override fun onBind(binder: DialogInstLayoutBinding, dialog: Dialog) {
@@ -321,18 +362,33 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
 
                     }
 
-                    val mLayoutManager = LinearLayoutManager(getContainerActivity(), RecyclerView.VERTICAL, false)
+                    val mLayoutManager = LinearLayoutManager(
+                        getContainerActivity(),
+                        RecyclerView.VERTICAL,
+                        false
+                    )
                     binder.instRV.layoutManager = mLayoutManager
                     binder.instRV.itemAnimator = DefaultItemAnimator()
                     binder.instRV.adapter = mAdapter
 
-                    if (isForCamera) binder.title.text = getString(R.string.selfie_instructions) else binder.title.text = getString(R.string.video_instructions)
+                    if (isForCamera) binder.title.text =
+                        getString(R.string.selfie_instructions) else binder.title.text = getString(
+                        R.string.video_instructions
+                    )
                     binder.agreeClick.setOnClickListener {
                         dialog.dismiss()
                         if (isForCamera) {
-                            DocumentPresenter(getContainerActivity(), this@TakeSelfieFragment, 1000).onSelfieClick()
+                            DocumentPresenter(
+                                getContainerActivity(),
+                                this@TakeSelfieFragment,
+                                1000
+                            ).onSelfieClick()
                         } else {
-                            DocumentPresenter(getContainerActivity(), this@TakeSelfieFragment, 1000).onVideoPickerClick()
+                            DocumentPresenter(
+                                getContainerActivity(),
+                                this@TakeSelfieFragment,
+                                1000
+                            ).onVideoPickerClick()
                         }
                     }
 
@@ -408,5 +464,25 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
             }
         }
         return null
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+      //  LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
+    }
+
+    private val broadCastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(contxt: Context?, intent: Intent?) {
+            when (intent?.action) {
+                "broadcast" -> {
+                    success()
+                }
+            }
+        }
     }
 }

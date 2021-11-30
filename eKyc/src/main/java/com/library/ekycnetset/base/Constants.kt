@@ -5,6 +5,9 @@ object Constants {
 
     const val BASE_API = " https://api.basisid.com/"
 
+    const val TERMS_AND_CONDITIONS = "https://www.e-fx.my/terms-of-use"
+    const val PRIVACY_POLICY = "https://www.e-fx.my/privacy-policy"
+
     const val API_KEY = "API_KEY"
 
     const val BASIS_REQ_CODE = 3451
