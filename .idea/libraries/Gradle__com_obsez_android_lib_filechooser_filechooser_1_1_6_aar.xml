@@ -13,6 +13,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5d48824488ab70ab5053fb001cb01db/jetified-filechooser-1.1.6/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5d48824488ab70ab5053fb001cb01db/jetified-filechooser-1.1.6/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5d48824488ab70ab5053fb001cb01db/jetified-filechooser-1.1.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19ca0939824b0fc82f3f6f41f46555cd/jetified-filechooser-1.1.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19ca0939824b0fc82f3f6f41f46555cd/jetified-filechooser-1.1.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19ca0939824b0fc82f3f6f41f46555cd/jetified-filechooser-1.1.6/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

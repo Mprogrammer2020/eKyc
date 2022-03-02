@@ -111,6 +111,7 @@
     <string name="check_box_line_one_">Check here to indicate that you have read, understand and agree to eFX Terms and Conditions and Privacy Policy.</string>
     <string name="check_box_line_one">Check here to indicate that you have read, understand and agree to eFX <u><font color="#007BB1"><a href='https://www.e-fx.my/terms-of-use'>Terms and Conditions</a></font></u> and <u><font color="#007BB1"><a href='https://www.e-fx.my/privacy-policy'>Privacy Policy.</a></font></u></string>
     <string name="check_box_line_two">I also want to receive marketing materials and communications from eFX and its affiliated companies.</string>
+    <string name="third_party_disclaimer">All verification process are performed by Basis ID, by clicking "\"Proceed\"", you will be confirming that you have read and agreed to the Terms and Conditions and Privacy Policy.</string>
     <string name="terms_and_conditions_and_privacy_policy">Terms and Conditions, and Privacy Policy.</string>
     <string name="terms_conditions">Terms &amp; Conditions</string>
     <string name="privacy_policy">Privacy Policy</string>

@@ -252,7 +252,6 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
                             dialog.dismiss()
                             LocalBroadcastManager.getInstance(getContainerActivity()).registerReceiver(broadCastReceiver, IntentFilter("broadcast"))
                            displayIt(TermsAndPrivacyWebViewFragment(getContainerActivity().getString(R.string.terms_conditions)), TermsAndPrivacyWebViewFragment::class.java.canonicalName, true)
-
                         }
                     }
                     val spanForPrivacyPolicy: ClickableSpan = object : ClickableSpan() {
