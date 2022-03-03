@@ -53,9 +53,7 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
         }
 
         viewDataBinding.continueClick.setOnClickListener {
-
-            displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
-
+            openThirdPartyDisclaimerDialog()
 //            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 //                if (Environment.isExternalStorageManager()) {
 //                    // perform action when allow permission success
@@ -81,7 +79,6 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
     override fun getLayoutId(): Int {
         if (rootView == 0) {
             rootView = R.layout.fragment_welcome_verification
-            openThirdPartyDisclaimerDialog()
             //  setExternalPermissionDialog(getContainerActivity())
         }
         return rootView
@@ -142,10 +139,11 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
                     binder.proceedToKycBtn.setOnClickListener {
                         dialog.dismiss()
+                        displayIt(StepOneFragment(), StepOneFragment::class.java.canonicalName, true)
                     }
 
                     binder.notNowBtn.setOnClickListener {
-                        getContainerActivity().setResultCancelled()
+                        dialog.dismiss()
                     }
                 }
             })
