@@ -101,7 +101,7 @@ class DocumentPresenter(
 
     private fun filePickerNewV2() {
         // getDocument();
-        ChooserDialog().with(mActivity)
+        ChooserDialog(mActivity)
             .withStartFile(Environment.getExternalStorageDirectory().absolutePath)
             .withFilter(false, false, "pdf", "docx", "doc", "xlsx", "xls", "ppt", "pptx", "png", "jpg", "jpeg")
             .withResources(R.string.title_choose, R.string.title_choose, R.string.dialog_cancel)
