@@ -18,15 +18,12 @@ import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.application.efx.auth.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
@@ -237,6 +234,7 @@ class TakeSelfieFragment : EKycBaseFragment<FragmentTakeLayoutBinding>() {
     }
 
     private fun success() {
+
         LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
 
         BubbleDialog(context, getContainerActivity(), R.layout.dialog_terms_layout,

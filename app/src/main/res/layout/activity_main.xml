@@ -16,10 +16,10 @@
         android:id="@+id/eKyc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go tO eKYC"
-        android:textColor="@color/colorWhite"
-        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:background="@color/colorPrimary"
+        android:text="Go tO eKYC"
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

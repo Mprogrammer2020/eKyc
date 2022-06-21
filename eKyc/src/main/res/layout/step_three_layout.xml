@@ -171,7 +171,8 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:text="@string/address"
+                        android:layout_width="match_parent"
+                        android:text="@string/building_number"
                         android:textAllCaps="true"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/_9sdp" />
@@ -225,7 +226,62 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:text="@string/city"
+                        android:layout_width="match_parent"
+                        android:text="@string/street"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <TextView
+                        android:id="@+id/astStreet"
+                        style="@style/TextViewKyc"
+                        android:text="@string/ast"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/streetET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@null"
+                    android:fontFamily="@font/helvetica_regular"
+                    android:hint="@string/e_g_street"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/hintColor"
+                    android:textSize="@dimen/_11sdp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:elevation="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_6sdp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewKyc"
+                        android:text="@string/town"
                         android:textAllCaps="true"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/_9sdp" />
@@ -302,7 +358,6 @@
                     android:background="@null"
                     android:fontFamily="@font/helvetica_regular"
                     android:hint="@string/e_g_zip"
-                    android:inputType="number"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/hintColor"

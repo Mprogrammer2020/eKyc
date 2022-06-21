@@ -20,4 +20,11 @@
     <color name="greenColor">#55D44C</color>
     <color name="greenColorTrans">#F0FFEE</color>
 
+    <color name="onfidoPrimaryButtonColor">#00A8E3</color>
+    <color name="onfidoPrimaryButtonTextColor">#FFFFFF</color>
+    <color name="onfidoPrimaryButtonColorPressed">#00A8E3</color>
+    <color name="onfidoColorPrimary">#00A8E3</color>
+    <color name="onfidoColorPrimaryDark">#00A3E1</color>
+    <color name="onfidoTextColorPrimary">#FFFFFF</color>
+    <color name="onfidoColorAccent">#FFD268</color>
 </resources>

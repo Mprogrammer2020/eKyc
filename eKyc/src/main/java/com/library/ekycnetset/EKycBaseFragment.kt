@@ -19,13 +19,11 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.jvm.Throws
 
 
 // by :- Deepak Kumar
@@ -288,6 +286,14 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         fun selectedDate(date: String, month: String, year: Int)
     }
 
+    public fun changeDateFormat(selectedDate: String): String{
+        var format = SimpleDateFormat("dd MMM, yyyy")
+        val newDate = format.parse(selectedDate)
+
+        format = SimpleDateFormat("yyyy-MM-dd")
+        val date = format.format(newDate)
+        return date
+    }
     @Throws(ParseException::class)
     private fun getDateInMillies(dateInString: String): Long {
         val format = SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH)

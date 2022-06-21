@@ -32,5 +32,10 @@ interface ApiService {
                  @Body boby: RequestBody) : Single<Any>
 
 
+    @POST("users/{id}/uploadDataForKYC")
+    fun uploadBasicInfo(@Path("id") id: String, @Body body: RequestBody): Single<EKycModel>
+
+    @POST("users/{id}/createCheck/{videoId}")
+    fun createCheckApi(@Path("id") id: String, @Path("videoId") videoId: String): Single<EKycModel>
 }
 

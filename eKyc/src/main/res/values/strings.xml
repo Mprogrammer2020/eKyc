@@ -47,10 +47,14 @@
     <string name="country_of_citizenship">Country Of Citizenship</string>
     <string name="country_of_residence">Country Of Residence</string>
     <string name="city">City</string>
+    <string name="town">Town</string>
     <string name="address">Address</string>
+    <string name="building_number">Building Number</string>
+    <string name="street">Street</string>
     <string name="zip">Zip/Postal Code</string>
     <string name="e_g_city">E.g. California</string>
     <string name="e_g_address">E.g. 1639 Stroop Hill Road</string>
+    <string name="e_g_street">E.g. Main Street</string>
     <string name="e_g_zip">E.g. 90001</string>
 
     <string name="upload_doc">Upload a few documents (Step 3 of 4)</string>

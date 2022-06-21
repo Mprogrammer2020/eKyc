@@ -1,4 +1,4 @@
-package com.application.efx.auth
+package com.library.ekycnetset.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
@@ -36,7 +37,6 @@ class TermsAndPrivacyWebViewFragment(var title: String) : EKycBaseFragment<Layou
         getContainerActivity().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         WebView.setWebContentsDebuggingEnabled(true)
-
         viewDataBinding.webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
@@ -84,5 +84,4 @@ class TermsAndPrivacyWebViewFragment(var title: String) : EKycBaseFragment<Layou
             proBar.visibility = View.GONE
         }
     }
-
 }

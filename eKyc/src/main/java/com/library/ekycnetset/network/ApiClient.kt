@@ -2,6 +2,7 @@ package com.application.linkodes.network
 
 import android.content.Context
 import android.text.TextUtils
+import com.application.bubble.local.PrefUtils
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.library.ekycnetset.BuildConfig
 import com.library.ekycnetset.base.Constants
@@ -53,7 +54,12 @@ class ApiClient {
             val requestBuilder = original.newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
+                .addHeader("deviceType", "Android")
+                .addHeader("appVersion", BuildConfig.VERSION_NAME)
 
+            if (!TextUtils.isEmpty(PrefUtils().getAuthKey(context))) {
+                requestBuilder.addHeader("Authorization", "Bearer "+PrefUtils().getAuthKey(context)!!)
+            }
             val request = requestBuilder.build()
             chain.proceed(request)
         }

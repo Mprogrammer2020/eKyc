@@ -23,6 +23,15 @@ class PrefUtils{
         return getSharedPreferences(context).getString("API_KEY", null)
     }
 
+    fun storeAuthKey(context: Context, apiKey: String) {
+        val editor = getSharedPreferences(context).edit()
+        editor.putString("AUTH_KEY", apiKey)
+        editor.apply()
+    }
+
+    fun getAuthKey(context: Context): String? {
+        return getSharedPreferences(context).getString("AUTH_KEY", null)
+    }
 
     fun storeHash(context: Context, hash: String) {
         val editor = getSharedPreferences(context).edit()

@@ -68,87 +68,86 @@
             android:paddingBottom="@dimen/_10sdp">
 
 
-
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/TextViewKyc"
                     android:layout_width="match_parent"
-                    android:text="@string/just_follow"
-                    android:fontFamily="@font/helvetica_regular"
                     android:layout_margin="@dimen/_16sdp"
-                    android:gravity="center"/>
+                    android:fontFamily="@font/helvetica_regular"
+                    android:gravity="center"
+                    android:text="@string/just_follow" />
 
 
                 <RelativeLayout
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <RelativeLayout
                         android:id="@+id/stepOneView"
-                        android:background="@drawable/circle_selected"
                         android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp">
+                        android:layout_height="@dimen/_32sdp"
+                        android:background="@drawable/circle_selected">
 
                         <TextView
                             style="@style/TextViewKyc"
-                            android:text="@string/step_1"
                             android:layout_centerInParent="true"
-                            android:textColor="@color/colorEfxBlue"
-                            android:fontFamily="@font/helvetica_bold" />
+                            android:fontFamily="@font/helvetica_bold"
+                            android:text="@string/step_1"
+                            android:textColor="@color/colorEfxBlue" />
 
                     </RelativeLayout>
 
                     <View
                         android:id="@+id/lineOne"
-                        android:layout_toEndOf="@id/stepOneView"
-                        android:background="@color/grey"
-                        android:layout_centerVertical="true"
                         android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_1sdp"/>
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/stepOneView"
+                        android:background="@color/grey" />
 
                     <RelativeLayout
                         android:id="@+id/stepTwoView"
-                        android:layout_toEndOf="@id/lineOne"
-                        android:background="@drawable/circle_unselected"
                         android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp">
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_toEndOf="@id/lineOne"
+                        android:background="@drawable/circle_unselected">
 
                         <TextView
-                            style="@style/TextViewKyc"
                             android:id="@+id/textTwo"
-                            android:text="@string/step_2"
+                            style="@style/TextViewKyc"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@font/helvetica_bold" />
+                            android:fontFamily="@font/helvetica_bold"
+                            android:text="@string/step_2" />
 
                     </RelativeLayout>
 
                     <View
                         android:id="@+id/lineTwo"
-                        android:layout_toEndOf="@id/stepTwoView"
-                        android:background="@color/grey"
-                        android:layout_centerVertical="true"
                         android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_1sdp"/>
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/stepTwoView"
+                        android:background="@color/grey" />
 
 
                     <RelativeLayout
                         android:id="@+id/stepThreeView"
-                        android:layout_toEndOf="@id/lineTwo"
-                        android:background="@drawable/circle_unselected"
                         android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp">
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_toEndOf="@id/lineTwo"
+                        android:background="@drawable/circle_unselected">
 
                         <TextView
-                            style="@style/TextViewKyc"
-                            android:text="@string/step_3"
                             android:id="@+id/textThree"
+                            style="@style/TextViewKyc"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@font/helvetica_bold" />
+                            android:fontFamily="@font/helvetica_bold"
+                            android:text="@string/step_3" />
 
                     </RelativeLayout>
 
@@ -164,71 +163,77 @@
 
                     <TextView
                         style="@style/TextViewKyc"
-                        android:textSize="@dimen/_9sdp"
-                        android:text="@string/req_fields"/>
+                        android:text="@string/req_fields"
+                        android:textSize="@dimen/_9sdp" />
 
                     <TextView
                         style="@style/TextViewKyc"
                         android:text="@string/ast"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@android:color/holo_red_dark"/>
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <ViewFlipper
                     android:id="@+id/signUpViewFlipper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:measureAllChildren="false">
 
-                    <include layout="@layout/step_one_layout"
-                        android:id="@+id/oneStep"/>
+                    <include
+                        android:id="@+id/oneStep"
+                        layout="@layout/step_one_layout" />
 
-                    <include layout="@layout/step_two_layout"
-                        android:id="@+id/twoStep"/>
+                    <include
+                        android:id="@+id/twoStep"
+                        layout="@layout/step_two_layout" />
 
-                    <include layout="@layout/step_three_layout"
-                        android:id="@+id/threeStep"/>
+                    <include
+                        android:id="@+id/threeStep"
+                        layout="@layout/step_three_layout" />
 
 
                 </ViewFlipper>
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/signUpViewFlipper">
+
+                    <Button
+                        android:id="@+id/prevClick"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:visibility="gone"
+                        android:layout_height="@dimen/_32sdp"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:textColor="@color/colorButtonText"
+                        android:text="@string/prev_txt"
+                        android:textSize="@dimen/_11sdp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"/>
+
+                    <Button
+                        android:id="@+id/nextClick"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:fontFamily="@font/helvetica_bold"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:textColor="@color/colorButtonText"
+                        android:text="@string/next_txt"
+                        android:textSize="@dimen/_11sdp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/rounded_button"/>
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true">
-
-                <Button
-                    android:id="@+id/prevClick"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:visibility="gone"
-                    android:layout_height="@dimen/_32sdp"
-                    android:fontFamily="@font/helvetica_bold"
-                    android:layout_margin="@dimen/_16sdp"
-                    android:textColor="@color/colorButtonText"
-                    android:text="@string/prev_txt"
-                    android:textSize="@dimen/_11sdp"
-                    android:textAllCaps="false"
-                    android:background="@drawable/rounded_button"/>
-
-                <Button
-                    android:id="@+id/nextClick"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_32sdp"
-                    android:fontFamily="@font/helvetica_bold"
-                    android:layout_margin="@dimen/_16sdp"
-                    android:textColor="@color/colorButtonText"
-                    android:text="@string/next_txt"
-                    android:textSize="@dimen/_11sdp"
-                    android:textAllCaps="false"
-                    android:background="@drawable/rounded_button"/>
-
-            </LinearLayout>
 
         </RelativeLayout>
 

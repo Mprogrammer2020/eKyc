@@ -56,15 +56,15 @@
                             android:id="@+id/iconOne"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:src="@drawable/ic_yourself"/>
+                            android:src="@drawable/ic_yourself" />
 
                         <TextView
                             style="@style/TextViewKyc"
-                            android:text="@string/tell_us"
-                            android:layout_toEndOf="@id/iconOne"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_toEndOf="@id/iconOne"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_10sdp" />
+                            android:text="@string/tell_us" />
 
                     </RelativeLayout>
 
@@ -101,15 +101,15 @@
                             android:id="@+id/iconThree"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:src="@drawable/ic_upload"/>
+                            android:src="@drawable/ic_upload" />
 
                         <TextView
                             style="@style/TextViewKyc"
-                            android:text="@string/upload_a_few_docs"
-                            android:layout_toEndOf="@id/iconThree"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_toEndOf="@id/iconThree"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_10sdp" />
+                            android:text="@string/upload_a_few_docs" />
 
                     </RelativeLayout>
 
@@ -124,15 +124,15 @@
                             android:id="@+id/iconFour"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:src="@drawable/ic_selfie"/>
+                            android:src="@drawable/ic_selfie" />
 
                         <TextView
                             style="@style/TextViewKyc"
-                            android:text="@string/take_selfie"
-                            android:layout_toEndOf="@id/iconFour"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_toEndOf="@id/iconFour"
                             android:fontFamily="@font/helvetica_regular"
-                            android:layout_marginStart="@dimen/_10sdp" />
+                            android:text="@string/take_selfie" />
 
                     </RelativeLayout>
 

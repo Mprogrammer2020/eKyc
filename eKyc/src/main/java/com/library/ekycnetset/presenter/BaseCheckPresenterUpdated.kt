@@ -30,8 +30,7 @@ import org.json.JSONObject
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.jvm.Throws
+
 
 class BaseCheckPresenterUpdated(
     private val context: EKycActivity,
@@ -39,104 +38,129 @@ class BaseCheckPresenterUpdated(
     private val viewDataBinding: FragmentStepOneLayoutBinding
 ) {
 
-    private var birthdayDay : String = ""
-    private var birthdayMonth : String = ""
-    private var birthdayYear : String = ""
-    private var mAppPresenter : AppPresenter ?= null
-    private var countryNationality : String = ""
-    private var countryResidence : String = ""
+    private var birthdayDay: String = ""
+    private var birthdayMonth: String = ""
+    private var birthdayYear: String = ""
+    private var mAppPresenter: AppPresenter? = null
+    private var countryNationality: String = ""
+    private var countryResidence: String = ""
 
     init {
-
         mAppPresenter = AppPresenter(context)
 
         notWithSpace(viewDataBinding.threeStep.cityET)
         notWithSpace(viewDataBinding.threeStep.addressET)
         notWithSpace(viewDataBinding.threeStep.zipET)
 
-        countryNationality = "MY"
-        countryResidence = "MY"
+        countryNationality = "MYS"
+        countryResidence = "MYS"
 
-        viewDataBinding.oneStep.firstNameET.setText(context.kycPref.getUserAppInfo(context,Constants.F_NAME))
-        viewDataBinding.oneStep.lastNameET.setText(context.kycPref.getUserAppInfo(context,Constants.L_NAME))
-        viewDataBinding.twoStep.emailET.setText(context.kycPref.getUserAppInfo(context,Constants.EMAIL))
-        viewDataBinding.twoStep.mobileET.setText(context.kycPref.getUserAppInfo(context,Constants.PHONE_NUMBER))
-        viewDataBinding.twoStep.codeTxt.text = context.kycPref.getUserAppInfo(context,Constants.PHONE_CODE)
-        viewDataBinding.threeStep.addressET.setText(context.kycPref.getUserAppInfo(context,Constants.ADDRESS))
+        viewDataBinding.oneStep.firstNameET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.F_NAME
+            )
+        )
+        viewDataBinding.oneStep.lastNameET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.L_NAME
+            )
+        )
+        viewDataBinding.twoStep.emailET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.EMAIL
+            )
+        )
+        viewDataBinding.twoStep.mobileET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.PHONE_NUMBER
+            )
+        )
+        viewDataBinding.twoStep.codeTxt.text =
+            context.kycPref.getUserAppInfo(context, Constants.PHONE_CODE)
+        viewDataBinding.threeStep.addressET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.ADDRESS
+            )
+        )
         viewDataBinding.threeStep.countryTxt.text = context.getString(R.string.malaysia)
         viewDataBinding.threeStep.countryResTxt.text = context.getString(R.string.malaysia)
 
 
         // First Set Mandatory
 
-        if (context.getAdminSettings()[0].value)
-            viewDataBinding.oneStep.astFN.visibility = View.VISIBLE
-        else
-            viewDataBinding.oneStep.astFN.visibility = View.GONE
-
-        if (context.getAdminSettings()[1].value)
-            viewDataBinding.oneStep.astLN.visibility = View.VISIBLE
-        else
-            viewDataBinding.oneStep.astLN.visibility = View.GONE
-
-        if (context.getAdminSettings()[2].value)
-            viewDataBinding.oneStep.astMN.visibility = View.VISIBLE
-        else
-            viewDataBinding.oneStep.astMN.visibility = View.GONE
-
-        // Second Set Mandatory
-
-        if (context.getAdminSettings()[3].value)
-            viewDataBinding.twoStep.astEm.visibility = View.VISIBLE
-        else
-            viewDataBinding.twoStep.astEm.visibility = View.GONE
-
-        if (context.getAdminSettings()[4].value)
-            viewDataBinding.twoStep.astMN.visibility = View.VISIBLE
-        else
-            viewDataBinding.twoStep.astMN.visibility = View.GONE
-
-        if (context.getAdminSettings()[5].value)
-            viewDataBinding.twoStep.astDOB.visibility = View.VISIBLE
-        else
-            viewDataBinding.twoStep.astDOB.visibility = View.GONE
-
-        if (context.getAdminSettings()[6].value)
-            viewDataBinding.twoStep.astGen.visibility = View.VISIBLE
-        else
-            viewDataBinding.twoStep.astGen.visibility = View.GONE
-
-        if (context.getAdminSettings()[7].value)
-            viewDataBinding.twoStep.astOcc.visibility = View.VISIBLE
-        else
-            viewDataBinding.twoStep.astOcc.visibility = View.GONE
-
-        // Third Set Mandatory
-
-        if (context.getAdminSettings()[8].value)
-            viewDataBinding.threeStep.astCC.visibility = View.VISIBLE
-        else
-            viewDataBinding.threeStep.astCC.visibility = View.GONE
-
-        if (context.getAdminSettings()[9].value)
-            viewDataBinding.threeStep.astCR.visibility = View.VISIBLE
-        else
-            viewDataBinding.threeStep.astCR.visibility = View.GONE
-
-        if (context.getAdminSettings()[10].value)
-            viewDataBinding.threeStep.astAdd.visibility = View.VISIBLE
-        else
-            viewDataBinding.threeStep.astAdd.visibility = View.GONE
-
-        if (context.getAdminSettings()[11].value)
-            viewDataBinding.threeStep.astCity.visibility = View.VISIBLE
-        else
-            viewDataBinding.threeStep.astCity.visibility = View.GONE
-
-        if (context.getAdminSettings()[12].value)
-            viewDataBinding.threeStep.astZip.visibility = View.VISIBLE
-        else
-            viewDataBinding.threeStep.astZip.visibility = View.GONE
+//        if (context.getAdminSettings()[0].value)
+//            viewDataBinding.oneStep.astFN.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.oneStep.astFN.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[1].value)
+//            viewDataBinding.oneStep.astLN.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.oneStep.astLN.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[2].value)
+//            viewDataBinding.oneStep.astMN.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.oneStep.astMN.visibility = View.GONE
+//
+//        // Second Set Mandatory
+//
+//        if (context.getAdminSettings()[3].value)
+//            viewDataBinding.twoStep.astEm.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.twoStep.astEm.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[4].value)
+//            viewDataBinding.twoStep.astMN.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.twoStep.astMN.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[5].value)
+//            viewDataBinding.twoStep.astDOB.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.twoStep.astDOB.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[6].value)
+//            viewDataBinding.twoStep.astGen.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.twoStep.astGen.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[7].value)
+//            viewDataBinding.twoStep.astOcc.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.twoStep.astOcc.visibility = View.GONE
+//
+//        // Third Set Mandatory
+//
+//        if (context.getAdminSettings()[8].value)
+//            viewDataBinding.threeStep.astCC.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.threeStep.astCC.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[9].value)
+//            viewDataBinding.threeStep.astCR.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.threeStep.astCR.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[10].value)
+//            viewDataBinding.threeStep.astAdd.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.threeStep.astAdd.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[11].value)
+//            viewDataBinding.threeStep.astCity.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.threeStep.astCity.visibility = View.GONE
+//
+//        if (context.getAdminSettings()[12].value)
+//            viewDataBinding.threeStep.astZip.visibility = View.VISIBLE
+//        else
+//            viewDataBinding.threeStep.astZip.visibility = View.GONE
 
 
 
@@ -220,7 +244,7 @@ class BaseCheckPresenterUpdated(
 //                        frag.isEmailValid(viewDataBinding.twoStep.emailET) &&
 //                        frag.validateEditText(viewDataBinding.twoStep.mobileET) && validateMob() && validateDOB()
 //                    )
-                    if (isDataValidForStepTwo() && isMandatory){
+                    if (isDataValidForStepTwo() && isMandatory) {
 
                         viewDataBinding.signUpViewFlipper.showNext()
                         viewDataBinding.lineTwo.background = ContextCompat.getDrawable(
@@ -255,18 +279,29 @@ class BaseCheckPresenterUpdated(
         }
 
 
-        if (!context.kycPref.getUserAppInfo(context,Constants.DOB).isNullOrEmpty()){
+        if (!context.kycPref.getUserAppInfo(context, Constants.DOB).isNullOrEmpty()) {
 
-            Log.e("pre dob",context.kycPref.getUserAppInfo(context,Constants.DOB)!!)
+            Log.e("pre dob", context.kycPref.getUserAppInfo(context, Constants.DOB)!!)
 
-            val preDob = context.kycPref.getUserAppInfo(context,Constants.DOB)!!.split("-").toTypedArray()
+            val preDob =
+                context.kycPref.getUserAppInfo(context, Constants.DOB)!!.split("-").toTypedArray()
 
             birthdayDay = preDob[2]
             birthdayMonth = preDob[1]
             birthdayYear = preDob[0]
 
-            Log.e("pre dob formatted",setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
-            viewDataBinding.twoStep.dob.setText(setDateInFormat(context.kycPref.getUserAppInfo(context,Constants.DOB)!!))
+            Log.e(
+                "pre dob formatted",
+                setDateInFormat(context.kycPref.getUserAppInfo(context, Constants.DOB)!!)
+            )
+            viewDataBinding.twoStep.dob.setText(
+                setDateInFormat(
+                    context.kycPref.getUserAppInfo(
+                        context,
+                        Constants.DOB
+                    )!!
+                )
+            )
         }
 
 
@@ -327,17 +362,17 @@ class BaseCheckPresenterUpdated(
         //Occupation ended
 
         viewDataBinding.twoStep.codeClick.setOnClickListener {
-//            mAppPresenter!!.showCountryCodeDialog(
-//                true,
-//                object : AppPresenter.OnCountrySelectionListener {
-//
-//                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
-//
-//                        viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
-//
-//                    }
-//
-//                })
+            mAppPresenter!!.showCountryCodeDialog(
+                true,
+                object : AppPresenter.OnCountrySelectionListener {
+
+                    override fun selectedCountry(code: AppPresenter.CountryCode.Code) {
+
+                        viewDataBinding.twoStep.codeTxt.text = code.dial_code!!
+
+                    }
+
+                })
         }
 
         viewDataBinding.threeStep.countryClick.setOnClickListener {
@@ -388,161 +423,104 @@ class BaseCheckPresenterUpdated(
     private var isMandatory = true
 
     private fun isDataValidForStepOne(): Boolean {
-        if (context.getAdminSettings()[0].value){
-            isMandatory = frag.validateEditText(viewDataBinding.oneStep.firstNameET)
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = frag.validateEditText(viewDataBinding.oneStep.firstNameET)
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[1].value){
-            isMandatory = frag.validateEditText(viewDataBinding.oneStep.lastNameET)
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = frag.validateEditText(viewDataBinding.oneStep.lastNameET)
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[2].value){
-            isMandatory = frag.validateEditText(viewDataBinding.oneStep.middleNameET)
-            if (!isMandatory) {
-                return false
-            }
-        }
         return true
     }
 
     private fun isDataValidForStepTwo(): Boolean {
-        if (context.getAdminSettings()[3].value){
-            isMandatory = (frag.validateEditText(viewDataBinding.twoStep.emailET) && frag.isEmailValid(viewDataBinding.twoStep.emailET))
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = (frag.validateEditText(viewDataBinding.twoStep.emailET) && frag.isEmailValid(
+            viewDataBinding.twoStep.emailET
+        ))
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[4].value){
-            isMandatory = (frag.validateEditText(viewDataBinding.twoStep.mobileET) && validateMob())
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = validateDOB()
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[5].value){
-            isMandatory = validateDOB()
-            if (!isMandatory) {
-                return false
-            }
-        }
-
-        if (context.getAdminSettings()[6].value){
-            isMandatory = validateGender()
-            if (!isMandatory) {
-                return false
-            }
-        }
-
-        if (context.getAdminSettings()[7].value){
-            isMandatory = validateOccupation()
-            if (!isMandatory) {
-                return false
-            }
-        }
         return true
-    }
-
-    private fun validateGender(): Boolean{
-        if (viewDataBinding.twoStep.genderTxt.text.toString() == "Select"){
-            context.showToast("Please select your gender")
-            return false
-        }else
-            return true
-    }
-
-    private fun validateOccupation(): Boolean{
-        if (viewDataBinding.twoStep.occTxt.text.toString() == "Select"){
-            context.showToast("Please select your occupation")
-            return false
-        }else
-            return true
     }
 
     private fun isDataValidForStepThree(): Boolean {
-        if (context.getAdminSettings()[8].value){
-            isMandatory = validateCountryC()
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = validateCountryC()
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[9].value){
-            isMandatory = validateCountryR()
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = validateCountryR()
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[10].value){
-            isMandatory = frag.validateEditText(viewDataBinding.threeStep.addressET)
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = frag.validateEditText(viewDataBinding.threeStep.addressET)
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[11].value){
-            isMandatory = frag.validateEditText(viewDataBinding.threeStep.cityET)
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = frag.validateEditText(viewDataBinding.threeStep.streetET)
+        if (!isMandatory) {
+            return false
         }
 
-        if (context.getAdminSettings()[12].value){
-            isMandatory = frag.validateEditText(viewDataBinding.threeStep.zipET)
-            if (!isMandatory) {
-                return false
-            }
+        isMandatory = frag.validateEditText(viewDataBinding.threeStep.cityET)
+        if (!isMandatory) {
+            return false
+        }
+
+        isMandatory = frag.validateEditText(viewDataBinding.threeStep.zipET)
+        if (!isMandatory) {
+            return false
         }
         return true
     }
 
 
+    private fun validateCountryC(): Boolean {
 
-    private fun validateCountryC() : Boolean{
-
-        if (viewDataBinding.threeStep.countryTxt.text.toString() == "Select Country"){
+        if (viewDataBinding.threeStep.countryTxt.text.toString() == "Select Country") {
             context.showToast("Please select your country of citizenship.")
             return false
-        }
-        else
+        } else
             return true
 
     }
 
-    private fun validateCountryR() : Boolean{
+    private fun validateCountryR(): Boolean {
 
-        if (viewDataBinding.threeStep.countryResTxt.text.toString() == "Select Country"){
+        if (viewDataBinding.threeStep.countryResTxt.text.toString() == "Select Country") {
             context.showToast("Please select your country of residence.")
             return false
-        }
-        else
+        } else
             return true
 
     }
 
-    private fun validateMob() : Boolean{
+    private fun validateMob(): Boolean {
 
-        if (viewDataBinding.twoStep.mobileET.text.toString().length < 6){
+        if (viewDataBinding.twoStep.mobileET.text.toString().length < 6) {
             context.showToast("Please enter valid mobile number.")
             return false
-        }else
+        } else
             return true
-
     }
 
-    private fun validateDOB() : Boolean{
+    private fun validateDOB(): Boolean {
 
-        if (birthdayYear.isEmpty()){
+        if (birthdayYear.isEmpty()) {
             context.showToast("Please select your D.O.B.")
             return false
-        }else
+        } else
             return true
 
     }
@@ -560,65 +538,27 @@ class BaseCheckPresenterUpdated(
         )
     }
 
-    private fun gotoDocFrag(){
-        context.displayIt(UploadDocumentFragment(), UploadDocumentFragment::class.java.canonicalName, true)
+    private fun gotoDocFrag() {
+        context.displayIt(
+            UploadDocumentFragment(),
+            UploadDocumentFragment::class.java.canonicalName,
+            true
+        )
     }
 
     private fun baseCheckApi() {
-
         frag.showLoading()
-
-        var gender = ""
-        when(viewDataBinding.twoStep.genderTxt.text.toString()){
-
-            "Male" -> gender = "0"
-            "Female" -> gender = "1"
-            "Other" -> gender = "2"
-
-        }
-
-        var occupation = ""
-
-        if (viewDataBinding.twoStep.occTxt.text.toString() == "Select")
-            occupation = ""
-        else
-            occupation = viewDataBinding.twoStep.occTxt.text.toString()
-
         val jsonObject = JSONObject()
-        jsonObject.put("key", context.kycPref.getApiKey(context)!!)
-        jsonObject.put("first_name", viewDataBinding.oneStep.firstNameET.text.toString())
-        jsonObject.put("last_name", viewDataBinding.oneStep.lastNameET.text.toString())
-        jsonObject.put("middle_name", viewDataBinding.oneStep.middleNameET.text.toString())
+        jsonObject.put("firstName", viewDataBinding.oneStep.firstNameET.text.toString())
+        jsonObject.put("lastName", viewDataBinding.oneStep.lastNameET.text.toString())
         jsonObject.put("email", viewDataBinding.twoStep.emailET.text.toString())
-        jsonObject.put(
-            "phone",
-            "${viewDataBinding.twoStep.codeTxt.text}${viewDataBinding.twoStep.mobileET.text}"
-        )
-        jsonObject.put("phone2", "")
-        jsonObject.put("gender", gender)
-        jsonObject.put("occupation", occupation)
-//        jsonObject.put("occupation", viewDataBinding.twoStep.occTxt.text.toString())
-        jsonObject.put("birthday_day", birthdayDay)
-        jsonObject.put("birthday_month", birthdayMonth)
-        jsonObject.put("birthday_year", birthdayYear)
-        jsonObject.put("country_nationality", countryNationality)
-        jsonObject.put("country_residence", countryResidence)
-        jsonObject.put("city", viewDataBinding.threeStep.cityET.text.toString())
-        jsonObject.put("address", viewDataBinding.threeStep.addressET.text.toString())
-        jsonObject.put("zip", viewDataBinding.threeStep.zipET.text.toString())
-
-
-//        if (context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_HASH).isNullOrEmpty()){
-//            Log.e("BASIS USER HASH","PLS. NOT USE")
-//        }else{
-//            jsonObject.put("user_hash", context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_HASH)!!)
-//        }
-//
-//        if (context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_ID).isNullOrEmpty()){
-//            Log.e("BASIS USER ID","PLS. NOT USE")
-//        }else{
-//            jsonObject.put("check_id", context.kycPref.getUserAppInfo(context,Constants.BASIS_USER_ID)!!)
-//        }
+        jsonObject.put("dob", frag.changeDateFormat(viewDataBinding.twoStep.dob.text.toString()))
+        jsonObject.put("countryOfResidence", countryResidence)
+        jsonObject.put("buildingNumber", viewDataBinding.threeStep.cityET.text.toString())
+        jsonObject.put("street", viewDataBinding.threeStep.streetET.text.toString())
+        jsonObject.put("town", viewDataBinding.threeStep.cityET.text.toString())
+        jsonObject.put("postcode", viewDataBinding.threeStep.zipET.text.toString())
+        jsonObject.put("country", countryNationality)
 
         Log.e("Check Base", jsonObject.toString())
 
@@ -626,27 +566,14 @@ class BaseCheckPresenterUpdated(
             jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
 
         frag.disposable.add(
-            frag.apiService.baseCheck(requestBody)
+            frag.apiService.uploadBasicInfo(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(), requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<EKycModel.BaseCheck>() {
-
-                    override fun onSuccess(model: EKycModel.BaseCheck) {
+                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
+                    override fun onSuccess(model: EKycModel) {
                         frag.hideLoading()
-
-                        if (model.status!! == "bad") {
-                            context.showToast("Server Error")
-                        } else {
-                            context.kycPref.storeHash(context, model.user_hash!!)
-                            context.kycPref.storeUserId(context, model.user_id!!)
-
-                            if (context.getAdminSettings()[4].value && context.getAdminSettings()[13].value)
-                                goToMobVerification()
-                            else
-                                gotoDocFrag()
-
-                        }
-
+                        Log.e("applicant Id", model.data?.applicantId.toString())
+                        frag.startDocumentVerification(model.data?.token.toString())
                     }
 
                     override fun onError(e: Throwable) {
@@ -657,6 +584,28 @@ class BaseCheckPresenterUpdated(
         )
 
     }
+
+    fun createCheckApi(videoIdForOnfido: String?) {
+        frag.showLoading()
+        frag.disposable.add(
+            frag.apiService.createCheckApi(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(), videoIdForOnfido.toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
+                    override fun onSuccess(model: EKycModel) {
+                        frag.hideLoading()
+                        context.setResultOk()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        frag.hideLoading()
+                        frag.showError(e, context)
+                    }
+                })
+        )
+
+    }
+
 
     private fun notWithSpace(editTextSansRegular: EditText) {
         val myWatcher: TextWatcher = object : TextWatcher {

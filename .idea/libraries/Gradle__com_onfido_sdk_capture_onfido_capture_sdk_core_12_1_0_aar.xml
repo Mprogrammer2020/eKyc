@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.onfido.sdk.capture:onfido-capture-sdk-core:12.1.0@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef47fea250ea82e9c04158d092de16a0/jetified-onfido-capture-sdk-core-12.1.0/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef47fea250ea82e9c04158d092de16a0/jetified-onfido-capture-sdk-core-12.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef47fea250ea82e9c04158d092de16a0/jetified-onfido-capture-sdk-core-12.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef47fea250ea82e9c04158d092de16a0/jetified-onfido-capture-sdk-core-12.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

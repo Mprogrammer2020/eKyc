@@ -1,5 +1,8 @@
 package com.library.ekycnetset.model
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 class EKycModel {
 
     class BaseCheck{
@@ -12,5 +15,18 @@ class EKycModel {
         var phone: String ?= null
     }
 
+    @SerializedName("data")
+    @Expose
+    var data: Data? = null
+
+    class Data {
+        @SerializedName("applicantId")
+        @Expose
+        var applicantId: String? = null
+
+        @SerializedName("token")
+        @Expose
+        var token: String? = null
+    }
 
 }

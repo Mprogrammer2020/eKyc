@@ -14,7 +14,8 @@
 
 
     <application
-        android:requestLegacyExternalStorage="true">
+        android:requestLegacyExternalStorage="true"
+      >
 
         <activity
             android:screenOrientation="portrait"

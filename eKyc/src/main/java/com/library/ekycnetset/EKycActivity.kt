@@ -1,24 +1,16 @@
 package com.library.ekycnetset
 
-import android.Manifest
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.Settings
 import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.annotation.RequiresPermission
 import androidx.fragment.app.Fragment
-import com.application.efx.auth.TermsAndPrivacyWebViewFragment
+import com.library.ekycnetset.fragment.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
-import com.library.ekycnetset.fragment.TakeSelfieFragment
 import com.library.ekycnetset.fragment.UpdateFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
-
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
@@ -37,14 +29,15 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
         if (bundle != null){
 
-            if (bundle.containsKey(Constants.API_KEY)){
+            if (bundle.containsKey(Constants.USER_AUTH_TOKEN)){
 
-                if (bundle.getString(Constants.API_KEY).isNullOrEmpty()){
-                    showToast("BasisID Api key is missing.")
+                if (bundle.getString(Constants.USER_AUTH_TOKEN).isNullOrEmpty()){
+                    showToast("User auth token key is missing.")
                     setResultCancelled()
-                }else{
-                    kycPref.storeApiKey(this,bundle.getString(Constants.API_KEY)!!)
+                } else {
+                    kycPref.storeAuthKey(this,bundle.getString(Constants.USER_AUTH_TOKEN)!!)
 
+                    kycPref.storeUserAppInfo(this,Constants.USER_ID,bundle.getString(Constants.USER_ID)?: "")
                     kycPref.storeUserAppInfo(this,Constants.F_NAME,bundle.getString(Constants.F_NAME)?: "")
                     kycPref.storeUserAppInfo(this,Constants.L_NAME,bundle.getString(Constants.L_NAME)?: "")
                     kycPref.storeUserAppInfo(this,Constants.EMAIL,bundle.getString(Constants.EMAIL)?: "")
@@ -58,35 +51,36 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
 
-                    if (bundle.getString(Constants.BASIS_USER_HASH).isNullOrEmpty()){
-                        Log.e("BASIS USER HASH","NOT AVAILABLE")
-                    }else{
-                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_HASH,bundle.getString(Constants.BASIS_USER_HASH)!!)
-                    }
-
-                    if (bundle.getString(Constants.BASIS_USER_ID).isNullOrEmpty()){
-                        Log.e("BASIS USER ID","NOT AVAILABLE")
-                    }else{
-                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_ID,bundle.getString(Constants.BASIS_USER_ID)!!)
-                    }
+//                    if (bundle.getString(Constants.BASIS_USER_HASH).isNullOrEmpty()){
+//                        Log.e("BASIS USER HASH","NOT AVAILABLE")
+//                    }else{
+//                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_HASH,bundle.getString(Constants.BASIS_USER_HASH)!!)
+//                    }
+//
+//                    if (bundle.getString(Constants.BASIS_USER_ID).isNullOrEmpty()){
+//                        Log.e("BASIS USER ID","NOT AVAILABLE")
+//                    } else{
+//                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_ID,bundle.getString(Constants.BASIS_USER_ID)!!)
+//                    }
 
 
                 }
             }else{
-                showToast("BasisID Api key is missing.")
+                showToast("User auth token key is missing.")
                 setResultCancelled()
             }
 
         }else{
-            showToast("BasisID Api key is missing.")
+            showToast("User auth token key is missing.")
             setResultCancelled()
         }
 
-        if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
-            displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-        }else{
-            displayIt(WelcomeVerificationFragment(), UpdateFragment::class.java.canonicalName, true)
-        }
+        displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
+//        if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
+//            displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
+//        }else{
+//            displayIt(WelcomeVerificationFragment(), UpdateFragment::class.java.canonicalName, true)
+//        }
 
 
 //        displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
@@ -94,7 +88,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         viewDataBinding.toolbarLeftMain.setOnClickListener {
             onBackPressed()
         }
-
     }
 
 //    @RequiresPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
