@@ -2,7 +2,6 @@ package com.library.ekycnetset.base
 
 object Constants {
 
-
     const val BASE_API = "http://192.168.2.67:8762/EFXUserManagement/v1/api/"
 
     const val TERMS_AND_CONDITIONS = "https://www.e-fx.my/terms-of-use"

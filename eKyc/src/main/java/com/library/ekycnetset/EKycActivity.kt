@@ -19,20 +19,16 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     private var adminSettingsList = ArrayList<Data>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         kycPref.clearPrefs(this)
 
         val bundle = intent.extras
-
         if (bundle != null){
-
-            if (bundle.containsKey(Constants.USER_AUTH_TOKEN)){
-
-                if (bundle.getString(Constants.USER_AUTH_TOKEN).isNullOrEmpty()){
-                    showToast("User auth token key is missing.")
+            if (bundle.containsKey(Constants.USER_ID)){
+                if (bundle.getString(Constants.USER_ID).isNullOrEmpty()){
+                    showToast("User id key is missing.")
                     setResultCancelled()
                 } else {
                     kycPref.storeAuthKey(this,bundle.getString(Constants.USER_AUTH_TOKEN)!!)
@@ -50,7 +46,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
-
 //                    if (bundle.getString(Constants.BASIS_USER_HASH).isNullOrEmpty()){
 //                        Log.e("BASIS USER HASH","NOT AVAILABLE")
 //                    }else{
@@ -62,16 +57,13 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 //                    } else{
 //                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_ID,bundle.getString(Constants.BASIS_USER_ID)!!)
 //                    }
-
-
                 }
-            }else{
-                showToast("User auth token key is missing.")
+            } else{
+                showToast("User id key is missing.")
                 setResultCancelled()
             }
-
-        }else{
-            showToast("User auth token key is missing.")
+        } else{
+            showToast("User id key is missing.")
             setResultCancelled()
         }
 
@@ -120,16 +112,16 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     fun setResultOk() {
         val intent = Intent()
-        intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
-        intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
-
-        if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
-            intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
-            intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
-        }
+//        intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
+//        intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
+//
+//        if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
+//            intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
+//            intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
+//        }
 
         setResult(RESULT_OK, intent)
-        finish()
+        this.finish()
     }
 
     fun getAdminSettings() : ArrayList<Data>{

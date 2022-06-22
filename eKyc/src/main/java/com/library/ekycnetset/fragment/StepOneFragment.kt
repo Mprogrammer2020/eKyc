@@ -54,8 +54,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
         if (mPresenter == null){
             mPresenter = BaseCheckPresenterUpdated(getContainerActivity(),this,viewDataBinding)
         }
-      client = OnfidoFactory.create(getContainerActivity()).client
-
+        client = OnfidoFactory.create(getContainerActivity()).client
     }
 
 

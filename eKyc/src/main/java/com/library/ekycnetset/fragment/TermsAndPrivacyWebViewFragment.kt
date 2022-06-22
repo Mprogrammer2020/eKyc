@@ -31,7 +31,6 @@ class TermsAndPrivacyWebViewFragment(var title: String) : EKycBaseFragment<Layou
        return title
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getContainerActivity().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)

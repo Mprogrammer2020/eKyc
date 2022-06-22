@@ -24,7 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.application.bubble.local.PrefUtils;
-import com.application.linkodes.network.ApiClient;
+import com.library.ekycnetset.network.ApiClient;
 import com.application.linkodes.network.ApiService;
 
 import java.io.BufferedInputStream;

@@ -1,4 +1,4 @@
-package com.application.linkodes.network
+package com.library.ekycnetset.network
 
 import android.content.Context
 import android.text.TextUtils

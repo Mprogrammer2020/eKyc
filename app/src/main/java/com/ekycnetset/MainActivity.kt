@@ -96,11 +96,19 @@ class MainActivity : AppCompatActivity() {
 
                 Log.e("RESULT","OK")
 
-                Log.e(Constants.BASIS_USER_HASH, data!!.getStringExtra(Constants.BASIS_USER_HASH)!!)
-                Log.e(Constants.BASIS_USER_ID, data.getIntExtra(Constants.BASIS_USER_ID,0).toString())
+                if (data?.getStringExtra(Constants.BASIS_USER_HASH) != null) {
+                    Log.e(
+                        Constants.BASIS_USER_HASH,
+                        data.getStringExtra(Constants.BASIS_USER_HASH)!!
+                    )
+                    Log.e(
+                        Constants.BASIS_USER_ID,
+                        data.getIntExtra(Constants.BASIS_USER_ID, 0).toString()
+                    )
+                }
 
 
-                if (data.getStringExtra(Constants.CHECK_ONE) != null){
+                if (data?.getStringExtra(Constants.CHECK_ONE) != null){
                     Log.e(Constants.CHECK_ONE, data.getStringExtra(Constants.CHECK_ONE)!!)
                     Log.e(Constants.CHECK_TWO, data.getStringExtra(Constants.CHECK_TWO)!!)
                 }
@@ -128,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this,EKycActivity::class.java)
 //        intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
-        intent.putExtra(Constants.API_KEY, "prod-XWzdnqGSToqEqoZaPrprUfUunGiirYav")
+        intent.putExtra(Constants.USER_AUTH_TOKEN, "prod-XWzdnqGSToqEqoZaPrprUfUunGiirYav")
 
         intent.putExtra(Constants.F_NAME, "Steve")
         intent.putExtra(Constants.L_NAME, "Roger")
