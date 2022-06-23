@@ -115,10 +115,10 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 //        intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
 //        intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
 //
-//        if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
-//            intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
-//            intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
-//        }
+        if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
+            intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
+            intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
+        }
 
         setResult(RESULT_OK, intent)
         this.finish()
