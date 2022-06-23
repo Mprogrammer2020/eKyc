@@ -27,34 +27,7 @@ class MainActivity : AppCompatActivity() {
         alertDialog()
 
         eKyc.setOnClickListener {
-
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-//                requestFullStorageAccess()
-
             move()
-
-//            val intent = Intent(this,EKycActivity::class.java)
-//            intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
-//
-//            intent.putExtra(Constants.F_NAME, "Steve")
-//            intent.putExtra(Constants.L_NAME, "Roger")
-//            intent.putExtra(Constants.EMAIL, "steve.roger@gmail.com")
-//            intent.putExtra(Constants.PHONE_CODE, "+1")
-//            intent.putExtra(Constants.PHONE_NUMBER, "9876543210")
-//            intent.putExtra(Constants.ADDRESS, "New York, USA")
-//            intent.putExtra(Constants.DOB, "1994-11-04")
-//
-//            // in case of update
-////            intent.putExtra(Constants.BASIS_USER_HASH, "09841284-20dd-4d00-851d-3b5b651d415e")
-////            intent.putExtra(Constants.BASIS_USER_ID, "1667451")
-//
-//            intent.putExtra(Constants.ADMIN_SETTINGS_LIST, mList)
-//
-//            startActivityForResult(intent,Constants.BASIS_REQ_CODE)
-
-//            for (m in mList){
-//                Log.e(m.name,m.value.toString())
-//            }
         }
 
         mList.add(Data("First Name",true))
