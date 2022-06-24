@@ -105,6 +105,16 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                 defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
                 keysToCreateCheck += "," + "facial_similarity_photo"
             }
+
+            if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo") && getContainerActivity().getRejectedItems().contains("document")) {
+                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                    FlowStep.CAPTURE_DOCUMENT,  //Document capture step
+                    FlowStep.FINAL //Final screen step, optional
+                )
+                defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
+                keysToCreateCheck += "," + "document" + ",facial_similarity_photo"
+            }
         }
 
         val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
