@@ -87,6 +87,27 @@ class BaseCheckPresenterUpdated(
                 Constants.ADDRESS
             )
         )
+
+        viewDataBinding.threeStep.streetET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.STREET
+            )
+        )
+
+        viewDataBinding.threeStep.cityET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.CITY
+            )
+        )
+
+        viewDataBinding.threeStep.zipET.setText(
+            context.kycPref.getUserAppInfo(
+                context,
+                Constants.ZIP_CODE
+            )
+        )
         viewDataBinding.threeStep.countryTxt.text = context.getString(R.string.malaysia)
         viewDataBinding.threeStep.countryResTxt.text = context.getString(R.string.malaysia)
 
@@ -585,10 +606,11 @@ class BaseCheckPresenterUpdated(
 
     }
 
-    fun createCheckApi(videoIdForOnfido: String?) {
+    fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
         frag.showLoading()
         frag.disposable.add(
-            frag.apiService.createCheckApi(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(), videoIdForOnfido.toString())
+            frag.apiService.createCheckApi(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(),
+                videoIdForOnfido.toString(), keysToCreateCheck)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<EKycModel>() {

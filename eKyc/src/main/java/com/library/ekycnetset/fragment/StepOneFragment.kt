@@ -46,6 +46,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     private var mPresenter : BaseCheckPresenterUpdated ?= null
     private var isFirstBoxChecked = false
     private var isSecondBoxChecked = false
+    private var keysToCreateCheck = "watchlist_standard"
 
     private lateinit var client: Onfido
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,17 +72,41 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     }
 
     fun startDocumentVerification(sdkToken: String) {
-        val defaultStepsWithWelcomeScreen: Array<FlowStep> = arrayOf<FlowStep>(
-            FlowStep.WELCOME,  //Welcome step with a step summary, optional
-            FlowStep.CAPTURE_DOCUMENT,  //Document capture step
-            FlowStep.FINAL //Final screen step, optional
-        )
+        lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
+
         val faceCaptureStep = forVideo()
             .withIntro(true)
             .withConfirmationVideoPreview(false)
             .build()
 
-        defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
+
+        if (getContainerActivity().getRejectedItems().isEmpty()) {
+             defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                FlowStep.CAPTURE_DOCUMENT,  //Document capture step
+                FlowStep.FINAL //Final screen step, optional
+            )
+            defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
+            keysToCreateCheck += "," + "document" + ",facial_similarity_photo"
+        } else {
+            if (getContainerActivity().getRejectedItems().contains("document")) {
+                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                    FlowStep.CAPTURE_DOCUMENT,  //Document capture step
+                    FlowStep.FINAL //Final screen step, optional
+                )
+                keysToCreateCheck += "," + "document"
+            }
+            if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo")) {
+                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                    FlowStep.FINAL //Final screen step, optional
+                )
+                defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
+                keysToCreateCheck += "," + "facial_similarity_photo"
+            }
+        }
+
         val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
             .withCustomFlow(defaultStepsWithWelcomeScreen)
             .withSDKToken(sdkToken)
@@ -102,6 +127,9 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
 
             override fun userCompleted(captures: Captures) {
                 videoIdForOnfido = captures.face?.id
+                if (videoIdForOnfido == null) {
+                    videoIdForOnfido = "-1"
+                }
                 success()
             }
 
@@ -113,9 +141,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     }
 
     private fun success() {
-
         LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
-
         BubbleDialog(context, getContainerActivity(), R.layout.dialog_terms_layout,
             object : BubbleDialog.LinkodesDialogBinding<DialogTermsLayoutBinding> {
                 override fun onBind(
@@ -190,7 +216,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                             )
 
                             dialog.dismiss()
-                            mPresenter?.createCheckApi(videoIdForOnfido)
+                            mPresenter?.createCheckApi(videoIdForOnfido, keysToCreateCheck)
 
                         } else {
                             showToast("Please accept our terms & conditions and privacy policy.")

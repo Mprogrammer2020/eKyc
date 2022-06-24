@@ -18,6 +18,7 @@ import com.library.ekycnetset.model.Data
 class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     private var adminSettingsList = ArrayList<Data>()
+    private var rejectedItemsList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,20 +44,12 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     kycPref.storeUserAppInfo(this,Constants.DOB,bundle.getString(Constants.DOB)?: "")
                     kycPref.storeUserAppInfo(this,Constants.NATIONALITY,bundle.getString(Constants.NATIONALITY)?: "")
 
-
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
-//                    if (bundle.getString(Constants.BASIS_USER_HASH).isNullOrEmpty()){
-//                        Log.e("BASIS USER HASH","NOT AVAILABLE")
-//                    }else{
-//                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_HASH,bundle.getString(Constants.BASIS_USER_HASH)!!)
-//                    }
-//
-//                    if (bundle.getString(Constants.BASIS_USER_ID).isNullOrEmpty()){
-//                        Log.e("BASIS USER ID","NOT AVAILABLE")
-//                    } else{
-//                        kycPref.storeUserAppInfo(this,Constants.BASIS_USER_ID,bundle.getString(Constants.BASIS_USER_ID)!!)
-//                    }
+                    if (bundle.containsKey(Constants.REJECTED_ITEM_LIST)){
+                        rejectedItemsList = bundle.getStringArrayList(Constants.REJECTED_ITEM_LIST) as ArrayList<String>
+                        Log.e("rejectedItemsList", rejectedItemsList.toString())
+                    }
                 }
             } else{
                 showToast("User id key is missing.")
@@ -127,6 +120,11 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
     fun getAdminSettings() : ArrayList<Data>{
         return adminSettingsList
     }
+
+    fun getRejectedItems() : ArrayList<String>{
+        return rejectedItemsList
+    }
+
 
     override fun onBackPressed() {
         if (currentFragment is WelcomeVerificationFragment) {

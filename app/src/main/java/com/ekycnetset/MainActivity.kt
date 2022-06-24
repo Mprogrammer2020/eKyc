@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     val mList = ArrayList<Data>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -107,9 +108,11 @@ class MainActivity : AppCompatActivity() {
 
     fun move(){
 
+        var arrary = arrayListOf<String>("document")
         val intent = Intent(this,EKycActivity::class.java)
 //        intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
         intent.putExtra(Constants.USER_AUTH_TOKEN, "prod-XWzdnqGSToqEqoZaPrprUfUunGiirYav")
+        intent.putExtra(Constants.USER_ID, "0c1bdb3f-a75a-4640-9187-4caa68125bc8")
 
         intent.putExtra(Constants.F_NAME, "Steve")
         intent.putExtra(Constants.L_NAME, "Roger")
@@ -119,6 +122,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Constants.ADDRESS, "New York, USA")
         intent.putExtra(Constants.DOB, "1994-11-04")
         intent.putExtra(Constants.NATIONALITY, "IN")
+        intent.putExtra(Constants.REJECTED_ITEM_LIST, arrary)
 
         // in case of update
             intent.putExtra(Constants.BASIS_USER_HASH, "09841284-20dd-4d00-851d-3b5b651d415e")

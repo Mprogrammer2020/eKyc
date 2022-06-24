@@ -22,10 +22,14 @@ object Constants {
     const val PHONE_CODE = "PHONE_CODE"
     const val PHONE_NUMBER = "PHONE_NUMBER"
     const val ADDRESS = "ADDRESS"
+    const val STREET = "STREET"
+    const val CITY = "CITY"
+    const val ZIP_CODE = "ZIP_CODE"
     const val DOB = "DOB"
     const val NATIONALITY = "NATIONALITY"
 
     const val ADMIN_SETTINGS_LIST = "ADMIN_SETTINGS_LIST"
+    const val REJECTED_ITEM_LIST = "REJECTED_ITEMS_LIST"
 
     const val CHECK_ONE = "CHECK_ONE"
     const val CHECK_TWO = "CHECK_TWO"
