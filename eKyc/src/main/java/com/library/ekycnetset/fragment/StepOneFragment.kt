@@ -46,7 +46,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     private var mPresenter : BaseCheckPresenterUpdated ?= null
     private var isFirstBoxChecked = false
     private var isSecondBoxChecked = false
-    private var keysToCreateCheck = "watchlist_standard"
+    private var keysToCreateCheck = ""
 
     private lateinit var client: Onfido
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,14 +80,15 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
             .build()
 
 
-        if (getContainerActivity().getRejectedItems().isEmpty()) {
+        if (getContainerActivity().getRejectedItems().isEmpty()
+            || (getContainerActivity().getRejectedItems().contains("facial_similarity_photo") && getContainerActivity().getRejectedItems().contains("document"))) {
              defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
                 FlowStep.WELCOME,  //Welcome step with a step summary, optional
                 FlowStep.CAPTURE_DOCUMENT,  //Document capture step
                 FlowStep.FINAL //Final screen step, optional
             )
             defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
-            keysToCreateCheck += "," + "document" + ",facial_similarity_photo"
+            keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
         } else {
             if (getContainerActivity().getRejectedItems().contains("document")) {
                 defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
@@ -95,7 +96,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                     FlowStep.CAPTURE_DOCUMENT,  //Document capture step
                     FlowStep.FINAL //Final screen step, optional
                 )
-                keysToCreateCheck += "," + "document"
+                keysToCreateCheck = "watchlist_standard," + "document"
             }
             if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo")) {
                 defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
@@ -103,17 +104,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                     FlowStep.FINAL //Final screen step, optional
                 )
                 defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
-                keysToCreateCheck += "," + "facial_similarity_photo"
-            }
-
-            if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo") && getContainerActivity().getRejectedItems().contains("document")) {
-                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                    FlowStep.CAPTURE_DOCUMENT,  //Document capture step
-                    FlowStep.FINAL //Final screen step, optional
-                )
-                defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
-                keysToCreateCheck += "," + "document" + ",facial_similarity_photo"
+                keysToCreateCheck = "watchlist_standard," + "facial_similarity_photo"
             }
         }
 
