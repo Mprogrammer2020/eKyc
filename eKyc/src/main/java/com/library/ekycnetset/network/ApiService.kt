@@ -37,6 +37,6 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("users/{id}/createCheck/{videoId}")
-    fun createCheckApi(@Path("id") id: String, @Path("videoId") videoId: String, @Field("reports") checksName: String): Single<EKycModel>
+    fun createCheckApi(@Path("id") id: String, @Path("videoId") videoId: String, @Body body: RequestBody): Single<EKycModel>
 }
 

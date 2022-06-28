@@ -607,10 +607,19 @@ class BaseCheckPresenterUpdated(
     }
 
     fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
+        val jsonObject = JSONObject()
+        jsonObject.put("reports", keysToCreateCheck)
+
+        Log.e("Check Base", jsonObject.toString())
+
+        val requestBody =
+            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+
         frag.showLoading()
         frag.disposable.add(
             frag.apiService.createCheckApi(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(),
-                videoIdForOnfido.toString(), keysToCreateCheck)
+                videoIdForOnfido.toString(), requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
