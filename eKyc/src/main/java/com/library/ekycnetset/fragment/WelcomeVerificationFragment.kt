@@ -118,7 +118,7 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
 
                     wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 158, 173, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     wordtoSpan.setSpan(UnderlineSpan(), 158, 173, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    wordtoSpan.setSpan(spanForPrivacyPolicy, 158, 17nh, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForPrivacyPolicy, 158, 173, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
                     binder.textOne.text = wordtoSpan
 
