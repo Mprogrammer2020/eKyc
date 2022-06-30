@@ -112,13 +112,13 @@ class WelcomeVerificationFragment : EKycBaseFragment<FragmentWelcomeVerification
                         }
                     }
 
-                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 135, 155, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    wordtoSpan.setSpan(UnderlineSpan(), 135, 155, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    wordtoSpan.setSpan(spanForTermsAndConditions, 135, 155, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 133, 153, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 133, 153, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForTermsAndConditions, 133, 153, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 160, 175, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    wordtoSpan.setSpan(UnderlineSpan(), 160, 175, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    wordtoSpan.setSpan(spanForPrivacyPolicy, 160, 175, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 158, 173, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 158, 173, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForPrivacyPolicy, 158, 17nh, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
                     binder.textOne.text = wordtoSpan
 
