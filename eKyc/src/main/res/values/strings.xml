@@ -12,7 +12,7 @@
     <string name="continue_txt">Continue</string>
     <string name="not_now">Not Now</string>
 
-    <string name="tell_us_one">Tell us about yourself (Step 1 of 4)</string>
+    <string name="tell_us_one">Tell us about yourself</string>
     <string name="update_info">Update Info</string>
     <string name="update">Update</string>
     <string name="just_follow">Just follow three steps below to tell us about yourself</string>
