@@ -34,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Objects;
 import io.reactivex.disposables.CompositeDisposable;
+import retrofit2.Retrofit;
 
 //by : Deepak Kumar
 //at : Netset Software
@@ -52,12 +53,14 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     private ApiService service;
     private CompositeDisposable disposable = new CompositeDisposable();
+    public Retrofit retrofitClient;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHandler = new Handler();
+        retrofitClient = new ApiClient().getClient(this);
         service = new ApiClient().getClient(this).create(ApiService.class);
         performDataBinding();
         mPref = new PrefUtils();

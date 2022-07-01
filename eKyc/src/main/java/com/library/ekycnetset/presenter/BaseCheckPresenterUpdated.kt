@@ -26,7 +26,10 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.ResponseBody
 import org.json.JSONObject
+import retrofit2.Converter
+import java.io.IOException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -599,13 +602,32 @@ class BaseCheckPresenterUpdated(
 
                     override fun onError(e: Throwable) {
                         frag.hideLoading()
-                        frag.showError(e, context)
+
+                        val body = (e as com.jakewharton.retrofit2.adapter.rxjava2.HttpException).response()!!.errorBody()
+
+                        val errorConverter: Converter<ResponseBody, Error> =
+                            context.retrofitClient.responseBodyConverter(
+                                Error::class.java, arrayOfNulls<Annotation>(0)
+                            )
+                        // Convert the error body into our Error type.
+                        // Convert the error body into our Error type.
+                        try {
+                            val error: Error = errorConverter.convert(body)!!
+                            Log.e("", "ERROR: " + error)
+                            frag.showError(error.message.toString(), context)
+                        } catch (e1: IOException) {
+                            e1.printStackTrace()
+                        }
                     }
                 })
         )
 
     }
 
+    internal class Error {
+        var error: String? = null
+        var message: String? = null
+    }
     fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
         val jsonObject = JSONObject()
         jsonObject.put("reports", keysToCreateCheck)

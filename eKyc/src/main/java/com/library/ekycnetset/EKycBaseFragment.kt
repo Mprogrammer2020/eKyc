@@ -154,6 +154,9 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
         } else
             true
     }
+    fun showError(response: String, activity: AppCompatActivity) {
+        setResponseDialog(activity, response)
+    }
 
     fun showError(e: Throwable, activity: AppCompatActivity) {
 
@@ -312,7 +315,7 @@ abstract class EKycBaseFragment<T : ViewDataBinding?> : BaseFragment<T>(), Fragm
 
         if (isEditable) {
             val inputMethodManager =
-                activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.toggleSoftInputFromWindow(
                 editText.applicationWindowToken,
                 InputMethodManager.SHOW_FORCED,

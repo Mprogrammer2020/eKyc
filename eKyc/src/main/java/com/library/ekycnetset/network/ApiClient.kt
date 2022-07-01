@@ -7,7 +7,9 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.library.ekycnetset.BuildConfig
 import com.library.ekycnetset.base.Constants
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -39,6 +41,7 @@ class ApiClient {
     }
 
     private fun initOkHttp(context: Context) {
+
         val httpClient = OkHttpClient().newBuilder()
             .connectTimeout(requestTimeout.toLong(), TimeUnit.SECONDS)
             .readTimeout(requestTimeout.toLong(), TimeUnit.SECONDS)
