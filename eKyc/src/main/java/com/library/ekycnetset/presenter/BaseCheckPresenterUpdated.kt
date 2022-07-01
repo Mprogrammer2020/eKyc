@@ -575,7 +575,7 @@ class BaseCheckPresenterUpdated(
         jsonObject.put("email", viewDataBinding.twoStep.emailET.text.toString())
         jsonObject.put("dob", frag.changeDateFormat(viewDataBinding.twoStep.dob.text.toString()))
         jsonObject.put("countryOfResidence", countryResidence)
-        jsonObject.put("buildingNumber", viewDataBinding.threeStep.cityET.text.toString())
+        jsonObject.put("buildingNumber", viewDataBinding.threeStep.addressET.text.toString())
         jsonObject.put("street", viewDataBinding.threeStep.streetET.text.toString())
         jsonObject.put("town", viewDataBinding.threeStep.cityET.text.toString())
         jsonObject.put("postcode", viewDataBinding.threeStep.zipET.text.toString())

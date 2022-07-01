@@ -7,6 +7,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/progress"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -15,40 +16,47 @@
 
 <!--            Step One-->
             <View
+
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:background="@color/colorPrimaryDark"
                 android:layout_height="@dimen/_2sdp"/>
 
             <View
+                android:visibility="gone"
                 android:layout_width="@dimen/_1sdp"
                 android:layout_height="@dimen/_2sdp"
                 android:background="@color/colorWhite"/>
 
 <!--            Step Two-->
             <View
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_2sdp"/>
 
             <View
+                android:visibility="gone"
                 android:layout_width="@dimen/_1sdp"
                 android:layout_height="@dimen/_2sdp"
                 android:background="@color/colorWhite"/>
 
 <!--            Step Three-->
             <View
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_2sdp"/>
 
             <View
+                android:visibility="gone"
                 android:layout_width="@dimen/_1sdp"
                 android:layout_height="@dimen/_2sdp"
                 android:background="@color/colorWhite"/>
 
 <!--            Step Four-->
             <View
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_2sdp"/>
