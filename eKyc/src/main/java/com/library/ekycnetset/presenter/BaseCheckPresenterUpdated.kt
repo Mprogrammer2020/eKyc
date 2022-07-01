@@ -602,15 +602,26 @@ class BaseCheckPresenterUpdated(
 
                     override fun onError(e: Throwable) {
                         frag.hideLoading()
-                        frag.showError(e, context)
 
+                        val body = (e as com.jakewharton.retrofit2.adapter.rxjava2.HttpException).response()!!.errorBody()
+
+                        val errorConverter: Converter<ResponseBody, Error> = context.retrofitClient.responseBodyConverter(Error::class.java, arrayOfNulls<Annotation>(0))
+                        try {
+                            val error: Error = errorConverter.convert(body)!!
+                            frag.showError(error.message.toString(), context)
+                        } catch (e1: IOException) {
+                            e1.printStackTrace()
+                        }
                     }
                 })
         )
 
     }
 
-
+    internal class Error {
+        var error: String? = null
+        var message: String? = null
+    }
     fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
         val jsonObject = JSONObject()
         jsonObject.put("reports", keysToCreateCheck)
