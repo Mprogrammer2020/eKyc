@@ -35,6 +35,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="Update manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -666,11 +667,6 @@
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt</url>
           <line>592</line>
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt</url>
-          <line>615</line>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
