@@ -15,6 +15,7 @@ object Constants {
     const val BASIS_USER_HASH = "BASIS_USER_HASH"
     const val BASIS_USER_ID = "BASIS_USER_ID"
 
+    const val API_BASE_URL = "BASE_URL"
     const val USER_ID = "USER_ID"
     const val F_NAME = "F_NAME"
     const val L_NAME = "L_NAME"

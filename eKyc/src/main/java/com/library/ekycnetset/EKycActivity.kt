@@ -4,13 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import com.library.ekycnetset.fragment.TermsAndPrivacyWebViewFragment
+import com.application.linkodes.network.ApiService
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
-import com.library.ekycnetset.fragment.UpdateFragment
+import com.library.ekycnetset.fragment.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
+import com.library.ekycnetset.network.ApiClient
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
@@ -26,7 +27,16 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         kycPref.clearPrefs(this)
 
         val bundle = intent.extras
+
         if (bundle != null){
+            if (!bundle.getString(Constants.API_BASE_URL).isNullOrEmpty()){
+                retrofitClient = ApiClient().getClient(this, bundle.getString(Constants.API_BASE_URL)?: "")
+                service = ApiClient().getClient(this, bundle.getString(Constants.API_BASE_URL)?: "").create(ApiService::class.java)
+            } else {
+                showToast("Api Base Url key is missing.")
+                setResultCancelled()
+            }
+
             if (bundle.containsKey(Constants.USER_ID)){
                 if (bundle.getString(Constants.USER_ID).isNullOrEmpty()){
                     showToast("User id key is missing.")

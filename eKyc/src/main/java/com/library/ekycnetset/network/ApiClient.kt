@@ -24,14 +24,14 @@ class ApiClient {
     private val requestTimeout = 60
     private var okHttpClient: OkHttpClient? = null
 
-    fun getClient(context: Context): Retrofit {
+    fun getClient(context: Context, baseUrl: String): Retrofit {
 
         if (okHttpClient == null)
             initOkHttp(context)
 
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_API)
+                .baseUrl(baseUrl)
                 .client(okHttpClient!!)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

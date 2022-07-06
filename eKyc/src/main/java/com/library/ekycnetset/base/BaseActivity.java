@@ -51,7 +51,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     private PrefUtils mPref;
 
-    private ApiService service;
+    public ApiService service;
     private CompositeDisposable disposable = new CompositeDisposable();
     public Retrofit retrofitClient;
 
@@ -60,8 +60,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHandler = new Handler();
-        retrofitClient = new ApiClient().getClient(this);
-        service = new ApiClient().getClient(this).create(ApiService.class);
+
         performDataBinding();
         mPref = new PrefUtils();
     }
