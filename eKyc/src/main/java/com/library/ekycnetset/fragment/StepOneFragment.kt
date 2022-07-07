@@ -27,10 +27,7 @@ import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.DialogTermsLayoutBinding
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
 import com.library.ekycnetset.presenter.BaseCheckPresenterUpdated
-import com.onfido.android.sdk.capture.ExitCode
-import com.onfido.android.sdk.capture.Onfido
-import com.onfido.android.sdk.capture.OnfidoConfig
-import com.onfido.android.sdk.capture.OnfidoFactory
+import com.onfido.android.sdk.capture.*
 import com.onfido.android.sdk.capture.errors.OnfidoException
 import com.onfido.android.sdk.capture.ui.camera.face.stepbuilder.FaceCaptureStepBuilder.forVideo
 import com.onfido.android.sdk.capture.ui.options.FlowStep
@@ -74,6 +71,11 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     fun startDocumentVerification(sdkToken: String) {
         lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
 
+        val documentTypes = listOf(
+            DocumentType.PASSPORT,
+            DocumentType.NATIONAL_IDENTITY_CARD
+        )
+
         val faceCaptureStep = forVideo()
             .withIntro(true)
             .withConfirmationVideoPreview(false)
@@ -110,6 +112,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
 
         val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
             .withCustomFlow(defaultStepsWithWelcomeScreen)
+            .withAllowedDocumentTypes(documentTypes)
             .withSDKToken(sdkToken)
             .build()
 
