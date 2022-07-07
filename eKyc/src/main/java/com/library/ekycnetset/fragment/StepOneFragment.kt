@@ -31,7 +31,9 @@ import com.onfido.android.sdk.capture.*
 import com.onfido.android.sdk.capture.errors.OnfidoException
 import com.onfido.android.sdk.capture.ui.camera.face.stepbuilder.FaceCaptureStepBuilder.forVideo
 import com.onfido.android.sdk.capture.ui.options.FlowStep
+import com.onfido.android.sdk.capture.ui.options.stepbuilder.DocumentCaptureStepBuilder
 import com.onfido.android.sdk.capture.upload.Captures
+import com.onfido.android.sdk.capture.utils.CountryCode
 
 
 //by : Deepak Kumar
@@ -109,6 +111,8 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
                 keysToCreateCheck = "watchlist_standard," + "facial_similarity_photo"
             }
         }
+
+
 
         val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
             .withCustomFlow(defaultStepsWithWelcomeScreen)

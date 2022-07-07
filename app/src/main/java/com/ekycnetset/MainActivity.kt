@@ -108,12 +108,12 @@ class MainActivity : AppCompatActivity() {
 
     fun move(){
 
-        var arrary = arrayListOf<String>("document")
+        var arrary = arrayListOf<String>()
         val intent = Intent(this,EKycActivity::class.java)
 //        intent.putExtra(Constants.API_KEY, "prod-GyNtgjCefFzWrOCMjYFCdoxpZTumokrl")
         intent.putExtra(Constants.USER_AUTH_TOKEN, "prod-XWzdnqGSToqEqoZaPrprUfUunGiirYav")
         intent.putExtra(Constants.USER_ID, "0c1bdb3f-a75a-4640-9187-4caa68125bc8")
-        intent.putExtra(Constants.API_BASE_URL, "https://stagingapi.e-fx.asia")
+        intent.putExtra(Constants.API_BASE_URL, "https://stagingapi.e-fx.asia/"+ "EFXUserManagement/v1/api/")
 
         intent.putExtra(Constants.F_NAME, "Steve")
         intent.putExtra(Constants.L_NAME, "Roger")
