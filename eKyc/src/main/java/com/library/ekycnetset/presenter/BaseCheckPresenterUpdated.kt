@@ -47,6 +47,7 @@ class BaseCheckPresenterUpdated(
     private var mAppPresenter: AppPresenter? = null
     private var countryNationality: String = ""
     private var countryResidence: String = ""
+    private var fullNameOfCountryResidence: String = ""
 
     init {
         mAppPresenter = AppPresenter(context)
@@ -57,6 +58,7 @@ class BaseCheckPresenterUpdated(
 
         countryNationality = "MYS"
         countryResidence = "MYS"
+        fullNameOfCountryResidence = "Malaysia"
 
         viewDataBinding.oneStep.firstNameET.setText(
             context.kycPref.getUserAppInfo(
@@ -424,6 +426,7 @@ class BaseCheckPresenterUpdated(
 
                         viewDataBinding.threeStep.countryResTxt.text = code.name!!
                         countryResidence = code.code!!
+                        fullNameOfCountryResidence = code.name!!
 
                     }
 
@@ -577,7 +580,8 @@ class BaseCheckPresenterUpdated(
         jsonObject.put("lastName", viewDataBinding.oneStep.lastNameET.text.toString())
         jsonObject.put("email", viewDataBinding.twoStep.emailET.text.toString())
         jsonObject.put("dob", frag.changeDateFormat(viewDataBinding.twoStep.dob.text.toString()))
-        jsonObject.put("countryOfResidence", countryResidence)
+        jsonObject.put("countryOfResidence", fullNameOfCountryResidence)
+        jsonObject.put("countryCodeOfResidence", countryResidence)
         jsonObject.put("buildingNumber", viewDataBinding.threeStep.addressET.text.toString())
         jsonObject.put("street", viewDataBinding.threeStep.streetET.text.toString())
         jsonObject.put("town", viewDataBinding.threeStep.cityET.text.toString())
