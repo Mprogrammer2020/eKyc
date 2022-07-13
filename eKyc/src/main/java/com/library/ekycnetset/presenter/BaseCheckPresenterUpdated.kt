@@ -606,11 +606,10 @@ class BaseCheckPresenterUpdated(
 
                     override fun onError(e: Throwable) {
                         frag.hideLoading()
-
-                        val body = (e as com.jakewharton.retrofit2.adapter.rxjava2.HttpException).response()!!.errorBody()
-
-                        val errorConverter: Converter<ResponseBody, Error> = context.retrofitClient.responseBodyConverter(Error::class.java, arrayOfNulls<Annotation>(0))
                         try {
+                            val body = (e as com.jakewharton.retrofit2.adapter.rxjava2.HttpException).response()!!.errorBody()
+
+                            val errorConverter: Converter<ResponseBody, Error> = context.retrofitClient.responseBodyConverter(Error::class.java, arrayOfNulls<Annotation>(0))
                             val error: Error = errorConverter.convert(body)!!
                             frag.showError(error.message.toString(), context)
                         } catch (e1: IOException) {
