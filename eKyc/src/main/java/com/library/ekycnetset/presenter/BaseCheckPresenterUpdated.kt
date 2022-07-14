@@ -16,6 +16,7 @@ import com.library.ekycnetset.R
 import com.library.ekycnetset.base.AppPresenter
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.FragmentStepOneLayoutBinding
+import com.library.ekycnetset.fragment.DocumentTypeSelectionFragment
 import com.library.ekycnetset.fragment.MobileVerificationFragment
 import com.library.ekycnetset.fragment.StepOneFragment
 import com.library.ekycnetset.fragment.UploadDocumentFragment
@@ -293,8 +294,14 @@ class BaseCheckPresenterUpdated(
                 2 -> {
 
                     if (isDataValidForStepThree() && isMandatory) {
-
-                        baseCheckApi()
+                        val data = getInputtedDataFromScreen()
+                        val fragment = DocumentTypeSelectionFragment()
+                        val bundle = Bundle()
+                        bundle.putString("data", data)
+                        bundle.putString("countryCode", countryNationality)
+                        fragment.arguments = bundle
+                        context.displayIt(fragment, DocumentTypeSelectionFragment::class.java.canonicalName, true)
+//                        baseCheckApi()
 //                        goToMobVerification("Empty",0)
 
                     }
@@ -573,6 +580,24 @@ class BaseCheckPresenterUpdated(
         )
     }
 
+    private fun getInputtedDataFromScreen(): String {
+        val jsonObject = JSONObject()
+        jsonObject.put("firstName", viewDataBinding.oneStep.firstNameET.text.toString())
+        jsonObject.put("lastName", viewDataBinding.oneStep.lastNameET.text.toString())
+        jsonObject.put("email", viewDataBinding.twoStep.emailET.text.toString())
+        jsonObject.put("dob", frag.changeDateFormat(viewDataBinding.twoStep.dob.text.toString()))
+        jsonObject.put("countryOfResidence", fullNameOfCountryResidence)
+        jsonObject.put("countryCodeOfResidence", countryResidence)
+        jsonObject.put("buildingNumber", viewDataBinding.threeStep.addressET.text.toString())
+        jsonObject.put("street", viewDataBinding.threeStep.streetET.text.toString())
+        jsonObject.put("town", viewDataBinding.threeStep.cityET.text.toString())
+        jsonObject.put("postcode", viewDataBinding.threeStep.zipET.text.toString())
+        jsonObject.put("country", countryNationality)
+
+        return jsonObject.toString()
+    }
+
+
     private fun baseCheckApi() {
         frag.showLoading()
         val jsonObject = JSONObject()
@@ -601,7 +626,7 @@ class BaseCheckPresenterUpdated(
                     override fun onSuccess(model: EKycModel) {
                         frag.hideLoading()
                         Log.e("applicant Id", model.data?.applicantId.toString())
-                        frag.startDocumentVerification(model.data?.token.toString())
+//                        frag.startDocumentVerification(model.data?.token.toString())
                     }
 
                     override fun onError(e: Throwable) {

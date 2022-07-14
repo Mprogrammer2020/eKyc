@@ -20,6 +20,7 @@ import android.view.View
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
 import com.library.ekycnetset.base.BubbleDialog
@@ -39,7 +40,8 @@ import com.onfido.android.sdk.capture.utils.CountryCode
 //by : Deepak Kumar
 //at : Netset Software
 //in : Kotlin
-class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
+class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>(),
+    EKycActivity.NotifyForSuccessDialogAfterKyc {
 
     private var videoIdForOnfido: String? = ""
     private var mPresenter : BaseCheckPresenterUpdated ?= null
@@ -51,6 +53,7 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getContainerActivity().notifyForSuccessDialogAfterKyc = this
         if (mPresenter == null){
             mPresenter = BaseCheckPresenterUpdated(getContainerActivity(),this,viewDataBinding)
         }
@@ -63,90 +66,14 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
     }
 
     override fun setTitle(): String {
-        return getString(R.string.tell_us_one)
+        return getString(R.string.tell_us)
     }
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_step_one_layout
     }
 
-    fun startDocumentVerification(sdkToken: String) {
-        lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
 
-        val documentTypes = listOf(
-            DocumentType.PASSPORT,
-            DocumentType.NATIONAL_IDENTITY_CARD
-        )
-
-        val faceCaptureStep = forVideo()
-            .withIntro(true)
-            .withConfirmationVideoPreview(false)
-            .build()
-
-
-        if (getContainerActivity().getRejectedItems().isEmpty()
-            || (getContainerActivity().getRejectedItems().contains("facial_similarity_photo") && getContainerActivity().getRejectedItems().contains("document"))) {
-             defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                FlowStep.CAPTURE_DOCUMENT,  //Document capture step
-                FlowStep.FINAL //Final screen step, optional
-            )
-            defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
-            keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
-        } else {
-            if (getContainerActivity().getRejectedItems().contains("document")) {
-                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                    FlowStep.CAPTURE_DOCUMENT,  //Document capture step
-                    FlowStep.FINAL //Final screen step, optional
-                )
-                keysToCreateCheck = "watchlist_standard," + "document"
-            }
-            if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo")) {
-                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                    FlowStep.FINAL //Final screen step, optional
-                )
-                defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
-                keysToCreateCheck = "watchlist_standard," + "facial_similarity_photo"
-            }
-        }
-
-
-
-        val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
-            .withCustomFlow(defaultStepsWithWelcomeScreen)
-            .withAllowedDocumentTypes(documentTypes)
-            .withSDKToken(sdkToken)
-            .build()
-
-
-
-        client.startActivityForResult(this, 1, onfidoConfig)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        client.handleActivityResult(resultCode, data, object : Onfido.OnfidoResultListener {
-            override fun onError(exception: OnfidoException) {
-                exception.printStackTrace();
-                showToast("Unknown error");
-            }
-
-            override fun userCompleted(captures: Captures) {
-                videoIdForOnfido = captures.face?.id
-                if (videoIdForOnfido == null) {
-                    videoIdForOnfido = "-1"
-                }
-                success()
-            }
-
-            override fun userExited(exitCode: ExitCode) {
-                showToast("User cancelled.");
-            }
-
-        })
-    }
 
     private fun success() {
         LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
@@ -243,6 +170,13 @@ class StepOneFragment : EKycBaseFragment<FragmentStepOneLayoutBinding>() {
             }
         }
     }
+
+    override fun notifyForSuccess(videoIdForOnfido: String, keysToCreateCheck: String) {
+        this.videoIdForOnfido = videoIdForOnfido
+        this.keysToCreateCheck = keysToCreateCheck
+        success()
+    }
+
 
 }
 

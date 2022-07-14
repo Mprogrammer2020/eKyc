@@ -20,6 +20,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     private var adminSettingsList = ArrayList<Data>()
     private var rejectedItemsList = ArrayList<String>()
+    public lateinit var notifyForSuccessDialogAfterKyc: NotifyForSuccessDialogAfterKyc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -148,5 +149,9 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             super.onBackPressed()
         }
 
+    }
+
+    interface NotifyForSuccessDialogAfterKyc {
+        fun notifyForSuccess(videoIdForOnfido: String, keysToCreateCheck: String)
     }
 }

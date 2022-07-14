@@ -13,9 +13,14 @@
     <string name="not_now">Not Now</string>
 
     <string name="tell_us_one">Tell us about yourself</string>
+    <string name="verify_your_identity">Verify your Identity</string>
     <string name="update_info">Update Info</string>
     <string name="update">Update</string>
     <string name="just_follow">Just follow three steps below to tell us about yourself</string>
+    <string name="choose_your_document">Choose your document</string>
+    <string name="must_be_offical_id">It must be an official photo ID</string>
+    <string name="passport">Passport</string>
+    <string name="national_identity_card">National Identity Card</string>
     <string name="step_1">1</string>
     <string name="step_2">2</string>
     <string name="step_3">3</string>
