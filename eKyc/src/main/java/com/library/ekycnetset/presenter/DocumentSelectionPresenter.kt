@@ -12,6 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Converter
 import java.io.IOException
 
@@ -31,14 +32,19 @@ class DocumentSelectionPresenter(
         }
     }
 
-    public fun baseCheckApi(documentType: String) {
+    fun baseCheckApi(documentType: String) {
         frag.showLoading()
-
-
         Log.e("Check Base", frag.inputtedData.toString())
+        val json = JSONObject(frag.inputtedData.toString())
+        if (documentType == "nationalId") {
+            json.put("documentType", "national_identity_card")
+        } else {
+            json.put("documentType", documentType)
+        }
+
 
         val requestBody =
-            frag.inputtedData.toString().toRequestBody("application/json".toMediaTypeOrNull())
+            json.toString().toRequestBody("application/json".toMediaTypeOrNull())
 
         frag.disposable.add(
             frag.apiService.uploadBasicInfo(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(), requestBody)
