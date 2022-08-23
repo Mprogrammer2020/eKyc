@@ -104,7 +104,7 @@ dependencies {
     implementation 'com.github.hedzr:android-file-chooser:v1.2.0-final'
 
     //onfido kyc sdk
-    implementation 'com.onfido.sdk.capture:onfido-capture-sdk:12.1.0'
+    implementation 'com.onfido.sdk.capture:onfido-capture-sdk:12.3.0'
     // only required to support TLSv1.2 for devices with Android API lower than 5.x
     implementation('com.google.android.gms:play-services-base:18.0.1') {
         exclude group: 'com.android.support' // to avoid conflicts with your current support library

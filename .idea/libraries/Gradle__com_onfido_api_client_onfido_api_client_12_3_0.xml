@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.onfido.api.client:onfido-api-client:12.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.onfido.api.client/onfido-api-client/12.3.0/119a9c352553b8f7cf00fbc434786ad3923632e1/onfido-api-client-12.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.onfido.api.client/onfido-api-client/12.3.0/9ebbe77aec883200d452ef6d94f9c18d15a4130f/onfido-api-client-12.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.onfido.api.client/onfido-api-client/12.3.0/f72f0ed931cc98cfa4fe5062cbc2e9ca521c43b7/onfido-api-client-12.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

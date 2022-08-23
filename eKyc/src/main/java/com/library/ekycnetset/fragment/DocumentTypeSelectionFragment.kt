@@ -91,7 +91,6 @@ class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionB
                 faceCaptureStep,
                 FlowStep.FINAL //Final screen step, optional
             )
-//            defaultStepsWithWelcomeScreen.set(2, faceCaptureStep)
             keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
         } else {
             if (getContainerActivity().getRejectedItems().contains("document")) {
