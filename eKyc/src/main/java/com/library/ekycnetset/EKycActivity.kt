@@ -12,20 +12,33 @@ import com.library.ekycnetset.fragment.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
 import com.library.ekycnetset.network.ApiClient
+import com.onfido.android.sdk.capture.ExitCode
+import com.onfido.android.sdk.capture.Onfido
+import com.onfido.android.sdk.capture.OnfidoConfig
+import com.onfido.android.sdk.capture.OnfidoFactory
+import com.onfido.android.sdk.capture.errors.OnfidoException
+import com.onfido.android.sdk.capture.ui.camera.face.stepbuilder.FaceCaptureStepBuilder
+import com.onfido.android.sdk.capture.ui.options.FlowStep
+import com.onfido.android.sdk.capture.ui.options.stepbuilder.DocumentCaptureStepBuilder
+import com.onfido.android.sdk.capture.upload.Captures
+import com.onfido.android.sdk.capture.utils.CountryCode
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
 
 class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
+    private var keysToCreateCheck: String = ""
     private var adminSettingsList = ArrayList<Data>()
     private var rejectedItemsList = ArrayList<String>()
     public lateinit var notifyForSuccessDialogAfterKyc: NotifyForSuccessDialogAfterKyc
+    private lateinit var client: Onfido
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         kycPref.clearPrefs(this)
+
 
         val bundle = intent.extras
 
@@ -44,7 +57,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     setResultCancelled()
                 } else {
                     kycPref.storeAuthKey(this,bundle.getString(Constants.USER_AUTH_TOKEN)!!)
-
                     kycPref.storeUserAppInfo(this,Constants.USER_ID,bundle.getString(Constants.USER_ID)?: "")
                     kycPref.storeUserAppInfo(this,Constants.F_NAME,bundle.getString(Constants.F_NAME)?: "")
                     kycPref.storeUserAppInfo(this,Constants.L_NAME,bundle.getString(Constants.L_NAME)?: "")
@@ -61,6 +73,8 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
                     if (bundle.containsKey(Constants.REJECTED_ITEM_LIST)){
+                        kycPref.storeUserAppInfo(this,Constants.REJECTED_DOCUMENT_TYPE,bundle.getString(Constants.REJECTED_DOCUMENT_TYPE)?: "")
+                        kycPref.storeUserAppInfo(this,Constants.ONFIDO_SDK_TOKEN,bundle.getString(Constants.ONFIDO_SDK_TOKEN)?: "")
                         rejectedItemsList = bundle.getStringArrayList(Constants.REJECTED_ITEM_LIST) as ArrayList<String>
                         Log.e("rejectedItemsList", rejectedItemsList.toString())
                     }
@@ -74,26 +88,86 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
             setResultCancelled()
         }
 
-        displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-//        if (kycPref.getUserAppInfo(this,Constants.BASIS_USER_HASH).isNullOrEmpty()){
-//            displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-//        }else{
-//            displayIt(WelcomeVerificationFragment(), UpdateFragment::class.java.canonicalName, true)
-//        }
-
-
-//        displayIt(TakeSelfieFragment(), TakeSelfieFragment::class.java.canonicalName, true)
+        client = OnfidoFactory.create(this).client
+        initialiseOnfidoOrMoveToWelcomeScreenForKyc()
 
         viewDataBinding.toolbarLeftMain.setOnClickListener {
             onBackPressed()
         }
     }
 
-//    @RequiresPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE)
-//    @RequiresApi(Build.VERSION_CODES.R)
-//    fun requestFullStorageAccess(frag : WelcomeVerificationFragment) {
-//        frag.startActivityForResult(Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),5000)
-//    }
+    private fun initialiseOnfidoOrMoveToWelcomeScreenForKyc() {
+        lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
+        lateinit var documentCapture: FlowStep
+
+        if (kycPref.getUserAppInfo(this, Constants.REJECTED_DOCUMENT_TYPE) == "passport") {
+            documentCapture = DocumentCaptureStepBuilder.forPassport()
+                .build()
+        } else {
+            documentCapture = DocumentCaptureStepBuilder.forNationalIdentity()
+                .withCountry(CountryCode.MY)
+                .build()
+        }
+
+        val faceCaptureStep = FaceCaptureStepBuilder.forVideo()
+            .withIntro(true)
+            .withConfirmationVideoPreview(false)
+            .build()
+
+        if (getRejectedItems().isEmpty()
+            || (getRejectedItems().contains("facial_similarity_photo") && getRejectedItems().contains("document"))) {
+            displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
+            keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
+        } else {
+            if (getRejectedItems().contains("document")) {
+                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                    documentCapture,  //Document capture step
+                    FlowStep.FINAL //Final screen step, optional
+                )
+                keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
+            }
+            if (getRejectedItems().contains("facial_similarity_photo")) {
+                defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
+                    FlowStep.WELCOME,  //Welcome step with a step summary, optional
+                    faceCaptureStep,
+                    FlowStep.FINAL //Final screen step, optional
+                )
+//                defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
+                keysToCreateCheck = "facial_similarity_photo"
+            }
+        }
+
+        val onfidoConfig = OnfidoConfig.builder(this)
+            .withCustomFlow(defaultStepsWithWelcomeScreen)
+            .withSDKToken(kycPref.getUserAppInfo(this, Constants.ONFIDO_SDK_TOKEN).toString())
+            .build()
+
+        client.startActivityForResult(this, 1, onfidoConfig)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        client.handleActivityResult(resultCode, data, object : Onfido.OnfidoResultListener {
+            override fun onError(exception: OnfidoException) {
+                exception.printStackTrace();
+                showToast("Unknown error");
+            }
+
+            override fun userCompleted(captures: Captures) {
+                var videoIdForOnfido = captures.face?.id
+                if (videoIdForOnfido == null) {
+                    videoIdForOnfido = "-1"
+                }
+                notifyForSuccessDialogAfterKyc.notifyForSuccess(videoIdForOnfido.toString(), keysToCreateCheck)
+            }
+
+            override fun userExited(exitCode: ExitCode) {
+                showToast("User cancelled.");
+            }
+
+        })
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_e_kyc

@@ -28,6 +28,8 @@ object Constants {
     const val ZIP_CODE = "ZIP_CODE"
     const val DOB = "DOB"
     const val NATIONALITY = "NATIONALITY"
+    const val REJECTED_DOCUMENT_TYPE = "REJECTED_DOCUMENT_TYPE"
+    const val ONFIDO_SDK_TOKEN = "SDK_TOKEN"
 
     const val ADMIN_SETTINGS_LIST = "ADMIN_SETTINGS_LIST"
     const val REJECTED_ITEM_LIST = "REJECTED_ITEMS_LIST"

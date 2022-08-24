@@ -124,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Constants.DOB, "1994-11-04")
         intent.putExtra(Constants.NATIONALITY, "IN")
         intent.putExtra(Constants.REJECTED_ITEM_LIST, arrary)
+        intent.putExtra(Constants.REJECTED_DOCUMENT_TYPE, "document")
 
         // in case of update
             intent.putExtra(Constants.BASIS_USER_HASH, "09841284-20dd-4d00-851d-3b5b651d415e")
