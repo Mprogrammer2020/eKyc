@@ -650,6 +650,7 @@ class BaseCheckPresenterUpdated(
         var error: String? = null
         var message: String? = null
     }
+
     fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
         val jsonObject = JSONObject()
         jsonObject.put("reports", keysToCreateCheck)

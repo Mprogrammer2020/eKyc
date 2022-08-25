@@ -31,6 +31,9 @@ import com.onfido.android.sdk.capture.utils.CountryCode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 // Dependency e-KYC
 // Developed by : Deepak Kumar
@@ -128,11 +131,12 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                 if (videoIdForOnfido == null) {
                     videoIdForOnfido = "-1"
                 }
-                notifyForSuccessDialogAfterKyc.notifyForSuccess(videoIdForOnfido.toString(), keysToCreateCheck)
+                createCheckApi(videoIdForOnfido.toString(), keysToCreateCheck)
             }
 
             override fun userExited(exitCode: ExitCode) {
                 showToast("User cancelled.");
+                finish()
             }
 
         })
@@ -232,9 +236,6 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 
     fun setResultOk() {
         val intent = Intent()
-//        intent.putExtra(Constants.BASIS_USER_HASH,kycPref.getHash(this)!!)
-//        intent.putExtra(Constants.BASIS_USER_ID,kycPref.getUserId(this)!!)
-//
         if (kycPref.getUserAppInfo(this,Constants.CHECK_ONE) !=null ){
             intent.putExtra(Constants.CHECK_ONE,kycPref.getUserAppInfo(this,Constants.CHECK_ONE)!!)
             intent.putExtra(Constants.CHECK_TWO,kycPref.getUserAppInfo(this,Constants.CHECK_TWO)!!)
@@ -268,7 +269,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         fun notifyForSuccess(videoIdForOnfido: String, keysToCreateCheck: String)
     }
 
-    fun setResponseDialog(activity: AppCompatActivity, message: String) {
+    private fun setResponseDialog(activity: AppCompatActivity, message: String) {
         val dialog = BottomSheetDialog(activity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -282,7 +283,39 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         ok!!.setOnClickListener {
             dialog.dismiss()
         }
-
         dialog.show()
     }
+
+    fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
+        val jsonObject = JSONObject()
+        jsonObject.put("reports", keysToCreateCheck)
+
+        Log.e("Check Base", jsonObject.toString())
+
+        val requestBody =
+            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+
+        showLoading()
+        disposable.add(
+            apiService.createCheckApi(kycPref.getUserAppInfo(this, Constants.USER_ID).toString(),
+                videoIdForOnfido.toString(), requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
+                    override fun onSuccess(model: EKycModel) {
+                        hideLoading()
+                        setResultOk()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        hideLoading()
+                        showError(e, this@EKycActivity)
+                    }
+                })
+        )
+
+    }
+
+
 }
