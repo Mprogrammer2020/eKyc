@@ -1,11 +1,29 @@
 package com.library.ekycnetset.fragment
 
+import android.app.Dialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.library.ekycnetset.EKycActivity
 import com.library.ekycnetset.EKycBaseFragment
 import com.library.ekycnetset.R
+import com.library.ekycnetset.base.BubbleDialog
+import com.library.ekycnetset.base.Constants
+import com.library.ekycnetset.databinding.DialogTermsLayoutBinding
 import com.library.ekycnetset.databinding.FragmentDocumentSelectionBinding
 import com.library.ekycnetset.presenter.DocumentSelectionPresenter
 import com.onfido.android.sdk.capture.ExitCode
@@ -24,14 +42,18 @@ import com.onfido.android.sdk.capture.utils.CountryCode
 import kotlinx.android.synthetic.main.fragment_document_selection.*
 
 
-class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionBinding>() {
+class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionBinding>(),
+    EKycActivity.NotifyForSuccessDialogAfterKyc {
 
-    public var inputtedData: String? = null
-    public var countrySelected: String? = null
+    var cameFromScreen: String? = ""
+    var inputtedData: String? = null
+    var countrySelected: String? = null
     private var mPresenter : DocumentSelectionPresenter ?= null
     private var videoIdForOnfido: String? = ""
     private var keysToCreateCheck = ""
     private lateinit var client: Onfido
+    private var isFirstBoxChecked = false
+    private var isSecondBoxChecked = false
 
     override fun getCurrentFragment(): Fragment {
         return this
@@ -54,7 +76,12 @@ class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionB
 
         val bundle = arguments
         if (bundle != null) {
-            inputtedData = bundle.getString("data")
+            cameFromScreen = bundle.getString("from")
+            if (cameFromScreen.equals("normalFlow")) {
+                inputtedData = bundle.getString("data")
+            } else {
+                getContainerActivity().notifyForSuccessDialogAfterKyc = this
+            }
             countrySelected = bundle.getString("countryCode")
         }
         if (countrySelected != "MYS") {
@@ -99,7 +126,7 @@ class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionB
                     documentCapture,  //Document capture step
                     FlowStep.FINAL //Final screen step, optional
                 )
-                keysToCreateCheck = "watchlist_standard," + "document"
+                keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
             }
             if (getContainerActivity().getRejectedItems().contains("facial_similarity_photo")) {
                 defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
@@ -107,12 +134,9 @@ class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionB
                     faceCaptureStep,
                     FlowStep.FINAL //Final screen step, optional
                 )
-//                defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
-                keysToCreateCheck = "watchlist_standard," + "facial_similarity_photo"
+                keysToCreateCheck = "facial_similarity_photo"
             }
         }
-
-
 
         val onfidoConfig = OnfidoConfig.builder(getContainerActivity())
             .withCustomFlow(defaultStepsWithWelcomeScreen)
@@ -146,4 +170,107 @@ class DocumentTypeSelectionFragment: EKycBaseFragment<FragmentDocumentSelectionB
 
         })
     }
+
+    private fun success() {
+        LocalBroadcastManager.getInstance(getContainerActivity()).unregisterReceiver(broadCastReceiver)
+        BubbleDialog(context, getContainerActivity(), R.layout.dialog_terms_layout,
+            object : BubbleDialog.LinkodesDialogBinding<DialogTermsLayoutBinding> {
+                override fun onBind(
+                    binder: DialogTermsLayoutBinding,
+                    dialog: Dialog
+                ) {
+                    binder.textOne.setMovementMethod(LinkMovementMethod.getInstance())
+                    val wordtoSpan: Spannable = SpannableString(getContainerActivity().getString(R.string.check_box_line_one_))
+                    val spanForTermsAndConditions: ClickableSpan = object : ClickableSpan() {
+                        override fun onClick(widget: View) {
+                            dialog.dismiss()
+                            LocalBroadcastManager.getInstance(getContainerActivity()).registerReceiver(broadCastReceiver, IntentFilter("broadcast"))
+                            displayIt(TermsAndPrivacyWebViewFragment(getContainerActivity().getString(R.string.terms_conditions)), TermsAndPrivacyWebViewFragment::class.java.canonicalName, true)
+                        }
+                    }
+                    val spanForPrivacyPolicy: ClickableSpan = object : ClickableSpan() {
+                        override fun onClick(widget: View) {
+                            dialog.dismiss()
+                            LocalBroadcastManager.getInstance(getContainerActivity()).registerReceiver(broadCastReceiver, IntentFilter("broadcast"))
+                            displayIt(TermsAndPrivacyWebViewFragment(getContainerActivity().getString(R.string.privacy_policy)), TermsAndPrivacyWebViewFragment::class.java.canonicalName, true)
+                        }
+                    }
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForTermsAndConditions, 71, 91, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                    wordtoSpan.setSpan(ForegroundColorSpan(Color.parseColor("#007BB1")), 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(UnderlineSpan(), 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    wordtoSpan.setSpan(spanForPrivacyPolicy, 96, 111, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                    binder.textOne.text = wordtoSpan
+
+                    binder.cbOne.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
+                        override fun onCheckedChanged(
+                            buttonView: CompoundButton?,
+                            isChecked: Boolean
+                        ) {
+                            isFirstBoxChecked = isChecked
+
+                        }
+                    })
+
+                    binder.cbTwo.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
+                        override fun onCheckedChanged(
+                            buttonView: CompoundButton?,
+                            isChecked: Boolean
+                        ) {
+                            isSecondBoxChecked = isChecked
+                        }
+                    })
+
+                    if (isFirstBoxChecked) {
+                        binder.cbOne.isChecked = true
+                    }
+                    if (isSecondBoxChecked) {
+                        binder.cbTwo.isChecked = true
+                    }
+                    binder.goToHomeClick.setOnClickListener {
+                        Log.e("CB 1", binder.cbOne.isChecked.toString())
+                        Log.e("CB 2", binder.cbTwo.isChecked.toString())
+
+                        if (binder.cbOne.isChecked) {
+                            kycPref.storeUserAppInfo(
+                                getContainerActivity(),
+                                Constants.CHECK_ONE,
+                                binder.cbOne.isChecked.toString()
+                            )
+                            kycPref.storeUserAppInfo(
+                                getContainerActivity(),
+                                Constants.CHECK_TWO,
+                                binder.cbTwo.isChecked.toString()
+                            )
+
+                            dialog.dismiss()
+                            mPresenter?.createCheckApi(videoIdForOnfido, keysToCreateCheck)
+
+                        } else {
+                            showToast("Please accept our terms & conditions and privacy policy.")
+                        }
+                    }
+                }
+            })
+    }
+
+    private val broadCastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(contxt: Context?, intent: Intent?) {
+            when (intent?.action) {
+                "broadcast" -> {
+                    success()
+                }
+            }
+        }
+    }
+
+    override fun notifyForSuccess(videoIdForOnfido: String, keysToCreateCheck: String) {
+        this.videoIdForOnfido = videoIdForOnfido
+        this.keysToCreateCheck = keysToCreateCheck
+        success()
+    }
+
 }

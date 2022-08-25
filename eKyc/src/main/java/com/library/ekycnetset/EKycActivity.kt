@@ -13,6 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.library.ekycnetset.base.BaseActivity
 import com.library.ekycnetset.base.Constants
 import com.library.ekycnetset.databinding.ActivityEKycBinding
+import com.library.ekycnetset.fragment.DocumentTypeSelectionFragment
 import com.library.ekycnetset.fragment.TermsAndPrivacyWebViewFragment
 import com.library.ekycnetset.fragment.WelcomeVerificationFragment
 import com.library.ekycnetset.model.Data
@@ -81,12 +82,12 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     kycPref.storeUserAppInfo(this,Constants.STREET,bundle.getString(Constants.STREET)?: "")
                     kycPref.storeUserAppInfo(this,Constants.CITY,bundle.getString(Constants.CITY)?: "")
                     kycPref.storeUserAppInfo(this,Constants.ZIP_CODE,bundle.getString(Constants.ZIP_CODE)?: "")
+                    kycPref.storeUserAppInfo(this,Constants.SELECTED_COUNTRY,bundle.getString(Constants.SELECTED_COUNTRY)?: "")
 
 
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
                     if (bundle.containsKey(Constants.REJECTED_ITEM_LIST)){
-                        kycPref.storeUserAppInfo(this,Constants.REJECTED_DOCUMENT_TYPE,bundle.getString(Constants.REJECTED_DOCUMENT_TYPE)?: "")
                         rejectedItemsList = bundle.getStringArrayList(Constants.REJECTED_ITEM_LIST) as ArrayList<String>
                         Log.e("rejectedItemsList", rejectedItemsList.toString())
                     }
@@ -112,105 +113,17 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         if (getRejectedItems().isEmpty()
             || (getRejectedItems().contains("facial_similarity_photo") && getRejectedItems().contains("document"))) {
             displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
-            keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
+
         } else {
-            getOnfidoSdkToken()
+            val fragment = DocumentTypeSelectionFragment()
+            val bundle = Bundle()
+            bundle.putString("from", "rejection")
+            bundle.putString("countryCode", kycPref.getUserAppInfo(this, Constants.SELECTED_COUNTRY))
+            fragment.arguments = bundle
+            displayIt(fragment, DocumentTypeSelectionFragment::class.java.canonicalName, true)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        client.handleActivityResult(resultCode, data, object : Onfido.OnfidoResultListener {
-            override fun onError(exception: OnfidoException) {
-                exception.printStackTrace();
-                showToast("Unknown error");
-            }
-
-            override fun userCompleted(captures: Captures) {
-                var videoIdForOnfido = captures.face?.id
-                if (videoIdForOnfido == null) {
-                    videoIdForOnfido = "-1"
-                }
-                createCheckApi(videoIdForOnfido.toString(), keysToCreateCheck)
-            }
-
-            override fun userExited(exitCode: ExitCode) {
-                showToast("User cancelled.");
-                finish()
-            }
-
-        })
-    }
-
-    private fun getOnfidoSdkToken() {
-        showLoading()
-        disposable.add(
-            apiService.getOnfidoSdkToken(kycPref.getUserAppInfo(this, Constants.USER_ID).toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
-
-                    override fun onSuccess(efx: EKycModel) {
-                        hideLoading()
-                        openOnfidoInterface(efx.data?.token)
-                    }
-
-                    override fun onError(e: Throwable) {
-                        hideLoading()
-                        showError(e, this@EKycActivity)
-                    }
-                })
-        )
-    }
-
-    private fun openOnfidoInterface(token: String?) {
-        lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
-        lateinit var documentCapture: FlowStep
-
-
-        if (kycPref.getUserAppInfo(this, Constants.REJECTED_DOCUMENT_TYPE) == "passport") {
-            documentCapture = DocumentCaptureStepBuilder.forPassport()
-                .build()
-        } else {
-            documentCapture = DocumentCaptureStepBuilder.forNationalIdentity()
-                .withCountry(CountryCode.MY)
-                .build()
-        }
-
-        val faceCaptureStep = FaceCaptureStepBuilder.forVideo()
-            .withIntro(true)
-            .withConfirmationVideoPreview(false)
-            .build()
-
-
-        if (getRejectedItems().contains("document")) {
-            defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                documentCapture,  //Document capture step
-                FlowStep.FINAL //Final screen step, optional
-            )
-            keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
-        }
-        if (getRejectedItems().contains("facial_similarity_photo")) {
-            defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
-                FlowStep.WELCOME,  //Welcome step with a step summary, optional
-                faceCaptureStep,
-                FlowStep.FINAL //Final screen step, optional
-            )
-            keysToCreateCheck = "facial_similarity_photo"
-        }
-
-        val onfidoConfig = OnfidoConfig.builder(this)
-            .withCustomFlow(defaultStepsWithWelcomeScreen)
-            .withSDKToken(token.toString())
-            .build()
-
-        client.startActivityForResult(this, 1, onfidoConfig)
-    }
-
-    fun showError(e: Throwable, activity: AppCompatActivity) {
-        setResponseDialog(activity, e.message!!)
-    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_e_kyc
@@ -268,54 +181,5 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
     interface NotifyForSuccessDialogAfterKyc {
         fun notifyForSuccess(videoIdForOnfido: String, keysToCreateCheck: String)
     }
-
-    private fun setResponseDialog(activity: AppCompatActivity, message: String) {
-        val dialog = BottomSheetDialog(activity)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.dialog_bottom_response_layout)
-
-        val ok = dialog.findViewById<Button>(R.id.okClick)
-        val msg = dialog.findViewById<TextView>(R.id.message)
-
-        msg!!.text = message
-
-        ok!!.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.show()
-    }
-
-    fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
-        val jsonObject = JSONObject()
-        jsonObject.put("reports", keysToCreateCheck)
-
-        Log.e("Check Base", jsonObject.toString())
-
-        val requestBody =
-            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
-
-
-        showLoading()
-        disposable.add(
-            apiService.createCheckApi(kycPref.getUserAppInfo(this, Constants.USER_ID).toString(),
-                videoIdForOnfido.toString(), requestBody)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
-                    override fun onSuccess(model: EKycModel) {
-                        hideLoading()
-                        setResultOk()
-                    }
-
-                    override fun onError(e: Throwable) {
-                        hideLoading()
-                        showError(e, this@EKycActivity)
-                    }
-                })
-        )
-
-    }
-
 
 }

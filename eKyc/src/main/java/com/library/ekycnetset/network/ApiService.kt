@@ -39,6 +39,6 @@ interface ApiService {
     fun createCheckApi(@Path("id") id: String, @Path("videoId") videoId: String, @Body body: RequestBody): Single<EKycModel>
 
     @GET("users/{id}/getSDKToken")
-    fun getOnfidoSdkToken(@Path("id") userId: String): Single<EKycModel>
+    fun getOnfidoSdkToken(@Path("id") userId: String, @Query("documentType") documentType: String): Single<EKycModel>
 }
 

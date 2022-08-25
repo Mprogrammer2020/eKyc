@@ -35,7 +35,13 @@
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="Update manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/DocumentTypeSelectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/fragment/DocumentTypeSelectionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/network/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/network/ApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/DocumentSelectionPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/DocumentSelectionPresenter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -655,12 +661,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt</url>
-          <line>626</line>
+          <line>627</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt</url>
-          <line>621</line>
+          <line>622</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
@@ -675,7 +681,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/presenter/BaseCheckPresenterUpdated.kt</url>
-          <line>634</line>
+          <line>635</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">

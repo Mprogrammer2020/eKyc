@@ -125,6 +125,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Constants.NATIONALITY, "IN")
         intent.putExtra(Constants.REJECTED_ITEM_LIST, arrary)
         intent.putExtra(Constants.REJECTED_DOCUMENT_TYPE, "document")
+        intent.putExtra(Constants.SELECTED_COUNTRY, "MYS")
 
         // in case of update
             intent.putExtra(Constants.BASIS_USER_HASH, "09841284-20dd-4d00-851d-3b5b651d415e")

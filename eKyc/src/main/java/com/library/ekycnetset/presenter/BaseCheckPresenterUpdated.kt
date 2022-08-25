@@ -297,6 +297,7 @@ class BaseCheckPresenterUpdated(
                         val data = getInputtedDataFromScreen()
                         val fragment = DocumentTypeSelectionFragment()
                         val bundle = Bundle()
+                        bundle.putString("from", "normalFlow")
                         bundle.putString("data", data)
                         bundle.putString("countryCode", countryNationality)
                         fragment.arguments = bundle

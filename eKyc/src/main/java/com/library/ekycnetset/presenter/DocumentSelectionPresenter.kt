@@ -24,11 +24,20 @@ class DocumentSelectionPresenter(
 
     init {
         viewDataBinding.passportLay.setOnClickListener {
-            baseCheckApi("passport")
+            if (frag.cameFromScreen == "normalFlow") {
+                getOnfidoSdkToken("passport")
+            } else {
+                baseCheckApi("passport")
+            }
+
         }
 
         viewDataBinding.nationalIdLay.setOnClickListener {
-            baseCheckApi("nationalId")
+            if (frag.cameFromScreen == "normalFlow") {
+                getOnfidoSdkToken("nationalId")
+            } else {
+                baseCheckApi("nationalId")
+            }
         }
     }
 
@@ -74,5 +83,58 @@ class DocumentSelectionPresenter(
         )
 
     }
+
+    private fun getOnfidoSdkToken(documentType: String) {
+        frag.showLoading()
+        frag.disposable.add(
+            frag.apiService.getOnfidoSdkToken(frag.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(), documentType)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
+
+                    override fun onSuccess(efx: EKycModel) {
+                        frag.hideLoading()
+                        frag.startDocumentVerification(efx.data?.token.toString(), documentType)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        frag.hideLoading()
+                        frag.showError(e, context)
+                    }
+                })
+        )
+    }
+
+    fun createCheckApi(videoIdForOnfido: String?, keysToCreateCheck: String) {
+        val jsonObject = JSONObject()
+        jsonObject.put("reports", keysToCreateCheck)
+
+        Log.e("Check Base", jsonObject.toString())
+
+        val requestBody =
+            jsonObject.toString().toRequestBody("application/json".toMediaTypeOrNull())
+
+
+        frag.showLoading()
+        frag.disposable.add(
+            frag.apiService.createCheckApi(context.kycPref.getUserAppInfo(context, Constants.USER_ID).toString(),
+                videoIdForOnfido.toString(), requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<EKycModel>() {
+                    override fun onSuccess(model: EKycModel) {
+                        frag.hideLoading()
+                        context.setResultOk()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        frag.hideLoading()
+                        frag.showError(e, context)
+                    }
+                })
+        )
+
+    }
+
 
 }
