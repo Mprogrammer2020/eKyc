@@ -38,7 +38,7 @@ interface ApiService {
     @POST("users/{id}/createCheck/{videoId}")
     fun createCheckApi(@Path("id") id: String, @Path("videoId") videoId: String, @Body body: RequestBody): Single<EKycModel>
 
-    @GET("EFXUserManagement/v1/api/users/{id}/getSDKToken")
+    @GET("users/{id}/getSDKToken")
     fun getOnfidoSdkToken(@Path("id") userId: String): Single<EKycModel>
 }
 
