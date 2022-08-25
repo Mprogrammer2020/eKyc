@@ -70,6 +70,7 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                     kycPref.storeUserAppInfo(this,Constants.CITY,bundle.getString(Constants.CITY)?: "")
                     kycPref.storeUserAppInfo(this,Constants.ZIP_CODE,bundle.getString(Constants.ZIP_CODE)?: "")
 
+
                     adminSettingsList = bundle.getSerializable(Constants.ADMIN_SETTINGS_LIST) as ArrayList<Data>
 
                     if (bundle.containsKey(Constants.REJECTED_ITEM_LIST)){
