@@ -100,25 +100,28 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
         lateinit var defaultStepsWithWelcomeScreen: Array<FlowStep>
         lateinit var documentCapture: FlowStep
 
-        if (kycPref.getUserAppInfo(this, Constants.REJECTED_DOCUMENT_TYPE) == "passport") {
-            documentCapture = DocumentCaptureStepBuilder.forPassport()
-                .build()
-        } else {
-            documentCapture = DocumentCaptureStepBuilder.forNationalIdentity()
-                .withCountry(CountryCode.MY)
-                .build()
-        }
-
-        val faceCaptureStep = FaceCaptureStepBuilder.forVideo()
-            .withIntro(true)
-            .withConfirmationVideoPreview(false)
-            .build()
 
         if (getRejectedItems().isEmpty()
             || (getRejectedItems().contains("facial_similarity_photo") && getRejectedItems().contains("document"))) {
             displayIt(WelcomeVerificationFragment(), WelcomeVerificationFragment::class.java.canonicalName, true)
             keysToCreateCheck = "watchlist_standard," + "document" + ",facial_similarity_photo"
         } else {
+
+            if (kycPref.getUserAppInfo(this, Constants.REJECTED_DOCUMENT_TYPE) == "passport") {
+                documentCapture = DocumentCaptureStepBuilder.forPassport()
+                    .build()
+            } else {
+                documentCapture = DocumentCaptureStepBuilder.forNationalIdentity()
+                    .withCountry(CountryCode.MY)
+                    .build()
+            }
+
+            val faceCaptureStep = FaceCaptureStepBuilder.forVideo()
+                .withIntro(true)
+                .withConfirmationVideoPreview(false)
+                .build()
+
+
             if (getRejectedItems().contains("document")) {
                 defaultStepsWithWelcomeScreen = arrayOf<FlowStep>(
                     FlowStep.WELCOME,  //Welcome step with a step summary, optional
@@ -136,14 +139,16 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
 //                defaultStepsWithWelcomeScreen.set(1, faceCaptureStep)
                 keysToCreateCheck = "facial_similarity_photo"
             }
+
+            val onfidoConfig = OnfidoConfig.builder(this)
+                .withCustomFlow(defaultStepsWithWelcomeScreen)
+                .withSDKToken(kycPref.getUserAppInfo(this, Constants.ONFIDO_SDK_TOKEN).toString())
+                .build()
+
+            client.startActivityForResult(this, 1, onfidoConfig)
         }
 
-        val onfidoConfig = OnfidoConfig.builder(this)
-            .withCustomFlow(defaultStepsWithWelcomeScreen)
-            .withSDKToken(kycPref.getUserAppInfo(this, Constants.ONFIDO_SDK_TOKEN).toString())
-            .build()
 
-        client.startActivityForResult(this, 1, onfidoConfig)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

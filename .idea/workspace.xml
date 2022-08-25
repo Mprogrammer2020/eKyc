@@ -35,9 +35,6 @@
   <component name="ChangeListManager">
     <list default="true" id="db9c20b5-779e-4c56-b13c-f97e00938222" name="Default Changelist" comment="Update manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ekycnetset/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/EKycActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/eKyc/src/main/java/com/library/ekycnetset/base/Constants.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
