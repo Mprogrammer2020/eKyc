@@ -25,18 +25,18 @@ class DocumentSelectionPresenter(
     init {
         viewDataBinding.passportLay.setOnClickListener {
             if (frag.cameFromScreen == "normalFlow") {
-                getOnfidoSdkToken("passport")
-            } else {
                 baseCheckApi("passport")
+            } else {
+                getOnfidoSdkToken("passport")
             }
 
         }
 
         viewDataBinding.nationalIdLay.setOnClickListener {
             if (frag.cameFromScreen == "normalFlow") {
-                getOnfidoSdkToken("nationalId")
-            } else {
                 baseCheckApi("nationalId")
+            } else {
+                getOnfidoSdkToken("nationalId")
             }
         }
     }
