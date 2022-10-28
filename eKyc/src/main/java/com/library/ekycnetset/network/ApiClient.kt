@@ -58,7 +58,7 @@ class ApiClient {
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("deviceType", "Android")
-                .addHeader("appVersion", BuildConfig.VERSION_NAME)
+//                .addHeader("appVersion", BuildConfig.VERSION_NAME)
 
             if (!TextUtils.isEmpty(PrefUtils().getAuthKey(context))) {
                 requestBuilder.addHeader("Authorization", "Bearer "+PrefUtils().getAuthKey(context)!!)

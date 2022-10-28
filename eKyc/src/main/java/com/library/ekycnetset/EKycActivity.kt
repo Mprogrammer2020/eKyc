@@ -92,11 +92,11 @@ class EKycActivity : BaseActivity<ActivityEKycBinding>() {
                         Log.e("rejectedItemsList", rejectedItemsList.toString())
                     }
                 }
-            } else{
+            } else {
                 showToast("User id key is missing.")
                 setResultCancelled()
             }
-        } else{
+        } else {
             showToast("User id key is missing.")
             setResultCancelled()
         }

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.nbsp:materialfilepicker:1.9.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f74034258e0d7ea0f7b938fe0115fb15/jetified-materialfilepicker-1.9.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f74034258e0d7ea0f7b938fe0115fb15/jetified-materialfilepicker-1.9.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f74034258e0d7ea0f7b938fe0115fb15/jetified-materialfilepicker-1.9.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e775c8ea5a20cdaf3d67f31df48c076/jetified-materialfilepicker-1.9.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e775c8ea5a20cdaf3d67f31df48c076/jetified-materialfilepicker-1.9.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e775c8ea5a20cdaf3d67f31df48c076/jetified-materialfilepicker-1.9.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

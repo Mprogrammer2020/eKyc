@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.hedzr:android-file-chooser:v1.2.0-final@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d90a6b3369a1a61a27dc6b07f7cff504/jetified-android-file-chooser-v1.2.0-final/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d90a6b3369a1a61a27dc6b07f7cff504/jetified-android-file-chooser-v1.2.0-final/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d90a6b3369a1a61a27dc6b07f7cff504/jetified-android-file-chooser-v1.2.0-final/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ab4ae7a34f8c99a9a2f8b4763c19e400/jetified-android-file-chooser-v1.2.0-final/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ab4ae7a34f8c99a9a2f8b4763c19e400/jetified-android-file-chooser-v1.2.0-final/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ab4ae7a34f8c99a9a2f8b4763c19e400/jetified-android-file-chooser-v1.2.0-final/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

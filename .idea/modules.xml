@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKycNetset.iml" filepath="$PROJECT_DIR$/.idea/modules/eKycNetset.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/eKycNetset.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/eKyc/eKycNetset.eKyc.unitTest.iml" />
     </modules>
   </component>
 </project>
